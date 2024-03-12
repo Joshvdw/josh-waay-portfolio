@@ -1,95 +1,61 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+
+import HeroFlipText from "../components/HeroFlipText";
+import ErrorBoundary from "../components/errors/ErrorBoundary";
+import ErrorMessage from "../components/errors/ErrorModal";
+import { useCallback, useEffect } from "react";
+import { Unity, useUnityContext } from "react-unity-webgl";
+import "../styles/globals.scss";
 
 export default function Home() {
+  const {
+    unityProvider,
+    sendMessage,
+    addEventListener,
+    removeEventListener,
+    initialisationError,
+    isLoaded,
+    loadingProgression,
+  } = useUnityContext({
+    loaderUrl: "/Build/testLappy.loader.js",
+    dataUrl: "/Build/testLappy.data.gz",
+    frameworkUrl: "/Build/testLappy.framework.js.gz",
+    codeUrl: "/Build/testLappy.wasm.gz",
+  });
+
+  function msgUnity(functionName) {
+    console.log(`msg sent to unity: '${functionName}'`);
+    sendMessage("UnityFromReact", functionName);
+  }
+
+  const processUnityMsg = useCallback((fnc) => {
+    console.log(`msg received from unity: '${fnc}'`);
+    setSceneState(fnc);
+  }, []);
+
+  useEffect(() => {
+    addEventListener("UnityToFrontend", (functionName) =>
+      processUnityMsg(functionName)
+    );
+    return () => {
+      removeEventListener("UnityToFrontend", (functionName) =>
+        processUnityMsg(functionName)
+      );
+    };
+  }, [addEventListener, removeEventListener, processUnityMsg]);
+
+  useEffect(() => {
+    if (initialisationError) console.log(initialisationError);
+  }, [initialisationError]);
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+    <ErrorBoundary fallback={<ErrorMessage />}>
+      <main>
+        {/* <Context.Provider value={msgUnity}> */}
+        <HeroFlipText />
+        <Unity unityProvider={unityProvider} className="unity_canvas" />
+        {/* </Context.Provider> */}
+      </main>
+    </ErrorBoundary>
   );
 }
