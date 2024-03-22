@@ -17,10 +17,10 @@ export default function Home() {
     isLoaded,
     loadingProgression,
   } = useUnityContext({
-    loaderUrl: "/Build/testLappy.loader.js",
-    dataUrl: "/Build/testLappy.data.gz",
-    frameworkUrl: "/Build/testLappy.framework.js.gz",
-    codeUrl: "/Build/testLappy.wasm.gz",
+    loaderUrl: "/Build/laptop.loader.js",
+    dataUrl: "/Build/laptop.data.gz",
+    frameworkUrl: "/Build/laptop.framework.js.gz",
+    codeUrl: "/Build/laptop.wasm.gz",
   });
 
   function msgUnity(functionName) {
