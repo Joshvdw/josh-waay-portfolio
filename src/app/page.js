@@ -1,11 +1,13 @@
 "use client";
 
 import HeroFlipText from "../components/HeroFlipText";
+import Preloader from "@/components/Preloader";
 import ErrorBoundary from "../components/errors/ErrorBoundary";
 import ErrorMessage from "../components/errors/ErrorModal";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
 import "../styles/globals.scss";
+import Nav from "@/components/Nav";
 
 export default function Home() {
   const {
@@ -22,6 +24,12 @@ export default function Home() {
     frameworkUrl: "/Build/laptop.framework.js.gz",
     codeUrl: "/Build/laptop.wasm.gz",
   });
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (isLoaded) setIsLoading(false);
+  }, [isLoaded]);
 
   function msgUnity(functionName) {
     console.log(`msg sent to unity: '${functionName}'`);
@@ -52,7 +60,11 @@ export default function Home() {
     <ErrorBoundary fallback={<ErrorMessage />}>
       <main>
         {/* <Context.Provider value={msgUnity}> */}
-        <HeroFlipText />
+        {isLoading && <Preloader />}
+
+        <HeroFlipText msgUnity={msgUnity} />
+        <br />
+        <Nav msgUnity={msgUnity} />
         <Unity unityProvider={unityProvider} className="unity_canvas" />
         {/* </Context.Provider> */}
       </main>
