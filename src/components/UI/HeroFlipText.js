@@ -2,7 +2,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import "../styles/HeroFlipText.css";
+import "@/styles/HeroFlipText.css";
+import HeroStar from "./lotties/HeroStar";
 
 const HeroFlipText = ({ msgUnity }) => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -35,9 +36,7 @@ const HeroFlipText = ({ msgUnity }) => {
     setCurrentStep(nextStepNum);
   };
 
-  const handleStartClick = () => {
-    msgUnity("StartExperience");
-  };
+
 
   return (
     <div ref={elRef}>
@@ -49,13 +48,9 @@ const HeroFlipText = ({ msgUnity }) => {
           <span className="step">Creative</span>
         </span>
       </h1>
-      <h1>Web Developer</h1>
-      {/* <p>
-        Crafting visually captivating and intuitive web experiences with
-        creativity, innovation, and a dedication to pixel perfect finesse.
-      </p> */}
-      <div onClick={handleStartClick}>
-        <button>Start</button>
+      <div>
+        <HeroStar />
+        <h1>Developer</h1>
       </div>
     </div>
   );

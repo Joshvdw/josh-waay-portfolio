@@ -4,30 +4,48 @@ import {
   useCallback,
   useEffect,
   forwardRef,
+  useImperativeHandle,
   useState,
+  useContext,
 } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
+import Preloader from "./Preloader";
+import SceneContext from "@/hooks/sceneContext";
 
-const UnityBuild = forwardRef((ref) => {
+const WebGL = forwardRef((props, ref) => {
   const {
     unityProvider,
     sendMessage,
     addEventListener,
     removeEventListener,
+    initialisationError,
     isLoaded,
     loadingProgression,
-    initialisationError,
   } = useUnityContext({
-    loaderUrl: "/Build/testLappy.loader.js",
-    dataUrl: "/Build/testLappy.data.gz",
-    frameworkUrl: "/Build/testLappy.framework.js.gz",
-    codeUrl: "/Build/testLappy.wasm.gz",
+    loaderUrl: "/Build/laptop.loader.js",
+    dataUrl: "/Build/laptop.data.gz",
+    frameworkUrl: "/Build/laptop.framework.js.gz",
+    codeUrl: "/Build/laptop.wasm.gz",
   });
 
-  function msgUnity(functionName) {
-    console.log(`msg sent to unity: '${functionName}'`);
-    sendMessage("UnityFromReact", functionName);
-  }
+  const { updateScene } = useContext(SceneContext);
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (isLoaded) {
+      setIsLoading(false);
+      updateScene("hero");
+      sendMessage("UnityFromReact", "HasLoaded");
+    }
+  }, [isLoaded]);
+
+  useImperativeHandle(ref, () => ({
+    sendMessage(functionName) {
+      console.log(`msg sent to unity: '${functionName}'`);
+      sendMessage("UnityFromReact", functionName);
+    },
+  }));
 
   const processUnityMsg = useCallback((fnc) => {
     console.log(`msg received from unity: '${fnc}'`);
@@ -48,14 +66,12 @@ const UnityBuild = forwardRef((ref) => {
   useEffect(() => {
     if (initialisationError) console.log(initialisationError);
   }, [initialisationError]);
-
   return (
     <div>
+      {isLoading && <Preloader />}
       <Unity unityProvider={unityProvider} className="unity_canvas" />
     </div>
   );
 });
 
-UnityBuild.displayName = "UnityBuild";
-
-export default UnityBuild;
+export default WebGL;

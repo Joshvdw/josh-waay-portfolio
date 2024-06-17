@@ -1,40 +1,34 @@
-const Nav = ({ msgUnity }) => {
-  const handleNavClick = (navItem) => {
+import SceneContext from "@/hooks/sceneContext";
+import UnityContext from "@/hooks/UnityContext";
+import { useContext } from "react";
+
+const Nav = () => {
+  const { sceneState, updateScene } = useContext(SceneContext);
+  const { msgUnity } = useContext(UnityContext);
+
+  const handleClick = (navItem) => {
+    updateScene(navItem.toLowerCase());
     msgUnity(`Set${navItem}Scene`);
   };
-  const handleControlClick = (msg) => {
-    msgUnity(msg);
-  };
+
   return (
     <div className="nav-wrapper">
-      <div onClick={() => handleNavClick("Work")}>
+      <div onClick={() => handleClick("Work")}>
         <button>Work</button>
       </div>
-      <div onClick={() => handleNavClick("About")}>
+      <div onClick={() => handleClick("About")}>
         <button>About</button>
       </div>
-      <div onClick={() => handleNavClick("Services")}>
+      <div onClick={() => handleClick("Services")}>
         <button>Services</button>
       </div>
-      <div onClick={() => handleNavClick("Music")}>
+      <div onClick={() => handleClick("Music")}>
         <button>Music</button>
       </div>
-      <div onClick={() => handleNavClick("Contact")}>
+      <div onClick={() => handleClick("Contact")}>
         <button>Contact</button>
       </div>
-
-      <div onClick={() => handleControlClick("NextVideo")}>
-        <button>Next</button>
-      </div>
-      <div onClick={() => handleControlClick("PreviousVideo")}>
-        <button>Previous</button>
-      </div>
-      <div onClick={() => handleControlClick("PauseVideo")}>
-        <button>Pause</button>
-      </div>
-      <div onClick={() => handleControlClick("PlayVideo")}>
-        <button>Play</button>
-      </div>
+      {/* add to their own components */}
     </div>
   );
 };
