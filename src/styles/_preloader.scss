@@ -1,4 +1,8 @@
 .preloader-wrapper {
   @include flex_centre;
   @include fullscreen_wrapper;
+  position: fixed;
+  z-index: 1;
+  background-image: url("/images/preloader_bg.jpg");
+  background-size: cover;
 }

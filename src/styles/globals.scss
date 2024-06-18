@@ -1,3 +1,9 @@
+//PRELOADER BACKGROUND - LOAD FIRST TO AVOID WHITE BACKGROUND FLASH
+body {
+  background-image: url("/images/preloader_bg.jpg");
+  background-size: cover;
+}
+
 @import "./variables", "./mixins", "./UI", "./preloader", "./nav";
 
 // CSS RESET
@@ -31,8 +37,6 @@ h3 {
   font-weight: 700;
 }
 
-// body {
-//   background-color: $black;
-//   color: $white;
-//   overflow: hidden;
-// }
+body {
+  color: $mid-white;
+}
