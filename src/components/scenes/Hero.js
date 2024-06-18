@@ -15,10 +15,10 @@ const Hero = () => {
   return (
     <div>
       <HeroFlipText />
-      {/* <p>
-        Crafting visually captivating and intuitive web experiences with
-        creativity, innovation, and a dedication to pixel perfect finesse.
-      </p> */}
+      <p>
+        Crafting visually captivating and intuitive web solutions with
+        creativity, innovation, and an unwavering attention to detail.
+      </p>
       <div onClick={handleStartClick}>
         <button>Start</button>
       </div>
