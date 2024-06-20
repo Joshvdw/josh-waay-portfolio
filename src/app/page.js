@@ -11,7 +11,7 @@ import SoundWave from "@/components/UI/lotties/SoundWave";
 import ErrorBoundary from "@/components/errors/ErrorBoundary";
 import ErrorMessage from "../components/errors/ErrorModal";
 import SceneContext, { SceneProvider } from "@/hooks/sceneContext";
-import UnityContext, { UnityProvider } from "@/hooks/UnityContext";
+import UnityContext, { UnityProvider } from "@/hooks/unityContext";
 
 export default function Home() {
   return (

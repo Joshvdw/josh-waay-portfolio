@@ -1,5 +1,5 @@
 import SceneContext from "@/hooks/sceneContext";
-import UnityContext from "@/hooks/UnityContext";
+import UnityContext from "@/hooks/unityContext";
 import { useContext } from "react";
 
 const Nav = () => {
@@ -7,8 +7,9 @@ const Nav = () => {
   const { msgUnity } = useContext(UnityContext);
 
   const handleClick = (navItem) => {
-    updateScene(navItem.toLowerCase());
-    msgUnity(`Set${navItem}Scene`);
+    const newScene = navItem.toLowerCase();
+    if (newScene !== sceneState) msgUnity(`Set${navItem}Scene`);
+    updateScene(newScene);
   };
 
   return (

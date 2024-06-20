@@ -5,7 +5,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        source: "/Build/:path*\\.gz",
+        source: "/Assets/Laptop/Build/:path*\\.gz",
         locale: false,
         headers: [
           {

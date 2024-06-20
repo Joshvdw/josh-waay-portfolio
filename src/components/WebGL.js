@@ -13,62 +13,38 @@ import Preloader from "./Preloader";
 import SceneContext from "@/hooks/sceneContext";
 
 const WebGL = forwardRef((props, ref) => {
-  const {
-    unityProvider,
-    sendMessage,
-    addEventListener,
-    removeEventListener,
-    initialisationError,
-    isLoaded,
-    loadingProgression,
-  } = useUnityContext({
-    loaderUrl: "/Build/laptop.loader.js",
-    dataUrl: "/Build/laptop.data.gz",
-    frameworkUrl: "/Build/laptop.framework.js.gz",
-    codeUrl: "/Build/laptop.wasm.gz",
-  });
+  const { unityProvider, sendMessage, initialisationError, isLoaded } =
+    useUnityContext({
+      loaderUrl: "/Assets/Laptop/Build/Laptop.loader.js",
+      dataUrl: "/Assets/Laptop/Build/Laptop.data.gz",
+      frameworkUrl: "/Assets/Laptop/Build/Laptop.framework.js.gz",
+      codeUrl: "/Assets/Laptop/Build/Laptop.wasm.gz",
+    });
 
-  const { updateScene } = useContext(SceneContext);
+  const { sceneState } = useContext(SceneContext);
 
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (isLoaded) {
       setIsLoading(false);
-      updateScene("hero");
-      sendMessage("UnityFromReact", "HasLoaded");
     }
   }, [isLoaded]);
 
   useImperativeHandle(ref, () => ({
-    sendMessage(functionName) {
-      console.log(`msg sent to unity: '${functionName}'`);
-      sendMessage("UnityFromReact", functionName);
+    sendMessage(functionName, argument) {
+      console.log(`msg sent to unity: '${functionName}' argument: ${argument}`);
+      sendMessage("UnityFromReact", functionName, argument);
     },
   }));
-
-  const processUnityMsg = useCallback((fnc) => {
-    console.log(`msg received from unity: '${fnc}'`);
-    setSceneState(fnc);
-  }, []);
-
-  useEffect(() => {
-    addEventListener("UnityToFrontend", (functionName) =>
-      processUnityMsg(functionName)
-    );
-    return () => {
-      removeEventListener("UnityToFrontend", (functionName) =>
-        processUnityMsg(functionName)
-      );
-    };
-  }, [addEventListener, removeEventListener, processUnityMsg]);
 
   useEffect(() => {
     if (initialisationError) console.log(initialisationError);
   }, [initialisationError]);
+
   return (
     <div>
-      {isLoading && <Preloader />}
+      {sceneState == "loading" && <Preloader isLoading={isLoading} />}
       <Unity unityProvider={unityProvider} className="unity_canvas" />
     </div>
   );

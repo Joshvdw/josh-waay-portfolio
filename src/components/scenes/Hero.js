@@ -1,6 +1,6 @@
 import HeroFlipText from "../UI/HeroFlipText";
 import SceneContext from "@/hooks/sceneContext";
-import UnityContext from "@/hooks/UnityContext";
+import UnityContext from "@/hooks/unityContext";
 import { useContext } from "react";
 
 const Hero = () => {

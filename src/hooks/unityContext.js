@@ -5,8 +5,8 @@ const UnityContext = createContext();
 export const UnityProvider = ({ children }) => {
   const unityBuild = useRef();
 
-  const msgUnity = (functionName) => {
-    return unityBuild.current?.sendMessage(functionName);
+  const msgUnity = (functionName, argument) => {
+    return unityBuild.current?.sendMessage(functionName, argument);
   };
 
   return (

@@ -1,11 +1,11 @@
-import UnityContext from "@/hooks/UnityContext";
+import UnityContext from "@/hooks/unityContext";
 import { useContext } from "react";
 
 const WorkControls = () => {
   const { msgUnity } = useContext(UnityContext);
 
   const handleClick = (msg) => {
-    msgUnity(msg);
+    msgUnity("VideoController", msg);
   };
   return (
     <div>
