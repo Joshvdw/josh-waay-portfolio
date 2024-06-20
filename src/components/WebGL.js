@@ -50,4 +50,6 @@ const WebGL = forwardRef((props, ref) => {
   );
 });
 
+WebGL.displayName = "UnityBuild";
+
 export default WebGL;
