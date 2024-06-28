@@ -28,6 +28,9 @@ const WebGL = forwardRef((props, ref) => {
   useEffect(() => {
     if (isLoaded) {
       setIsLoading(false);
+      setTimeout(() => {
+        sendMessage("UnityFromReact", "HasLoaded");
+      }, [1500]);
     }
   }, [isLoaded]);
 
