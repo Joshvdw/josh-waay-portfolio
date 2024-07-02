@@ -33,4 +33,6 @@ const HeroStar = forwardRef((props, ref) => {
   return <div ref={container}></div>;
 });
 
+HeroStar.displayName = "HeroStar";
+
 export default HeroStar;
