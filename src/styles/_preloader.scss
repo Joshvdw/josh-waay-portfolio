@@ -8,3 +8,13 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.preloader_lottie--wrapper {
+  @include flex_centre;
+  flex-direction: column;
+}
+
+.preloader_lottie {
+  width: 65%;
+  margin-bottom: 0.625rem;
+}

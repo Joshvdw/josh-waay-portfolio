@@ -5,7 +5,8 @@ body {
   background-size: cover;
 }
 
-@import "./variables", "./mixins", "./UI", "./preloader", "./nav";
+@import "./variables", "./mixins", "./UI", "./preloader", "./nav", "./about",
+  "./contact", "./hero", "./music", "./services", "./work", "./customCursor";
 
 // CSS RESET
 * {
@@ -38,6 +39,15 @@ h3 {
   font-weight: 700;
 }
 
+h1 {
+  font-size: 7.125rem;
+}
+
 body {
   color: $mid-white;
+}
+
+.paragraph-large {
+  font-size: 1.25rem;
+  line-height: 140%;
 }

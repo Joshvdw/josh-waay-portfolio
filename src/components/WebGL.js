@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  useCallback,
   useEffect,
   forwardRef,
   useImperativeHandle,
@@ -30,7 +29,7 @@ const WebGL = forwardRef((props, ref) => {
       setIsLoading(false);
       setTimeout(() => {
         sendMessage("UnityFromReact", "HasLoaded");
-      }, [1500]);
+      }, [1750]);
     }
   }, [isLoaded]);
 

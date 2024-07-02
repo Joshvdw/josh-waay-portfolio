@@ -1,4 +1,4 @@
-import { usePreloaderFadeIn, usePreloaderFadeOut } from "@/hooks/useSpring";
+import { useFadeIn, usePreloaderFadeOut } from "@/hooks/useSpring";
 import Logo from "./UI/Logo";
 import { useEffect, useState, useRef } from "react";
 import { animated } from "@react-spring/web";
@@ -27,13 +27,16 @@ const Preloader = ({ isLoading }) => {
     };
   }, []);
 
-  const fadeIn = usePreloaderFadeIn(animationLoaded);
+  const fadeIn = useFadeIn(animationLoaded);
   const fadeOut = usePreloaderFadeOut(isLoading);
 
   return (
     <animated.div className="preloader-wrapper" style={fadeOut}>
-      <animated.div style={fadeIn}>
-        <div ref={container} className="lottie-container preloader"></div>
+      <animated.div className="preloader_lottie--wrapper" style={fadeIn}>
+        <div
+          ref={container}
+          className="lottie-container preloader_lottie"
+        ></div>
         {animationLoaded && <Logo />}
       </animated.div>
     </animated.div>

@@ -2,10 +2,10 @@ import { useSpring, config } from "@react-spring/web";
 import { useEffect, useContext } from "react";
 import SceneContext from "@/hooks/sceneContext";
 
-// FADE PRELOADER IN
-export const usePreloaderFadeIn = (state) => {
+// FADE IN
+export const useFadeIn = (state) => {
   const [pageFade, api] = useSpring(() => ({
-    config: { ...config.gentle },
+    config: { ...config.molasses },
     from: { opacity: 0 },
   }));
 
@@ -16,6 +16,21 @@ export const usePreloaderFadeIn = (state) => {
   }, [state, api]);
 
   return pageFade;
+};
+
+export const useSlideIn = (state, translateAmount) => {
+  const [slide, api] = useSpring(() => ({
+    config: { ...config.molasses },
+    from: { transform: `translateX(-${translateAmount}%)` },
+  }));
+
+  useEffect(() => {
+    api.start({
+      transform: state ? "translateX(0%)" : `translateX(-${translateAmount}%)`,
+    });
+  }, [state, api]);
+
+  return slide;
 };
 
 // FADE PRELOADER OUT
@@ -34,7 +49,7 @@ export const usePreloaderFadeOut = (state) => {
         onRest: () => {
           setTimeout(() => {
             updateScene("hero");
-          }, 1000); // delay for hero fading in
+          }, 500); // delay for hero fading in
         },
       });
     }, 1000); // delay fade in slightly to avoid load-in jank

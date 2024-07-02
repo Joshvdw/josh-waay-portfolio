@@ -1,0 +1,140 @@
+.hero {
+  padding-left: $g2;
+  @include fullscreen_wrapper;
+  display: flex;
+  align-items: center;
+}
+
+.hero__wrapper {
+  margin-top: -2rem;
+}
+
+.hero__paragraph {
+  max-width: 30rem;
+  color: $off-white;
+  margin: 0.75rem 0;
+  margin-bottom: 2rem;
+}
+
+.flip {
+  margin-bottom: 4rem;
+}
+
+.heroStar__wrapper {
+  display: flex;
+  h1 {
+    margin-left: 1rem;
+  }
+}
+
+// HERO CTA
+.hero__cta {
+  position: relative;
+  padding: 1rem 6.5rem;
+  color: $full-white;
+  font-family: $baj;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 2px;
+  display: inline-block;
+  border-radius: 1px;
+  transition: all 0.4s;
+  // font smoothing
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.right-slanted {
+  cursor: pointer;
+}
+
+.right-slanted .hero__cta {
+  clip-path: polygon(0% 0%, 100% 0%, 84% 100%, 0% 100%);
+  background-image: url("/images/cta_bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero__cta--wrapper {
+  width: 40%;
+  transition: all 0.4s;
+  transform: translateX(0) scale(1); /* Default state */
+}
+
+.hero__cta--wrapper:hover {
+  transform: translateX(1.75rem) scale(1.03);
+}
+
+.right-slanted:hover {
+  // filter: drop-shadow(0 16px 24px rgba(209, 61, 37, 0.1)); // optional bg shadow on hover
+}
+
+// CTA SHINE & SHAKE ANIMATIONS
+:root {
+  --duration: 7s;
+  --easing: linear;
+  --delay: 1s;
+  // --duration: 3.5s; // short version
+  // --delay: 0.5s; // short version
+}
+@keyframes shine {
+  20%,
+  100% {
+    transform: translateX(150%);
+  }
+}
+@keyframes jump-shaking {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  25% {
+    transform: translateY(0) rotate(0);
+  }
+  30% {
+    transform: translateY(0) rotate(0);
+  }
+  35% {
+    transform: translateY(-0.25px) rotate(-1deg);
+  }
+  37% {
+    transform: translateY(-0.75px) rotate(1deg);
+  }
+  39% {
+    transform: translateY(-1px) rotate(-1deg);
+  }
+  41% {
+    transform: translateY(0) rotate(0);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+.right-slanted .hero__cta {
+  overflow: hidden;
+  // optional shake
+  // animation: jump-shaking 3.5s infinite;
+  // animation-delay: 8s;
+  // animation-delay: 5s; // shorter version
+  // animation: jump-shaking 7s infinite; // shorter version
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 100%;
+    color: rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0);
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 25%,
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 75%
+    );
+    transform: skewX(-20deg) translateX(-100%);
+    animation: var(--duration) var(--easing) var(--delay) infinite forwards
+      shine;
+  }
+}
