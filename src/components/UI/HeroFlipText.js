@@ -50,7 +50,7 @@ const HeroFlipText = () => {
         steps[currentStep].classList.add("set");
         setCurrentStep(nextStepNum);
       }
-    }, 500);
+    }, 300);
   };
 
   return (
