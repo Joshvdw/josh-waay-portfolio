@@ -28,6 +28,7 @@ const WebGL = forwardRef((props, ref) => {
     if (isLoaded) {
       setIsLoading(false);
       setTimeout(() => {
+        // document.body.style.cursor = "none"; // turn off cursor
         sendMessage("UnityFromReact", "HasLoaded");
       }, [1750]);
     }

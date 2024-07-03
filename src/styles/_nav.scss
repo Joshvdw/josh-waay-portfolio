@@ -1,3 +1,52 @@
-.nav-wrapper {
-  
+.side-menu__wrapper {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 2;
+  background: $full-black;
+  padding: 2rem;
+}
+
+.nav-item {
+  margin-bottom: 1.25rem;
+  font-family: $baj;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  max-width: 87.23px;
+}
+
+.is-inactive {
+  color: $mid-white;
+  opacity: 60%;
+  cursor: pointer;
+}
+
+.is-active {
+  color: $full-white;
+  opacity: 100%;
+  font-weight: 700;
+  cursor: default;
+}
+
+.selector-btn {
+  min-width: 15px;
+  height: 10px;
+  margin-left: -4px;
+  margin-right: 4px;
+}
+
+.socials-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  opacity: 0.4;
 }

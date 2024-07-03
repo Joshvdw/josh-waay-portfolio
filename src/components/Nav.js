@@ -1,10 +1,15 @@
 import SceneContext from "@/hooks/sceneContext";
 import UnityContext from "@/hooks/unityContext";
 import { useContext } from "react";
+import NavItem from "./UI/NavItem";
+import { useEffect, useState } from "react";
 
 const Nav = () => {
   const { sceneState, updateScene } = useContext(SceneContext);
   const { msgUnity } = useContext(UnityContext);
+  const [] = useState();
+
+  useEffect(() => {}, [sceneState]);
 
   const handleClick = (navItem) => {
     const newScene = navItem.toLowerCase();
@@ -14,21 +19,43 @@ const Nav = () => {
 
   return (
     <div className="nav-wrapper">
-      <div onClick={() => handleClick("Work")}>
-        <button>Work</button>
+      <NavItem
+        navItem="Work"
+        handleClick={handleClick}
+        sceneState={sceneState}
+      />
+      <NavItem
+        navItem="About"
+        handleClick={handleClick}
+        sceneState={sceneState}
+      />
+      <NavItem
+        navItem="Services"
+        handleClick={handleClick}
+        sceneState={sceneState}
+      />
+      <NavItem
+        navItem="Music"
+        handleClick={handleClick}
+        sceneState={sceneState}
+      />
+      <NavItem
+        navItem="Contact"
+        handleClick={handleClick}
+        sceneState={sceneState}
+      />
+      {/* <div onClick={() => handleClick("About")} className="flex">
+        <p>About</p>
       </div>
-      <div onClick={() => handleClick("About")}>
-        <button>About</button>
+      <div onClick={() => handleClick("Services")} className="flex">
+        <p>Services</p>
       </div>
-      <div onClick={() => handleClick("Services")}>
-        <button>Services</button>
+      <div onClick={() => handleClick("Music")} className="flex">
+        <p>Music</p>
       </div>
-      <div onClick={() => handleClick("Music")}>
-        <button>Music</button>
-      </div>
-      <div onClick={() => handleClick("Contact")}>
-        <button>Contact</button>
-      </div>
+      <div onClick={() => handleClick("Contact")} className="flex">
+        <p>Contact</p>
+      </div> */}
       {/* add to their own components */}
     </div>
   );

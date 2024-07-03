@@ -1,7 +1,9 @@
 
 const WorkContent = () => {
   return (
-    <div>WorkContent</div>
+    <div>
+      
+    </div>
   )
 }
 

@@ -1,7 +1,7 @@
 
 const WorkTimeline = () => {
   return (
-    <div>WorkTimeline</div>
+    <div></div>
   )
 }
 

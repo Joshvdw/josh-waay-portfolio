@@ -1,9 +1,8 @@
 //PRELOADER BACKGROUND - LOAD FIRST TO AVOID WHITE BACKGROUND FLASH
-body {
-  background-color: rgb(1, 1, 1);
-  background-image: url("/images/preloader_bg.jpg");
-  background-size: cover;
-}
+// body {
+//   background-image: url("/images/preloader_bg.jpg");
+//   background-size: cover;
+// }
 
 @import "./variables", "./mixins", "./UI", "./preloader", "./nav", "./about",
   "./contact", "./hero", "./music", "./services", "./work", "./customCursor";
@@ -29,6 +28,7 @@ a {
   top: 0;
   z-index: -1;
   overflow: hidden;
+  cursor: none;
 }
 
 // GLOBAL ELEMENTS
@@ -47,6 +47,32 @@ body {
   color: $mid-white;
 }
 
+.flex {
+  display: flex;
+}
+.flex-centre {
+  @include flex-centre;
+}
+.hide {
+  display: none;
+}
+.block {
+  display: block;
+}
+.invisible {
+  visibility: hidden;
+}
+.visible {
+  visibility: visible;
+}
+.pointer {
+  cursor: pointer;
+}
+.optimise-font {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
 .paragraph-large {
   font-size: 1.25rem;
   line-height: 140%;

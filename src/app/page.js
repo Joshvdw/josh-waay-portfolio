@@ -37,7 +37,7 @@ const App = () => {
         <WebGL ref={unityBuild} />
         <PreloadResources />
         <Audio />
-        <CustomCursor />
+        {/* <CustomCursor /> */}
         {LoadFinished && <Scenes />}
         {!HeroShowing && <Menu />}
         {!HeroShowing && <SoundWave />}

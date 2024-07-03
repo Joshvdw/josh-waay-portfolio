@@ -18,6 +18,7 @@ export const useFadeIn = (state) => {
   return pageFade;
 };
 
+// SLIDE IN FROM LEFT
 export const useSlideIn = (state, translateAmount) => {
   const [slide, api] = useSpring(() => ({
     config: { ...config.molasses },
@@ -31,6 +32,22 @@ export const useSlideIn = (state, translateAmount) => {
   }, [state, api]);
 
   return slide;
+};
+
+// OPACITY SHIFTER
+export const useOpacityShift = (state, on, off) => {
+  const [opacityShift, api] = useSpring(() => ({
+    config: { ...config.molasses },
+    from: { opacity: off },
+  }));
+
+  useEffect(() => {
+    api.start({
+      opacity: state ? on : off,
+    });
+  }, [state, api]);
+
+  return opacityShift;
 };
 
 // FADE PRELOADER OUT
@@ -49,7 +66,7 @@ export const usePreloaderFadeOut = (state) => {
         onRest: () => {
           setTimeout(() => {
             updateScene("hero");
-          }, 500); // delay for hero fading in
+          }, 100); // delay for hero fading in
         },
       });
     }, 1000); // delay fade in slightly to avoid load-in jank

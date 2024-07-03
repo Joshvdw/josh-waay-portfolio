@@ -26,7 +26,7 @@ const Hero = () => {
           <HeroFlipText />
         </animated.div>
         <animated.p
-          className="paragraph-large hero__paragraph"
+          className="paragraph-large hero__paragraph optimise-font"
           style={slideIn2}
         >
           Crafting visually captivating and intuitive web solutions with
@@ -36,7 +36,7 @@ const Hero = () => {
         <animated.div style={slideIn3}>
           <div className="hero__cta--wrapper">
             <span class="right-slanted" onClick={handleStartClick}>
-              <div class="hero__cta">
+              <div class="hero__cta optimise-font">
                 <p>Start</p>
               </div>
             </span>

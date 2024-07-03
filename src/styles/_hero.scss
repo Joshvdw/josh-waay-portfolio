@@ -40,10 +40,6 @@
   display: inline-block;
   border-radius: 1px;
   transition: all 0.4s;
-  // font smoothing
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
 }
 
 .right-slanted {
@@ -80,7 +76,7 @@
   // --delay: 0.5s; // short version
 }
 @keyframes shine {
-  20%,
+  15%,
   100% {
     transform: translateX(150%);
   }

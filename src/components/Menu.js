@@ -1,14 +1,22 @@
 import Nav from "./Nav";
 import Logo from "./UI/Logo";
-import SocialSVG from "./UI/svgs/SocialSVG";
+import Socials from "./UI/Socials";
+import { useSlideIn } from "@/hooks/useSpring";
+import { useContext } from "react";
+import SceneContext from "@/hooks/sceneContext";
+import { animated } from "@react-spring/web";
 
-const Menu = ({ msgUnity, sceneState, setSceneState }) => {
+const Menu = () => {
+  const { sceneState } = useContext(SceneContext);
+
+  const slideIn = useSlideIn(sceneState, 1000);
+
   return (
-    <div>
+    <animated.div className="side-menu__wrapper" style={slideIn}>
       <Logo />
       <Nav />
-      {/* <SocialSVG />  */}
-    </div>
+      <Socials />
+    </animated.div>
   );
 };
 

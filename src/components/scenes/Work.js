@@ -5,7 +5,7 @@ import WorkContent from "./WorkContent"
 
 const Work = () => {
   return (
-    <div>Work
+    <div>
       <WorkContent />
       <WorkControls />
       <ProgressBar />

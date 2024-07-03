@@ -33,7 +33,7 @@ const HeroFlipText = () => {
 
     // Trigger hero flip
     setTimeout(() => {
-      if (elRef != null) {
+      if (elRef.current) {
         const steps = elRef.current.querySelectorAll(".step");
         const totalSteps = steps.length;
         let nextStepNum = (currentStep + 1) % totalSteps;
