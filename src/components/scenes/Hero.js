@@ -4,6 +4,7 @@ import UnityContext from "@/hooks/unityContext";
 import { animated } from "@react-spring/web";
 import { useContext } from "react";
 import { useFadeIn, useSlideIn } from "@/hooks/useSpring";
+import { heroText } from "@/data/personalData";
 
 const Hero = () => {
   const { sceneState, updateScene } = useContext(SceneContext);
@@ -29,9 +30,7 @@ const Hero = () => {
           className="paragraph-large hero__paragraph optimise-font"
           style={slideIn2}
         >
-          Crafting visually captivating and intuitive web solutions with
-          creativity, innovation, and an unwavering passion for pixel
-          perfection.
+          {heroText.paragraph}
         </animated.p>
         <animated.div style={slideIn3}>
           <div className="hero__cta--wrapper">

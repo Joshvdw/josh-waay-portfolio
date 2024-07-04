@@ -13,9 +13,7 @@ const NavItem = ({ navItem, handleClick, sceneState }) => {
       onClick={() => handleClick(navItem)}
       className="flex nav-item"
     >
-      {(isActive || isHovered) && (
-        <SelectorBtn isHovered={isHovered} isActive={isActive} />
-      )}
+      {isActive && <SelectorBtn isHovered={isHovered} isActive={isActive} />}
       <p className={`${isActive ? "is-active" : "is-inactive"}`}>{navItem}</p>
     </div>
   );

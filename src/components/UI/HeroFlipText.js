@@ -4,6 +4,7 @@
 import { useState, useEffect, useRef } from "react";
 import "@/styles/HeroFlipText.css";
 import HeroStar from "./lotties/HeroStar";
+import { heroText } from "@/data/personalData";
 
 const HeroFlipText = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -57,9 +58,9 @@ const HeroFlipText = () => {
     <div ref={elRef}>
       <h1>
         <span id="flipper" className="flip">
-          <span className="step set">Frontend</span>
-          <span className="step">Creative</span>
-          <span className="step">Fullstack</span>
+          <span className="step set">{heroText.title[0]}</span>
+          <span className="step">{heroText.title[1]}</span>
+          <span className="step">{heroText.title[2]}</span>
         </span>
       </h1>
       <div className="heroStar__wrapper">

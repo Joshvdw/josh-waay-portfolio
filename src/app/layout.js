@@ -1,4 +1,5 @@
 import { Bai_Jamjuree, Poppins } from "next/font/google";
+import { meta } from "@/data/personalData";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -12,14 +13,8 @@ const baj_jamjuree = Bai_Jamjuree({
 });
 
 export const metadata = {
-  title: "Josh Waay | Portfolio",
-  description: `
-    Hi there 👋 I'm a creative developer who specialises in frontend web development 
-    and creating immersive digital experiences. I can bring any design idea to life, 
-    as well as enhance your online presence through bespoke, innovative web-solutions. 
-    I strive to make each project visually captivating, memorable, and engaging for 
-    users worldwide. Let's build something cool together!
-  `,
+  title: meta.title,
+  description: meta.description,
 };
 
 export default function RootLayout({ children }) {

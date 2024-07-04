@@ -22,6 +22,9 @@
   color: $mid-white;
   opacity: 60%;
   cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .is-active {
@@ -36,6 +39,10 @@
   height: 10px;
   margin-left: -4px;
   margin-right: 4px;
+}
+
+.opacity-80 {
+  opacity: 0.8 !important;
 }
 
 .socials-wrapper {

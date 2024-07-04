@@ -35,15 +35,15 @@ export const useSlideIn = (state, translateAmount) => {
 };
 
 // OPACITY SHIFTER
-export const useOpacityShift = (state, on, off) => {
+export const useOpacityShift = (state, from, to) => {
   const [opacityShift, api] = useSpring(() => ({
     config: { ...config.molasses },
-    from: { opacity: off },
+    from: { opacity: from },
   }));
 
   useEffect(() => {
     api.start({
-      opacity: state ? on : off,
+      opacity: state ? to : from,
     });
   }, [state, api]);
 

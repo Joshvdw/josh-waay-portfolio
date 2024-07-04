@@ -2,16 +2,11 @@ import { useOpacityShift } from "@/hooks/useSpring";
 import { useState } from "react";
 import { animated } from "@react-spring/web";
 
-const SocialSVG = ({ icon }) => {
+const SocialSVG = ({ icon, link }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const links = {
-    mail: "",
-    linkedin: "",
-    github: "",
-  };
-
   const opacityShifter = useOpacityShift(isHovered, 0.4, 1);
+
   return (
     <animated.div
       className="social-icon"
@@ -19,7 +14,7 @@ const SocialSVG = ({ icon }) => {
       onMouseLeave={() => setIsHovered(false)}
       style={opacityShifter}
     >
-      <a href={links[icon]}>
+      <a href={link} target="_blank">
         <img src={`/svg/${icon}.svg`} alt="" />
       </a>
     </animated.div>
