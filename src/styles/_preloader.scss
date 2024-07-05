@@ -5,7 +5,7 @@
   position: fixed;
   z-index: 1;
   background-color: $full-black;
-  // background-image: url("/images/preloader_bg.jpg"); //bg img screenshot 
+  // background-image: url("/images/preloader_bg.jpg"); //bg img screenshot
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -18,4 +18,23 @@
 .preloader_lottie {
   width: 65%;
   margin-bottom: 0.625rem;
+  position: relative;
+  z-index: 2;
+}
+
+.preloader-gradient__wrapper {
+  height: 100vh;
+  width: 100%;
+  position: absolute;
+  @include flex_centre;
+}
+
+.preloader-gradient {
+  background: radial-gradient(circle, $red, transparent);
+  width: 30vw;
+  height: 30vw;
+  border-radius: 50%;
+  position: absolute;
+  filter: blur(200px);
+  opacity: 0.5;
 }

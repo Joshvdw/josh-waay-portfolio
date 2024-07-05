@@ -74,3 +74,35 @@ export const usePreloaderFadeOut = (state) => {
 
   return pageFade;
 };
+
+// GROW IN
+export const useGrowIn = (state) => {
+  const [growIn, api] = useSpring(() => ({
+    config: { ...config.molasses },
+    from: { transform: "scale(0.001)" },
+  }));
+
+  useEffect(() => {
+    api.start({
+      transform: state ? "scale(1)" : "scale(0.01)",
+    });
+  }, [state, api]);
+
+  return growIn;
+};
+
+// GROW OUT
+export const useGrowOut = (state) => {
+  const [growOut, api] = useSpring(() => ({
+    config: { ...config.molasses },
+    from: { transform: "scale(1)" },
+  }));
+
+  useEffect(() => {
+    api.start({
+      transform: !state ? "scale(0.2)" : "scale(1)",
+    });
+  }, [state, api]);
+
+  return growOut;
+};

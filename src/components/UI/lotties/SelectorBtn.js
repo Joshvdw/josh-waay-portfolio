@@ -10,8 +10,8 @@ const SelectorBtn = ({ isHovered, isActive }) => {
     animation.current = lottie.loadAnimation({
       container: container.current,
       renderer: "svg",
-      loop: false,
-      autoplay: false,
+      loop: true,
+      autoplay: true,
       path: "/lotties/selector_bounce.json",
     });
     //
