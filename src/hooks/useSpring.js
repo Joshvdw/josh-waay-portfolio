@@ -1,5 +1,5 @@
 import { useSpring, config } from "@react-spring/web";
-import { useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import SceneContext from "@/hooks/sceneContext";
 
 // FADE IN
@@ -77,16 +77,30 @@ export const usePreloaderFadeOut = (state) => {
 
 // GROW IN
 export const useGrowIn = (state) => {
+  const [animationLoaded, setAnimationLoaded] = useState(false);
+  useEffect(() => {
+    if (state) {
+      setTimeout(() => {
+        setAnimationLoaded(true);
+      }, [200]);
+    }
+  }, [state]);
+
   const [growIn, api] = useSpring(() => ({
-    config: { ...config.molasses },
+    config: {
+      duration: 3500, // Increase duration for slower animation (in milliseconds)
+      // delay: 1500, // Delay before animation starts (in milliseconds)
+      tension: 220, // Adjust tension for smoothness
+      friction: 126, // Adjust friction for smoothness
+    },
     from: { transform: "scale(0.001)" },
   }));
 
   useEffect(() => {
     api.start({
-      transform: state ? "scale(1)" : "scale(0.01)",
+      transform: animationLoaded ? "scale(1)" : "scale(0.01)",
     });
-  }, [state, api]);
+  }, [animationLoaded, api]);
 
   return growIn;
 };
@@ -99,9 +113,11 @@ export const useGrowOut = (state) => {
   }));
 
   useEffect(() => {
-    api.start({
-      transform: !state ? "scale(0.2)" : "scale(1)",
-    });
+    setTimeout(() => {
+      api.start({
+        transform: !state ? "scale(0.7)" : "scale(1)",
+      });
+    }, [1000]);
   }, [state, api]);
 
   return growOut;

@@ -11,7 +11,7 @@ const Menu = () => {
   const { sceneState, updateScene } = useContext(SceneContext);
   const { msgUnity } = useContext(UnityContext);
 
-  const slideIn = useSlideIn(sceneState, 1000);
+  const slideIn = useSlideIn(sceneState, 200);
 
   const handleClick = () => {
     updateScene("hero");

@@ -1,27 +1,30 @@
-import UnityContext from "@/hooks/unityContext";
+import SceneContext from "@/hooks/sceneContext";
 import { useContext } from "react";
+import { animated } from "@react-spring/web";
+import { useSlideIn } from "@/hooks/useSpring";
 
-const WorkControls = () => {
-  const { msgUnity } = useContext(UnityContext);
+const WorkControls = ({ pauseProjects, resumeProjects, handleNavigation }) => {
+  const { sceneState } = useContext(SceneContext);
 
-  const handleClick = (msg) => {
-    msgUnity("VideoController", msg);
-  };
+  const slideIn = useSlideIn(sceneState, -500);
+
   return (
-    <div>
-      <div onClick={() => handleClick("NextVideo")}>
-        <button>Next</button>
+    <animated.div className="work-controls__wrapper" style={slideIn}>
+      <div className="work-controls">
+        <div onClick={() => handleNavigation("Next")}>
+          <button>Next</button>
+        </div>
+        <div onClick={() => handleNavigation("Previous")}>
+          <button>Previous</button>
+        </div>
+        <div onClick={pauseProjects}>
+          <button>Pause</button>
+        </div>
+        <div onClick={resumeProjects}>
+          <button>Play</button>
+        </div>
       </div>
-      <div onClick={() => handleClick("PreviousVideo")}>
-        <button>Previous</button>
-      </div>
-      <div onClick={() => handleClick("PauseVideo")}>
-        <button>Pause</button>
-      </div>
-      <div onClick={() => handleClick("PlayVideo")}>
-        <button>Play</button>
-      </div>
-    </div>
+    </animated.div>
   );
 };
 
