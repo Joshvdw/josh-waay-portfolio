@@ -3,7 +3,7 @@ import { projectChangeTime } from "@/data/globalVariables";
 import UnityContext from "@/hooks/unityContext";
 import { workData } from "@/data/workData";
 
-let pause = false;
+let pause = false; // variable set outside to persist value on hook call
 
 export const useProjectVideoControls = () => {
   const [currentScaleX, setCurrentScaleX] = useState(1);
@@ -25,7 +25,7 @@ export const useProjectVideoControls = () => {
       setTransition(true);
       timerRef.current = setTimeout(() => {
         if (!pause) {
-          navTo("Next");
+          navTo("Next"); // after timer runs out, navigate to next project
         }
       }, projectChangeTime);
     }
@@ -56,7 +56,7 @@ export const useProjectVideoControls = () => {
       .split(")")[0]
       .split(",")[0];
     setCurrentScaleX(scaleX);
-    progressBar.style.transform = `scaleX(${scaleX})`;
+    progressBar.style.transform = `scaleX(${scaleX})`; 
     progressBar.style.transition = "none";
   };
 
@@ -84,7 +84,6 @@ export const useProjectVideoControls = () => {
   };
 
   const counterLogic = (direction) => {
-    // setTimeout(() => {
     if (direction === "Next") {
       setCounter((prevCounter) =>
         prevCounter + 1 === workData.length ? 0 : prevCounter + 1
@@ -94,7 +93,6 @@ export const useProjectVideoControls = () => {
         prevCounter === 0 ? workData.length - 1 : prevCounter - 1
       );
     }
-    // }, 500);
   };
 
   const handleNavigation = (direction) => {

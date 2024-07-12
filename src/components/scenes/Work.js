@@ -36,6 +36,7 @@ const Work = () => {
   );
 
   useEffect(() => {
+    // start progressbar animation on render
     animateProgress();
   }, []);
 
