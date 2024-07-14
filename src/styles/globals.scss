@@ -47,6 +47,9 @@ body {
   color: $mid-white;
 }
 
+.bold {
+  font-weight: 700;
+}
 .flex {
   display: flex;
 }
@@ -67,6 +70,12 @@ body {
 }
 .pointer {
   cursor: pointer;
+}
+.no-border {
+  border: none;
+}
+.creme-text {
+  color: $creme !important;
 }
 .optimise-font {
   -webkit-font-smoothing: antialiased;

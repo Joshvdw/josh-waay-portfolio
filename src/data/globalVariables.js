@@ -1,1 +1,1 @@
-export const projectChangeTime = 10000;
+export const projectChangeTime = 15000;

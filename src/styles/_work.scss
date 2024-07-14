@@ -1,16 +1,102 @@
-.work-controls__wrapper {
-  position: absolute;
-  right: 0;
+.work-wrapper__outer {
+  width: 100%;
   height: 100vh;
+  position: absolute;
   @include flex_centre;
 }
 
-.work-controls {
-  width: 90px;
-  position: absolute;
-  right: 50px;
+.work-wrapper__inner {
+  width: 66.66vw;
+  min-width: 70rem; // fix
+  // max-width: 70rem; // fix
 }
 
+.work-header__wrapper {
+  margin-bottom: 2rem;
+}
+
+.work-header__inner {
+  @include flex_centre;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  h1 {
+    text-transform: uppercase;
+  }
+}
+
+.work-link__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.work-body__wrapper {
+  display: flex;
+}
+
+.filler-div {
+  width: 60%;
+}
+
+.work-body__right {
+  width: 40%;
+  p {
+    color: $off-white;
+  }
+}
+
+.work-tools__wrapper {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.work-tools__item {
+  padding-right: 1rem;
+  border-right: 1px solid $off-white; // add 80% opacity & remove last item
+  p {
+    color: $creme;
+    font-family: $baj;
+    font-size: 1.25rem;
+  }
+}
+
+.work-description {
+  font-size: 1.125rem;
+  opacity: 90%;
+  margin-bottom: 2rem;
+}
+
+.work-info__wrapper {
+  margin-left: 2rem;
+  font-family: $baj;
+}
+
+.work-overview__wrapper {
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.work-overview__item {
+  max-width: 7.5rem;
+}
+
+.work-overview__title {
+  margin-bottom: 0.25rem;
+}
+
+.work-credits__inner {
+  display: flex;
+  justify-content: space-between;
+  max-width: 20rem;
+  // gap: 1rem;
+}
+
+// .work-credits__
+
+// PROGRESS BAR
 .progress-bar {
   height: 1px;
   // background-color: rgba(236, 236, 232, 0.6);
@@ -27,6 +113,21 @@
   transform-origin: left;
 }
 
+// CONTROLS
+.work-controls__wrapper {
+  position: absolute;
+  right: 0;
+  height: 100vh;
+  @include flex_centre;
+}
+
+.work-controls {
+  width: 90px;
+  position: absolute;
+  right: 50px;
+}
+
+// TIMELINE
 .timeline-wrapper {
   height: 100vh;
   position: absolute;

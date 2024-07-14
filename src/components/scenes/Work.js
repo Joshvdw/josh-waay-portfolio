@@ -42,7 +42,7 @@ const Work = () => {
 
   return (
     <div>
-      <WorkContent />
+      <WorkContent counter={counter} />
       <ProgressBar {...progressBarProps} />
       <WorkControls {...workControlsProps} />
       <WorkTimeline counter={counter} />
