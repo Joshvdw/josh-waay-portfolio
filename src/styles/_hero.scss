@@ -30,7 +30,7 @@
 // HERO CTA
 .hero__cta {
   position: relative;
-  padding: 1rem 7rem;
+  padding: 1rem 6.5rem;
   color: $full-white;
   font-family: $baj;
   font-weight: 700;
@@ -60,7 +60,7 @@
 }
 
 .hero__cta--wrapper:hover {
-  transform: translateX(1.75rem) scale(1.03);
+  transform: translateX(1.5rem) scale(1.03);
 }
 
 .right-slanted:hover {

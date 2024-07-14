@@ -16,7 +16,7 @@ export const socialLinks = {
 export const heroText = {
   title: ["Frontend", "Creative", "Fullstack"],
   paragraph:
-    "Crafting visually captivating and intuitive web solutions with creativity, innovation, and an unwavering passion for pixel perfection.",
+    "Crafting visually captivating and intuitive web solutions with creativity, innovation, and a passion for pixel perfection.",
 };
 
 export const aboutText = {

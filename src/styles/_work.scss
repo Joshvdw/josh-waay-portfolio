@@ -69,14 +69,15 @@
 }
 
 .work-info__wrapper {
-  margin-left: 2rem;
+  // margin-left: 3rem;
   font-family: $baj;
 }
 
 .work-overview__wrapper {
   margin-bottom: 2rem;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  gap: 4rem;
 }
 
 .work-overview__item {
@@ -109,7 +110,8 @@
 
 .progress-fill {
   height: 100%;
-  background-color: $creme;
+  background-color: $off-white;
+  opacity: 0.5;
   transform-origin: left;
 }
 
@@ -139,10 +141,10 @@
 }
 
 .timeline-item {
-  height: 1.25rem;
-  width: 2px;
+  height: 1.125rem;
+  width: 1.5px;
   background-color: $off-white;
-  opacity: 0.2;
+  opacity: 0.25;
   transition: opacity 0.4s ease-in-out;
 }
 

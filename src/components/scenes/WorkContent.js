@@ -70,14 +70,12 @@ const WorkContent = ({ counter }) => {
                   <>
                     <p className="work-overview__title">Credits</p>
                     {Object.entries(project.credits).map(([key, value]) => (
-                      <div className="work-credits__inner">
+                      <div key={key} className="work-credits__inner">
                         {project.title == "Torotoro" ? (
                           ""
                         ) : (
                           <div className="credit-role">
-                            <p key={key}>
-                              {key.charAt(0).toUpperCase() + key.slice(1)}
-                            </p>
+                            <p>{key.charAt(0).toUpperCase() + key.slice(1)}</p>
                           </div>
                         )}
                         <div className="credit-name">

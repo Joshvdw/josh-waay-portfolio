@@ -45,8 +45,8 @@ export const workData = [
     my primary role centred around writing custom code for the website, including GSAP animations and JavaScript. 
     Overcoming Webflow's limitations and ensuring optimal performance across all browsers and devices posed 
     a unique challenge that I had to address successfully.`,
-    tools: ["Webflow", "GSAP", "JavaScript"],
-    role: "JavaScript Developer",
+    tools: ["Webflow", "GSAP", "Javascript"],
+    role: "Developer",
     client: "Mobi",
     year: "2024",
     credits: {
@@ -65,8 +65,8 @@ export const workData = [
     It features an annually updated directory of leading agencies in branding, web development, digital marketing,
      production, and motion graphics. I developed this website with Webflow, then integrated GSAP and custom JavaScript 
      to bring the spinning carousel to life.`,
-    tools: ["Webflow", "GSAP", "JavaScript"],
-    role: "Designer & Developer",
+    tools: ["Webflow", "GSAP", "Javascript"],
+    role: "Designer / Developer",
     client: "Psychoactive Studios",
     year: "2024",
     credits: {
@@ -81,7 +81,7 @@ export const workData = [
     Drawing inspiration from the popular game Flappy Bird, it features a unique design that was influenced by my recent travels through Greece.
     I used Unity with React for this project and also wrote a detailed article on the process of creating this experience - you can read it by following this link.`,
     tools: ["React", "Nextjs", "Unity", "C#", "WebGL"],
-    role: "Designer & Developer",
+    role: "Designer / Developer",
     client: "Psychoactive Studios",
     year: "2023",
     credits: {
@@ -96,7 +96,7 @@ export const workData = [
     description: `During my internship at Psychoactive Studios, I crafted an educational web experience aimed at providing an immersive introduction to the world of web 3.
     This website delves into fundamental topics such as blockchain, crypto, and NFTs.
     I was eager to push the boundaries of Webflow's capabilities, and so I ventured into new territories, exploring creative coding with JavaScript libraries such as p5.js.`,
-    tools: ["Webflow", "p5js", "JavaScript"],
+    tools: ["Webflow", "p5js", "Javascript"],
     role: "Designer, Developer & Sound",
     client: "Psychoactive Studios",
     year: "2022",
@@ -113,7 +113,7 @@ export const workData = [
     I created and exported glTF assets from Blender, then rendered and manipulated them using Three.js and React.
     The poem was written in collaboration with ChatGPT, when it was in its more exciting early days.`,
     tools: ["React", "TypeScript", "Nextjs", "Three.js", "Blender"],
-    role: "Developer & Sound",
+    role: "Developer",
     client: "N/A",
     year: "2022",
     credits: "N/A",
@@ -126,7 +126,7 @@ export const workData = [
     The name 'ToroToro' originates from the Maori language, it means 'explore' and 'grounds for us,' - which is the theme we aim to capture in this experience.
     I played a key role in developing the frontend React components and integrated the UI sounds and musical elements as well.`,
     tools: ["React", "Redux", "Jest", "Sass", "SQLite"],
-    role: "Developer & Sound",
+    role: "Developer / Sound",
     client: "Enspiral Dev Academy",
     year: "2021",
     credits: {
