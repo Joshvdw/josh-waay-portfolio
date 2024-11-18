@@ -25,7 +25,7 @@ export const useProjectVideoControls = () => {
       setTransition(true);
       timerRef.current = setTimeout(() => {
         if (!pause) {
-          navTo("Next"); // after timer runs out, navigate to next project
+          navTo("Next");
         }
       }, projectChangeTime);
     }
@@ -56,7 +56,7 @@ export const useProjectVideoControls = () => {
       .split(")")[0]
       .split(",")[0];
     setCurrentScaleX(scaleX);
-    progressBar.style.transform = `scaleX(${scaleX})`; 
+    progressBar.style.transform = `scaleX(${scaleX})`;
     progressBar.style.transition = "none";
   };
 

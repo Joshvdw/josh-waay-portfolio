@@ -1,5 +1,5 @@
-import ScrolldownIndicator from "../UI/lotties/ScrolldownIndicator";
-import HexagonSVG from "../UI/svgs/HexagonSVG";
+import ScrolldownIndicator from "@/components/UI/lotties/ScrolldownIndicator";
+import HexagonSVG from "@/components/UI/svgs/HexagonSVG";
 import ServicesContent from "./ServicesContent";
 
 const Services = () => {

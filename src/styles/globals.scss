@@ -4,8 +4,12 @@
 //   background-size: cover;
 // }
 
-@import "./variables", "./mixins", "./UI", "./preloader", "./nav", "./about",
-  "./contact", "./hero", "./music", "./services", "./work", "./customCursor";
+// NOT-MVP VERSION
+// @import "./variables", "./mixins", "./UI", "./preloader", "./nav", "./about",
+//   "./contact", "./hero", "./music", "./services", "./work", "./customCursor";
+
+@import "./variables", "./mixins", "./UI", "./preloader", "./nav", "./hero",
+  "./work";
 
 // CSS RESET
 * {
@@ -60,7 +64,8 @@ h3 {
 }
 
 h1 {
-  font-size: 7.125rem;
+  font-size: 6rem;
+  line-height: 100%;
 }
 
 body {

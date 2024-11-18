@@ -1,4 +1,4 @@
-import SkipBtn from "../UI/lotties/SkipBtn";
+import SkipBtn from "@/components/UI/lotties/SkipBtn";
 
 const MusicContent = () => {
   return (

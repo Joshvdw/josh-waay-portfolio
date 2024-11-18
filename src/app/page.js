@@ -5,14 +5,14 @@ import "../styles/globals.scss";
 import { PreloadResources } from "./resources";
 import Audio from "@/components/Audio";
 import Scenes from "@/components/Scenes";
-import Menu from "@/components/Menu";
+import MenuMVP from "@/components/MenuMVP";
 import WebGL from "@/components/WebGL";
-import SoundWave from "@/components/UI/lotties/SoundWave";
+import SoundWave from "@/components/UI/lotties/SoundBtn";
 import ErrorBoundary from "@/components/errors/ErrorBoundary";
 import ErrorMessage from "../components/errors/ErrorModal";
 import SceneContext, { SceneProvider } from "@/hooks/sceneContext";
 import UnityContext, { UnityProvider } from "@/hooks/unityContext";
-import CustomCursor from "@/components/UI/CustomCursor";
+// import CustomCursor from "@/components/UI/CustomCursor";
 
 export default function Home() {
   return (
@@ -39,7 +39,8 @@ const App = () => {
         <Audio />
         {/* <CustomCursor /> */}
         {LoadFinished && <Scenes />}
-        {!HeroShowing && <Menu />}
+        {/* {!HeroShowing && <Menu />} */}
+        {!HeroShowing && <MenuMVP />}
         {!HeroShowing && <SoundWave />}
       </main>
     </ErrorBoundary>

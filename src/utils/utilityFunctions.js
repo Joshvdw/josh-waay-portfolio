@@ -26,4 +26,4 @@ function playLottie(start, end, animation) {
 }
 
 export { isTouchDevice, playLottie };
-export default isTouchDevice;
+// export default isTouchDevice;

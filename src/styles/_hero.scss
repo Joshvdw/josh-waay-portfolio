@@ -1,5 +1,5 @@
 .hero {
-  padding-left: $g2 * 0.75;
+  padding-left: $g2 * 0.875;
   @include fullscreen_wrapper;
   display: flex;
   align-items: center;
@@ -10,10 +10,11 @@
 }
 
 .hero__paragraph {
-  max-width: 30rem;
+  max-width: 27rem;
   color: $off-white;
-  margin: 0.75rem 0;
-  margin-bottom: 2rem;
+  margin: 1rem 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.125rem;
 }
 
 .flip {
@@ -23,19 +24,19 @@
 .heroStar__wrapper {
   display: flex;
   h1 {
-    margin-left: 1rem;
+    margin-left: 0.5rem;
   }
 }
 
 // HERO CTA
 .hero__cta {
   position: relative;
-  padding: 1rem 6.5rem;
+  padding: 1rem 5.75rem;
   color: $full-white;
   font-family: $baj;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 12px;
   letter-spacing: 2px;
   display: inline-block;
   border-radius: 1px;
@@ -60,7 +61,12 @@
 }
 
 .hero__cta--wrapper:hover {
-  transform: translateX(1.5rem) scale(1.03);
+  transform: translateX(1.25rem) scale(1.03);
+}
+
+.heroStar__wrapper svg {
+  width: 90% !important;
+  // height: 90% !important;
 }
 
 .right-slanted:hover {
@@ -69,11 +75,11 @@
 
 // CTA SHINE & SHAKE ANIMATIONS
 :root {
-  --duration: 6.6s;
   --easing: linear;
-  --delay: 1s;
-  // --duration: 3.5s; // short version
-  // --delay: 0.5s; // short version
+  // --duration: 6.6s; // longer version
+  // --delay: 1s; // longer version
+  --duration: 3.5s; // short version
+  --delay: 0.5s; // short version
 }
 @keyframes shine {
   15%,
@@ -113,7 +119,7 @@
   // animation: jump-shaking 3.3s infinite;
   animation-delay: 8s;
   // animation-delay: 5s; // shorter version
-  animation: jump-shaking 6.6s infinite; // shorter version
+  // animation: jump-shaking 6.6s infinite; // shorter version
   &::after {
     content: "";
     position: absolute;

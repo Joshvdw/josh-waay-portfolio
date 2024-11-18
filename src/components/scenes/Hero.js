@@ -27,7 +27,7 @@ const Hero = () => {
           <HeroFlipText />
         </animated.div>
         <animated.p
-          className="paragraph-large hero__paragraph optimise-font"
+          className="hero__paragraph optimise-font"
           style={slideIn2}
         >
           {heroText.paragraph}

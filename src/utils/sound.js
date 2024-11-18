@@ -92,7 +92,7 @@ function isMuted() {
 function animateVolume(element, targetVolume, duration) {
   const startVolume = element.volume;
   const volumeChange = targetVolume - startVolume;
-  const interval = 10; // interval time for volume update (in milliseconds)
+  const interval = 10;
   const steps = duration / interval;
   let currentStep = 0;
 

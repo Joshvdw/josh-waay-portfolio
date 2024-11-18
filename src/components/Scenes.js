@@ -1,9 +1,9 @@
 import Hero from "./scenes/Hero";
 import Work from "./scenes/Work";
-import About from "./scenes/About";
-import Services from "./scenes/Services";
-import Music from "./scenes/Music";
-import Contact from "./scenes/Contact";
+import About from "./scenes/not-mvp/About";
+import Services from "./scenes/not-mvp/Services";
+import Music from "./scenes/not-mvp/Music";
+import Contact from "./scenes/not-mvp/Contact";
 import SceneContext from "@/hooks/sceneContext";
 import { useContext } from "react";
 
