@@ -44,8 +44,8 @@ const Work = () => {
     <div>
       <WorkContent counter={counter} />
       <ProgressBar {...progressBarProps} />
-      <WorkControls {...workControlsProps} />
-      <WorkTimeline counter={counter} />
+      {/* <WorkControls {...workControlsProps} />
+      <WorkTimeline counter={counter} /> */}
     </div>
   );
 };

@@ -36,7 +36,7 @@ const Hero = () => {
           <div className="hero__cta--wrapper">
             <span class="right-slanted" onClick={handleStartClick}>
               <div class="hero__cta optimise-font">
-                <p>Start</p>
+                <p>View Portfolio</p>
               </div>
             </span>
           </div>

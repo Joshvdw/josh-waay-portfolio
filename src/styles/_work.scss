@@ -3,23 +3,63 @@
   height: 100vh;
   position: absolute;
   @include flex_centre;
+  align-items: flex-start;
 }
 
 .work-wrapper__inner {
+  margin-top: 7vh;
   width: 66.66vw;
   min-width: 70rem; // fix
   // max-width: 70rem; // fix
 }
 
+.work-link__icon {
+  margin-top: 12px;
+  width: 24px;
+}
+
+.github-link__icon {
+  margin-top: -18px;
+}
+
 .work-header__wrapper {
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
+}
+
+.work-link__inner {
+  display: flex;
+}
+
+.tooltip-wrapper {
+  position: relative;
+  margin-top: 0.5rem;
+  p {
+    color: $creme;
+    font-family: $baj;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    width: 12rem;
+    font-size: 0.625rem;
+  }
+}
+
+.hover-tooltip {
+  position: absolute;
+  width: 8rem;
+}
+
+.github-tooltip {
+  margin-left: -1rem;
+  margin-top: 0rem;
 }
 
 .work-header__inner {
   @include flex_centre;
-  justify-content: flex-start;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  justify-content: center;
+  align-items: start;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
   h1 {
     text-transform: uppercase;
   }
@@ -33,10 +73,69 @@
 
 .work-body__wrapper {
   display: flex;
+  min-height: 490px;
 }
 
 .filler-div {
   width: 60%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 7rem;
+  padding: 0 8rem 0 0;
+  position: relative;
+  p {
+    // color: $creme;
+    opacity: 90%;
+    font-family: $baj;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-size: 0.625rem;
+  }
+}
+
+.filler-inner {
+  position: absolute;
+  width: 100%;
+  height: 250px;
+  bottom: -115px;
+  opacity: 30%;
+  background-image: url("/images/controls_bg-black.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.arrow-btn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  img {
+    width: 24px;
+    opacity: 80%;
+  }
+}
+
+.btn-bg {
+  position: absolute;
+  background-image: url("/images/btn-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  top: -80px;
+  width: 200px;
+  height: 200px;
+  opacity: 20%;
+}
+
+.pause-btn img {
+  width: 11px;
+}
+
+.prev-btn img {
+  transform: rotateY(180deg);
 }
 
 .work-body__right {
@@ -53,8 +152,7 @@
 }
 
 .work-tools__item {
-  padding-right: 1rem;
-  border-right: 1px solid $off-white; // add 80% opacity & remove last item
+  display: flex;
   p {
     color: $creme;
     font-family: $baj;
@@ -62,26 +160,40 @@
   }
 }
 
+.tool-spacer__line {
+  padding-left: 1rem;
+  height: 1rem;
+  margin-top: 0.3rem;
+  border-right: 1px solid rgba(236, 236, 232, 0.6);
+}
+
 .work-description {
   font-size: 1.125rem;
   opacity: 90%;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .work-info__wrapper {
-  // margin-left: 3rem;
+  // margin-left: 2rem;
   font-family: $baj;
 }
 
 .work-overview__wrapper {
   margin-bottom: 2rem;
   display: flex;
-  // justify-content: space-between;
   gap: 4rem;
 }
 
 .work-overview__item {
-  max-width: 7.5rem;
+  // max-width: 7.5rem;
+}
+
+.work-overview__wrapper > :first-child {
+  width: 7.5rem;
+}
+
+.client-item {
+  width: 7.5rem;
 }
 
 .work-overview__title {
@@ -90,16 +202,22 @@
 
 .work-credits__inner {
   display: flex;
-  justify-content: space-between;
-  max-width: 20rem;
-  // gap: 1rem;
+  opacity: 75%;
+  gap: 4rem;
+  margin-bottom: 0.125rem;
 }
 
-// .work-credits__
+.credit-role {
+  width: 7.5rem;
+}
+
+.work-underline {
+  width: 100%;
+}
 
 // PROGRESS BAR
 .progress-bar {
-  height: 1px;
+  height: 2px;
   // background-color: rgba(236, 236, 232, 0.6);
   background-color: transparent;
   position: fixed;
@@ -124,9 +242,20 @@
 }
 
 .work-controls {
-  width: 90px;
+  // width: 89px; // for non placeholder
+  width: 108px;
   position: absolute;
-  right: 50px;
+  right: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-around;
+  padding: 2rem;
+  background-image: url("/images/controls_bg-placeholder.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 243px;
 }
 
 // TIMELINE

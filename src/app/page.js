@@ -12,6 +12,7 @@ import ErrorBoundary from "@/components/errors/ErrorBoundary";
 import ErrorMessage from "../components/errors/ErrorModal";
 import SceneContext, { SceneProvider } from "@/hooks/sceneContext";
 import UnityContext, { UnityProvider } from "@/hooks/unityContext";
+import Socials from "@/components/UI/Socials";
 // import CustomCursor from "@/components/UI/CustomCursor";
 
 export default function Home() {
@@ -41,6 +42,7 @@ const App = () => {
         {LoadFinished && <Scenes />}
         {/* {!HeroShowing && <Menu />} */}
         {!HeroShowing && <MenuMVP />}
+        {!HeroShowing && <Socials />}
         {!HeroShowing && <SoundWave />}
       </main>
     </ErrorBoundary>

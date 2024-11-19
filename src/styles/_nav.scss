@@ -11,8 +11,8 @@
   justify-content: space-between;
   z-index: 2;
   // margin-top: -1px;
-  padding: 2rem;
-  padding-left: calc(2rem - 10px);
+  padding: 1.5rem;
+  // padding-left: calc(2rem - 10px); // reactive for non-mvp version
 }
 
 .nav-item {
@@ -52,8 +52,11 @@
 
 .socials-wrapper {
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  // flex-direction: column;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  gap: .75rem;
   margin-left: 11px;
 }
 

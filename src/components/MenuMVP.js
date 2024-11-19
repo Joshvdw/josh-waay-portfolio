@@ -23,7 +23,7 @@ const Menu = () => {
       <div onClick={handleClick} className="pointer">
         <Logo />
       </div>
-      <Socials />
+      {/* <Socials /> */}
       <SoundBtn />
     </animated.div>
   );

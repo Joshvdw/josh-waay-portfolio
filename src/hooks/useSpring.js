@@ -35,9 +35,9 @@ export const useSlideIn = (state, translateAmount) => {
 };
 
 // OPACITY SHIFTER
-export const useOpacityShift = (state, from, to) => {
+export const useOpacityShift = (state, preset, from, to) => {
   const [opacityShift, api] = useSpring(() => ({
-    config: { ...config.molasses },
+    config: { ...config[preset] },
     from: { opacity: from },
   }));
 
@@ -48,6 +48,53 @@ export const useOpacityShift = (state, from, to) => {
   }, [state, api]);
 
   return opacityShift;
+};
+
+// COLOUR SHIFTER
+export const useColourShift = (state, from, to) => {
+  const [colourShift, api] = useSpring(() => ({
+    config: { ...config.gentle },
+    from: { color: from },
+  }));
+
+  useEffect(() => {
+    api.start({
+      color: state ? to : from,
+      fill: state ? to : from,
+    });
+  }, [state, api]);
+
+  return colourShift;
+};
+
+// LINK SLIDE
+export const useLinkSlide = (state, translateAmount, isLink) => {
+  const [slide, api] = useSpring(() => ({
+    config: { ...config.gentle },
+    from: { transform: "translateX(0%)" },
+  }));
+
+  useEffect(() => {
+    if (isLink) {
+      api.start({
+        transform: state
+          ? `translateX(${translateAmount}%) translateY(-${
+              translateAmount * 0.75
+            }%) scale(1.25)`
+          : "translateX(0%) translateY(0%) scale(1)",
+      });
+    } else {
+      api.start({
+        transform: state
+          ? `translateX(${translateAmount * 0.1}%) translateY(-${
+              translateAmount * 2
+            }%)`
+          : "translateX(0%) translateY(0%)",
+      });
+    }
+  }, [state, api]);
+
+  return slide;
 };
 
 // FADE PRELOADER OUT

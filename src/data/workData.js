@@ -17,7 +17,7 @@ export const workData = [
       designer: "Cody Westerman",
       motionArtist: "Linus Nelson",
     },
-    link: "https://mosaic-git-main-psychoactive.vercel.app/",
+    link: "https://mosaicaotearoa.nz/",
     github: "https://github.com/psychoactive-studios/mosaic",
   },
   {
@@ -39,7 +39,7 @@ export const workData = [
     link: "https://sff-prototype-staging.netlify.app/",
   },
   {
-    title: "Mobi HQ",
+    title: "Mobi Headquarters",
     description: `I contributed to the creation of a comprehensive B2B hospitality website in 
     collaboration with the team at Psychoactive Studios. While I developed a few of the Webflow pages, 
     my primary role centred around writing custom code for the website, including GSAP animations and JavaScript. 
