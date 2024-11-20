@@ -5,7 +5,7 @@ import { animated } from "@react-spring/web";
 const SocialSVG = ({ icon, link }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const opacityShifter = useOpacityShift(isHovered, "molasses", 0.4, 1);
+  const opacityShifter = useOpacityShift(isHovered, "gentle", 0.4, 1);
 
   return (
     <animated.div

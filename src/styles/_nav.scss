@@ -56,14 +56,16 @@
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  gap: .75rem;
+  gap: 0.625rem;
   margin-left: 11px;
 }
 
 .social-icon {
-  width: 24px;
-  height: 24px;
   opacity: 0.4;
+  img {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 // fix nav bg img on 4k monitors

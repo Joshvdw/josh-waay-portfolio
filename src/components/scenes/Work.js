@@ -26,13 +26,14 @@ const Work = () => {
     [progressBarRef, progress, transition]
   );
 
-  const workControlsProps = useMemo(
+  const workProps = useMemo(
     () => ({
       pauseProjects,
       resumeProjects,
       handleNavigation,
+      counter,
     }),
-    [pauseProjects, resumeProjects, handleNavigation]
+    [pauseProjects, resumeProjects, handleNavigation, counter]
   );
 
   useEffect(() => {
@@ -42,7 +43,7 @@ const Work = () => {
 
   return (
     <div>
-      <WorkContent counter={counter} />
+      <WorkContent {...workProps} />
       <ProgressBar {...progressBarProps} />
       {/* <WorkControls {...workControlsProps} />
       <WorkTimeline counter={counter} /> */}

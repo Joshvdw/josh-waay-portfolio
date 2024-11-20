@@ -4,12 +4,18 @@
   position: absolute;
   @include flex_centre;
   align-items: flex-start;
+  overflow: hidden;
 }
 
 .work-wrapper__inner {
-  margin-top: 7vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // margin-top: 7vh;
   width: 66.66vw;
   min-width: 70rem; // fix
+  padding: 7rem 0;
   // max-width: 70rem; // fix
 }
 
@@ -73,17 +79,16 @@
 
 .work-body__wrapper {
   display: flex;
-  min-height: 490px;
+  height: 100%;
+  min-height: 510px;
 }
 
-.filler-div {
+.work-body__left {
   width: 60%;
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 7rem;
-  padding: 0 8rem 0 0;
-  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
   p {
     // color: $creme;
     opacity: 90%;
@@ -95,15 +100,29 @@
   }
 }
 
-.filler-inner {
+.controls-bg {
   position: absolute;
-  width: 100%;
+  width: 300px;
   height: 250px;
-  bottom: -115px;
-  opacity: 30%;
+  bottom: 25px;
+  opacity: 0%;
   background-image: url("/images/controls_bg-black.png");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.controls-wrapper {
+  padding: 0 4rem 0 0;
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.controls-inner {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 5rem;
+  margin-bottom: 1.75rem;
 }
 
 .arrow-btn {
@@ -112,9 +131,10 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  width: 2rem;
   cursor: pointer;
   img {
-    width: 24px;
+    width: 18px;
     opacity: 80%;
   }
 }
@@ -127,19 +147,28 @@
   top: -80px;
   width: 200px;
   height: 200px;
-  opacity: 20%;
+  opacity: 80%;
+  pointer-events: none;
 }
 
 .pause-btn img {
-  width: 11px;
+  width: 13px;
 }
 
 .prev-btn img {
   transform: rotateY(180deg);
 }
 
+.skip-lottie {
+  transform: rotate(270deg);
+  opacity: 80%;
+}
+
 .work-body__right {
   width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   p {
     color: $off-white;
   }
@@ -229,7 +258,7 @@
 .progress-fill {
   height: 100%;
   background-color: $off-white;
-  opacity: 0.5;
+  opacity: 0.7;
   transform-origin: left;
 }
 
@@ -259,20 +288,29 @@
 }
 
 // TIMELINE
+.timeline-outer {
+  position: relative;
+  width: 100%;
+  // width: 50px;
+  // height: 10px;
+}
+
 .timeline-wrapper {
-  height: 100vh;
+  // height: 100vh;
   position: absolute;
-  right: 22px;
+  width: 100%;
+  // right: 22px;
   display: flex;
-  flex-direction: column-reverse;
-  gap: 6px;
+  flex-direction: row;
+  // gap: 6px;
   @include flex_centre;
+  justify-content: space-between;
 }
 
 .timeline-item {
-  height: 1.125rem;
-  width: 1.5px;
-  background-color: $off-white;
+  width: 1.5rem;
+  height: 1.5px;
+  background-color: $creme;
   opacity: 0.25;
   transition: opacity 0.4s ease-in-out;
 }

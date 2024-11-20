@@ -7,8 +7,14 @@ import {
 } from "@/hooks/useSpring";
 import { useState } from "react";
 import { animated } from "@react-spring/web";
+import WorkControls from "../UI/WorkControls";
 
-const WorkContent = ({ counter }) => {
+const WorkContent = ({
+  pauseProjects,
+  resumeProjects,
+  handleNavigation,
+  counter,
+}) => {
   const [linkHovered, setLinkHovered] = useState(false);
   const [githubHovered, setGithubHovered] = useState(false);
 
@@ -178,39 +184,28 @@ const WorkContent = ({ counter }) => {
           </div>
         </div>
         <div className="work-body__wrapper">
-          <div className="filler-div">
-            <div className="filler-inner"> </div>
-            <div className="arrow-btn prev-btn">
-              <div className="btn-bg"></div>
-              <img src="/svg/chevron.svg" alt="" />
-              <p>Previous</p>
-            </div>
-            <div className="arrow-btn pause-btn">
-              <div className="btn-bg"></div>
-              <img src="/svg/pause-thin.svg" alt="" />
-              <p>Pause</p>
-            </div>
-            <div className="arrow-btn next-btn">
-              <div className="btn-bg"></div>
-              <img src="/svg/chevron.svg" alt="" />
-              <p>Next</p>
-            </div>
-          </div>
-
+          <WorkControls
+            pauseProjects={pauseProjects}
+            resumeProjects={resumeProjects}
+            handleNavigation={handleNavigation}
+            counter={counter}
+          />
           <div className="work-body__right">
-            <div className="work-tools__wrapper">
-              {project.tools.map((tool, index) => (
-                <div key={index} className="work-tools__item">
-                  <p>{tool}</p>
-                  <div
-                    className={`tool-spacer__line ${
-                      index == project.tools.length - 1 ? "no-border" : ""
-                    }`}
-                  ></div>
-                </div>
-              ))}
+            <div>
+              <div className="work-tools__wrapper">
+                {project.tools.map((tool, index) => (
+                  <div key={index} className="work-tools__item">
+                    <p>{tool}</p>
+                    <div
+                      className={`tool-spacer__line ${
+                        index == project.tools.length - 1 ? "no-border" : ""
+                      }`}
+                    ></div>
+                  </div>
+                ))}
+              </div>
+              <p className="work-description">{project.description}</p>
             </div>
-            <p className="work-description">{project.description}</p>
             <div className="work-info__wrapper">
               <div className="work-overview__wrapper">
                 <div className="work-overview__item">
