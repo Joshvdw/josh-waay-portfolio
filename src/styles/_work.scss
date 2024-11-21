@@ -105,32 +105,32 @@
   width: 300px;
   height: 250px;
   bottom: 25px;
-  opacity: 0%;
+  opacity: 0%; // IF NOT USING, REMOVE THIS FROM DOM
   background-image: url("/images/controls_bg-black.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .controls-wrapper {
-  padding: 0 4rem 0 0;
+  padding: 0 6rem 0 0;
   position: relative;
-  margin-bottom: 2rem;
+  // margin-bottom: 2rem;
 }
 
 .controls-inner {
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 5rem;
+  gap: 4rem;
   margin-bottom: 1.75rem;
 }
 
-.arrow-btn {
+.control-btn {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.25rem;
   width: 2rem;
   cursor: pointer;
   img {
@@ -147,12 +147,12 @@
   top: -80px;
   width: 200px;
   height: 200px;
-  opacity: 80%;
+  opacity: 50%;
   pointer-events: none;
 }
 
-.pause-btn img {
-  width: 13px;
+.pause-btn {
+  width: 4rem;
 }
 
 .prev-btn img {
@@ -160,8 +160,20 @@
 }
 
 .skip-lottie {
-  transform: rotate(270deg);
   opacity: 80%;
+  display: flex;
+}
+
+.pause-lottie {
+  margin-bottom: -0.75rem;
+}
+
+.next-lottie {
+  transform: rotate(270deg);
+}
+
+.prev-lottie {
+  transform: rotate(90deg);
 }
 
 .work-body__right {
@@ -312,7 +324,7 @@
   height: 1.5px;
   background-color: $creme;
   opacity: 0.25;
-  transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
 }
 
 .active-project {

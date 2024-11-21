@@ -1,17 +1,20 @@
-import { useEffect, useState, useRef, memo } from "react";
+import { useEffect, useState, useRef } from "react";
 import { isTouchDevice } from "@/utils/utilityFunctions";
+import { animated } from "@react-spring/web";
+import { useBtnSlide, useBtnFade } from "@/hooks/useSpring";
 import lottie from "lottie-web";
 
-const SkipBtn = () => {
+const SkipBtn = ({ handleNavigation, isNext }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [initialMount, setInitialMount] = useState(true);
+
+  const slide = useBtnSlide(isHovered, isNext);
+  const fade = useBtnFade(isHovered);
 
   const container = useRef(null);
   const animationRef = useRef(null);
 
   const enterFrame = 0;
-  const holdFrame = 5;
-  const endFrame = 12;
+  const endFrame = 24;
 
   useEffect(() => {
     if (!container.current) return;
@@ -30,44 +33,30 @@ const SkipBtn = () => {
     };
   }, []);
 
-  useEffect(() => {
-    if (!initialMount && !isTouchDevice()) {
-      // animationRef.current.setDirection(isHovered ? 1 : -1);
-      animationRef.current.playSegments(
-        [
-          isHovered ? enterFrame : holdFrame,
-          isHovered ? holdFrame : enterFrame,
-        ],
-        true
-      );
-    }
-    setInitialMount(false);
-  }, [isHovered]);
-
   const handleClick = () => {
-    if (!isTouchDevice()) {
-      animationRef.current.playSegments([holdFrame, endFrame], true);
-    } else {
-      animationRef.current.playSegments([enterFrame, endFrame], true);
-    }
-    // const closeDelay = !isTouchDevice() ? 150 : 300;
-    // setTimeout(() => {
-    //   handleClose();
-    // }, closeDelay);
+    handleNavigation(isNext ? "Next" : "Previous");
+    animationRef.current.setSpeed(2);
+    animationRef.current.playSegments([enterFrame, endFrame], true);
   };
 
   return (
     <div
-      className="skip-lottie"
-      ref={container}
+      className="control-btn"
       onMouseEnter={() => {
         setIsHovered(true);
       }}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => {
-        handleClick();
-      }}
-    ></div>
+      onClick={() => handleClick()}
+    >
+      <animated.div className="btn-bg" style={fade}></animated.div>
+      <animated.div style={slide}>
+        <div
+          className={`skip-lottie ${isNext ? "next-lottie" : "prev-lottie"}`}
+          ref={container}
+        ></div>
+      </animated.div>
+      <p>{isNext ? "Next" : "Prev"}</p>
+    </div>
   );
 };
 

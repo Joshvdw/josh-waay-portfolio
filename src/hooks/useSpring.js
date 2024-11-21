@@ -97,6 +97,44 @@ export const useLinkSlide = (state, translateAmount, isLink) => {
   return slide;
 };
 
+// button slide
+export const useBtnSlide = (state, isNext) => {
+  const [slide, api] = useSpring(() => ({
+    config: { ...config.gentle },
+    from: {
+      transform: "translateX(0%)",
+      // width: "100%"
+    },
+  }));
+
+  useEffect(() => {
+    api.start({
+      transform: state
+        ? `translateX(${isNext ? "" : "-"}10%)`
+        : "translateX(0%)",
+      // width: state ? "110%" : "100%",
+    });
+  }, [state, api]);
+
+  return slide;
+};
+
+// bg button fades
+export const useBtnFade = (state) => {
+  const [fade, api] = useSpring(() => ({
+    config: { ...config.gentle },
+    from: { opacity: "50%" },
+  }));
+
+  useEffect(() => {
+    api.start({
+      opacity: state ? "70%" : "50%",
+    });
+  }, [state, api]);
+
+  return fade;
+};
+
 // FADE PRELOADER OUT
 export const usePreloaderFadeOut = (state) => {
   const { updateScene } = useContext(SceneContext);
@@ -116,7 +154,7 @@ export const usePreloaderFadeOut = (state) => {
           }, 100); // delay for hero fading in
         },
       });
-    }, 1000); // delay fade in slightly to avoid load-in jank
+    }, 250); // delay fade in slightly to avoid load-in jank
   }, [state, api]);
 
   return pageFade;

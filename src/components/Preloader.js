@@ -46,9 +46,9 @@ const Preloader = ({ isLoading }) => {
           className="lottie-container preloader_lottie"
         ></div>
         {animationLoaded && <Logo />}
-        <animated.div style={growOut} className="preloader-gradient__wrapper">
+        {/* <animated.div style={growOut} className="preloader-gradient__wrapper">
           <animated.div style={growIn} className="preloader-gradient" />
-        </animated.div>
+        </animated.div> */}
       </animated.div>
     </animated.div>
   );

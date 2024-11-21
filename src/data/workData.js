@@ -1,12 +1,12 @@
 export const workData = [
   {
     title: "Mosaic Pathways",
-    description: `This project involved transforming a deck of physical question 
-    cards into a digital interactive experience aimed at fostering thoughtful and 
+    description: `This project involved transforming a deck of physical question
+    cards into an interactive digital experience aimed at fostering thoughtful and 
     constructive discussions on topics of prejudice and racism. As dev-lead, 
-    I made crucial decisions regarding the development approach and tech stack used. 
-    I also developed a custom CMS commenting feature using Sanity and implemented an 
-    automated email approval API with SendGrid.`,
+    I made crucial decisions regarding the development and tech stack. I
+    implemented a custom commenting CMS using Sanity.io and developed an 
+    email API system with SendGrid.`,
     tools: ["React", "Nextjs", "Sanity", "Spring", "Sass"],
     role: "Lead Developer / Sound",
     client: "Ara Taiohi",
@@ -23,10 +23,10 @@ export const workData = [
   {
     title: "Silver Fern Farms",
     description: `I collaborated with a small team from Method Digital to develop a prototype 
-      for Silver Fern Farms.\nThis vertical slice was designed to pitch a larger-scale
-       project showcasing their regenerative farming ventures.\nAs the development lead, 
-       I made key decisions on the technology stack and created innovative solutions to 
-       enable such a complex 3D scene to function seamlessly within React.`,
+      for Silver Fern Farms.\nThis vertical slice was created to pitch for a larger scale
+       project, which would showcase their regenerative farming ventures.\nAs the development lead, 
+       I made key decisions on the tech stack and created innovative solutions to 
+       enable a complex 3D scene to function seamlessly within a React build.`,
     tools: ["React", "TypeScript", "Nextjs", "WebGL", "Zustand"],
     role: "Lead Developer",
     client: "Method Digital",
@@ -40,9 +40,9 @@ export const workData = [
   },
   {
     title: "Mobi Headquarters",
-    description: `I contributed to the creation of a comprehensive B2B hospitality website in 
-    collaboration with the team at Psychoactive Studios. While I developed a few of the Webflow pages, 
-    my primary role centred around writing custom code for the website, including GSAP animations and JavaScript. 
+    description: `I contributed to the creation of a comprehensive B2B hospitality website alongside 
+    the team at Psychoactive Studios. Whilst I did develop a few of the pages in Webflow, 
+    my main role centred around writing the custom code for the website, such as the GSAP animations and JavaScript. 
     Overcoming Webflow's limitations and ensuring optimal performance across all browsers and devices posed 
     a unique challenge that I had to address successfully.`,
     tools: ["Webflow", "GSAP", "Javascript"],
@@ -61,9 +61,9 @@ export const workData = [
   },
   {
     title: "Top Design Agencies",
-    description: `An immersive website crafted to highlight the diverse design talent of New Zealand.
-    It features an annually updated directory of leading agencies in branding, web development, digital marketing,
-     production, and motion graphics. I developed this website with Webflow, then integrated GSAP and custom JavaScript 
+    description: `An immersive website crafted to highlight the diverse design talent across New Zealand.
+    It features an annually updated directory of leading agencies in branding, web development, digital marketing, 
+    and motion graphics. I developed this website with Webflow, then integrated GSAP and custom JavaScript 
      to bring the spinning carousel to life.`,
     tools: ["Webflow", "GSAP", "Javascript"],
     role: "Designer / Developer",
@@ -77,9 +77,9 @@ export const workData = [
   },
   {
     title: "Strings of Elysium",
-    description: `A browser-based video game, developed as an internal project for me to learn Unity and C# during my employment at Psychoactive Studios.
-    Drawing inspiration from the popular game Flappy Bird, it features a unique design that was influenced by my recent travels through Greece.
-    I used Unity with React for this project and also wrote a detailed article on the process of creating this experience - you can read it by following this link.`,
+    description: `I developed a browser-based video game as an internal project during my employment at Psychoactive Studios.
+    I drew gameplay inspiration from the popular game Flappy Bird, and the unique design was influenced by my recent travels through Greece.
+    I used Unity alongside C# and React for the build. I wrote a detailed article on the process of creating this experience - you can read it by following this link.`,
     tools: ["React", "Nextjs", "Unity", "C#", "WebGL"],
     role: "Designer / Developer",
     client: "Psychoactive Studios",
@@ -94,7 +94,7 @@ export const workData = [
   {
     title: "wwweb3",
     description: `During my internship at Psychoactive Studios, I crafted an educational web experience aimed at providing an immersive introduction to the world of web 3.
-    This website delves into fundamental topics such as blockchain, crypto, and NFTs.
+    This informational website delves into the fundamentals of topics such as blockchain, crypto, and NFTs.
     I was eager to push the boundaries of Webflow's capabilities, and so I ventured into new territories, exploring creative coding with JavaScript libraries such as p5.js.`,
     tools: ["Webflow", "p5js", "Javascript"],
     role: "Designer, Developer & Sound",
@@ -108,10 +108,9 @@ export const workData = [
   },
   {
     title: "The Tale of Abe",
-    description: `Inspired by Hape.io, I embarked on creating a similar 3D website, but as a personal portfolio piece in my spare time.
-    This endeavour served to hone and showcase my newly acquired WebGL skills, which I had spent the preceding months developing.
+    description: `This portfolio piece served to hone and showcase my newly acquired WebGL skills, which I had spent the preceding months developing.
     I created and exported glTF assets from Blender, then rendered and manipulated them using Three.js and React.
-    The poem was written in collaboration with ChatGPT, when it was in its more exciting early days.`,
+    The 3D scene was inspired by the then popular Hape.io website and the poem was written in collaboration with ChatGPT`,
     tools: ["React", "TypeScript", "Nextjs", "Three.js", "Blender"],
     role: "Developer",
     client: "N/A",

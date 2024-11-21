@@ -30,7 +30,7 @@ const WebGL = forwardRef((props, ref) => {
       setTimeout(() => {
         // document.body.style.cursor = "none"; // turn off cursor
         sendMessage("UnityFromReact", "HasLoaded");
-      }, [1750]);
+      }, [1500]);
     }
   }, [isLoaded]);
 
