@@ -5,6 +5,7 @@ import {
   forwardRef,
   useImperativeHandle,
   useState,
+  useRef,
   useContext,
 } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
@@ -23,13 +24,15 @@ const WebGL = forwardRef((props, ref) => {
   const { sceneState } = useContext(SceneContext);
 
   const [isLoading, setIsLoading] = useState(true);
+  const hiddenBtn = useRef(null);
 
   useEffect(() => {
     if (isLoaded) {
       setIsLoading(false);
       setTimeout(() => {
         // document.body.style.cursor = "none"; // turn off cursor
-        sendMessage("UnityFromReact", "HasLoaded");
+        // sendMessage("UnityFromReact", "HasLoaded"); // broken in new unity update for some reason
+        hiddenBtn.current.click(); // simulate hidden button click instead (seems to work)
       }, [1500]);
     }
   }, [isLoaded]);
@@ -47,6 +50,11 @@ const WebGL = forwardRef((props, ref) => {
 
   return (
     <div>
+      <button
+        style={{ visibility: "hidden", position: "absolute" }}
+        ref={hiddenBtn}
+        onClick={() => sendMessage("UnityFromReact", "HasLoaded")}
+      ></button>
       {sceneState == "loading" && <Preloader isLoading={isLoading} />}
       <Unity unityProvider={unityProvider} className="unity_canvas" />
     </div>

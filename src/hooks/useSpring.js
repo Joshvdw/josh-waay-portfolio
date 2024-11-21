@@ -123,12 +123,12 @@ export const useBtnSlide = (state, isNext) => {
 export const useBtnFade = (state) => {
   const [fade, api] = useSpring(() => ({
     config: { ...config.gentle },
-    from: { opacity: "50%" },
+    from: { opacity: "20%" },
   }));
 
   useEffect(() => {
     api.start({
-      opacity: state ? "70%" : "50%",
+      opacity: state ? "50%" : "20%",
     });
   }, [state, api]);
 

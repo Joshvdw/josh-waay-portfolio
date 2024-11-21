@@ -5,6 +5,7 @@ import { animated } from "@react-spring/web";
 import { useContext } from "react";
 import { useFadeIn, useSlideIn } from "@/hooks/useSpring";
 import { heroText } from "@/data/personalData";
+import { playSound } from "@/utils/sound";
 
 const Hero = () => {
   const { sceneState, updateScene } = useContext(SceneContext);
@@ -13,6 +14,7 @@ const Hero = () => {
   const handleStartClick = () => {
     updateScene("work");
     msgUnity("StartExperience");
+    playSound("bgMusic");
   };
 
   const fadeIn = useFadeIn(sceneState);
@@ -26,10 +28,7 @@ const Hero = () => {
         <animated.div style={slideIn1}>
           <HeroFlipText />
         </animated.div>
-        <animated.p
-          className="hero__paragraph optimise-font"
-          style={slideIn2}
-        >
+        <animated.p className="hero__paragraph optimise-font" style={slideIn2}>
           {heroText.paragraph}
         </animated.p>
         <animated.div style={slideIn3}>

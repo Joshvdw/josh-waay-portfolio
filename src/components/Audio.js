@@ -9,7 +9,7 @@ function Audio() {
 
   useEffect(() => {
     setAudioRefs([bgMusic, hoverSound, clickSound, swishSound]);
-    reduceVolume("bgMusic", 0.4);
+    reduceVolume("bgMusic", 0.1);
     reduceVolume("hoverSound", 0.2);
     reduceVolume("clickSound", 0.2);
     reduceVolume("swishSound", 0.2);
@@ -17,11 +17,7 @@ function Audio() {
 
   return (
     <>
-      <audio
-        src="https://general-client-assets.sfo3.cdn.digitaloceanspaces.com/Mosaic/ui-sound/pathways.mp3"
-        ref={bgMusic}
-        id="bgMusic"
-      />
+      <audio src="/audio/all-these-worlds.mp3" ref={bgMusic} id="bgMusic" />
       <audio
         src="https://general-client-assets.sfo3.cdn.digitaloceanspaces.com/Mosaic/ui-sound/hover_btns.mp3"
         ref={hoverSound}
