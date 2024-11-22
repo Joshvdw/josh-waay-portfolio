@@ -4,6 +4,10 @@ import WorkContent from "./WorkContent";
 import WorkControls from "../UI/WorkControls";
 import { useProjectVideoControls } from "@/hooks/videoControlsHook";
 import { useEffect, useMemo } from "react";
+import { animated } from "@react-spring/web";
+import { useFadeIn } from "@/hooks/useSpring";
+import { useContext } from "react";
+import SceneContext from "@/hooks/sceneContext";
 
 const Work = () => {
   const {
@@ -41,13 +45,16 @@ const Work = () => {
     animateProgress();
   }, []);
 
+  const { sceneState, updateScene } = useContext(SceneContext);
+  const fadeIn = useFadeIn(sceneState, true);
+
   return (
-    <div>
+    <animated.div style={fadeIn}>
       <WorkContent {...workProps} />
       <ProgressBar {...progressBarProps} />
       {/* <WorkControls {...workControlsProps} />
       <WorkTimeline counter={counter} /> */}
-    </div>
+    </animated.div>
   );
 };
 

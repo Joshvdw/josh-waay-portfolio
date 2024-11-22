@@ -1,4 +1,4 @@
-import ScrolldownIndicator from "@/components/UI/lotties/ScrolldownIndicator";
+import ScrolldownIndicator from "@/components/UI/lotties/not-mvp/ScrolldownIndicator";
 import HexagonSVG from "@/components/UI/svgs/HexagonSVG";
 import ServicesContent from "./ServicesContent";
 

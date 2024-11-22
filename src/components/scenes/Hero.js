@@ -17,7 +17,7 @@ const Hero = () => {
     playSound("bgMusic");
   };
 
-  const fadeIn = useFadeIn(sceneState);
+  const fadeIn = useFadeIn(sceneState, false);
   const slideIn1 = useSlideIn(sceneState, 10);
   const slideIn2 = useSlideIn(sceneState, 20);
   const slideIn3 = useSlideIn(sceneState, 30);

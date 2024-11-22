@@ -1,15 +1,18 @@
 import { useEffect, useState, useRef } from "react";
-import { isTouchDevice } from "@/utils/utilityFunctions";
+import { useClickPrevention } from "@/hooks/utilityHooks";
 import { animated } from "@react-spring/web";
 import { useBtnSlide, useBtnFade } from "@/hooks/useSpring";
 import lottie from "lottie-web";
 
 const SkipBtn = ({ handleNavigation, isNext }) => {
+  const [isDisabled, handleClick] = useClickPrevention(750);
+
   const [isHovered, setIsHovered] = useState(false);
 
   const slide = useBtnSlide(isHovered, isNext);
   const fade = useBtnFade(isHovered);
 
+  const skipBtn = useRef(null);
   const container = useRef(null);
   const animationRef = useRef(null);
 
@@ -33,11 +36,32 @@ const SkipBtn = ({ handleNavigation, isNext }) => {
     };
   }, []);
 
-  const handleClick = () => {
+  const handleSkip = () => {
     handleNavigation(isNext ? "Next" : "Previous");
     animationRef.current.setSpeed(2);
     animationRef.current.playSegments([enterFrame, endFrame], true);
   };
+
+  // SKIP ON ARROW KEY PRESS
+  const handleKeypress = (event) => {
+    switch (event.code) {
+      case "ArrowLeft":
+        if (!isNext) skipBtn.current.click();
+        break;
+      case "ArrowRight":
+        if (isNext) skipBtn.current.click();
+        break;
+      default:
+        break;
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeypress);
+    return () => {
+      document.removeEventListener("keydown", handleKeypress);
+    };
+  }, []);
 
   return (
     <div
@@ -46,9 +70,10 @@ const SkipBtn = ({ handleNavigation, isNext }) => {
         setIsHovered(true);
       }}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => handleClick()}
+      onClick={() => handleClick(handleSkip)}
+      ref={skipBtn}
     >
-      <animated.div className="btn-bg" style={fade}></animated.div>
+      {/* <animated.div className="btn-bg"></animated.div> */}
       <animated.div style={slide}>
         <div
           className={`skip-lottie ${isNext ? "next-lottie" : "prev-lottie"}`}

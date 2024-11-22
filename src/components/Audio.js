@@ -1,4 +1,11 @@
-import { setAudioRefs, reduceVolume } from "@/utils/sound";
+import {
+  setAudioRefs,
+  reduceVolume,
+  isMuted,
+  muteAllSounds,
+  unMuteAllSounds,
+  muteToggle,
+} from "@/utils/sound";
 import { useEffect, useRef, memo } from "react";
 
 function Audio() {
@@ -15,9 +22,32 @@ function Audio() {
     reduceVolume("swishSound", 0.2);
   }, []);
 
+
+  // mute / unmute if user moves away from active tab
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!isMuted()) {
+        if (document.hidden) {
+          muteAllSounds();
+        } else {
+          unMuteAllSounds();
+        }
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
   return (
     <>
-      <audio src="/audio/all-these-worlds.mp3" ref={bgMusic} id="bgMusic" />
+      <audio
+        src="/audio/all-these-worlds.mp3"
+        ref={bgMusic}
+        id="bgMusic"
+        loop
+      />
       <audio
         src="https://general-client-assets.sfo3.cdn.digitaloceanspaces.com/Mosaic/ui-sound/hover_btns.mp3"
         ref={hoverSound}

@@ -33,13 +33,13 @@ function reduceVolume(target, amount) {
 function muteToggle() {
   if (soundHasStarted && !isTouchDevice()) {
     if (!muted) {
-      fadeAllSounds(0);
-      setTimeout(() => {
-        muteAllSounds();
-      }, 500);
+      // fadeAllSounds(0);
+      // setTimeout(() => {
+      muteAllSounds();
+      // }, 200);
     } else {
       unMuteAllSounds();
-      fadeAllSounds();
+      // fadeAllSounds();
     }
     muted = !muted;
   }

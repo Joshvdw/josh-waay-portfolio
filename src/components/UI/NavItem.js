@@ -1,5 +1,5 @@
 import { useState } from "react";
-import SelectorBtn from "./lotties/SelectorBtn";
+import SelectorBtn from "./lotties/not-mvp/SelectorBtn";
 
 const NavItem = ({ navItem, handleClick, sceneState }) => {
   const [isHovered, setIsHovered] = useState(false);

@@ -15,7 +15,8 @@
     "react-dom": "^18",
     "react-spring": "^9.7.3",
     "react-unity-webgl": "^9.5.0",
-    "sass": "^1.71.1"
+    "sass": "^1.71.1",
+    "use-scramble": "^2.2.15"
   },
   "devDependencies": {
     "eslint": "^8",

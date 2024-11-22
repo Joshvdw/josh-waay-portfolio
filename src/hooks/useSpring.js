@@ -3,16 +3,19 @@ import { useState, useEffect, useContext } from "react";
 import SceneContext from "@/hooks/sceneContext";
 
 // FADE IN
-export const useFadeIn = (state) => {
+export const useFadeIn = (state, isWorkText) => {
   const [pageFade, api] = useSpring(() => ({
     config: { ...config.molasses },
     from: { opacity: 0 },
   }));
 
+  const delay = isWorkText ? 500 : 0;
   useEffect(() => {
-    api.start({
-      opacity: state ? 1 : 0,
-    });
+    setTimeout(() => {
+      api.start({
+        opacity: state ? 1 : 0,
+      });
+    }, delay);
   }, [state, api]);
 
   return pageFade;
@@ -28,6 +31,22 @@ export const useSlideIn = (state, translateAmount) => {
   useEffect(() => {
     api.start({
       transform: state ? "translateX(0%)" : `translateX(-${translateAmount}%)`,
+    });
+  }, [state, api]);
+
+  return slide;
+};
+
+// SLIDE IN FROM TOP
+export const useSlideInTop = (state, translateAmount) => {
+  const [slide, api] = useSpring(() => ({
+    config: { ...config.molasses },
+    from: { transform: `translateY(-${translateAmount}%)` },
+  }));
+
+  useEffect(() => {
+    api.start({
+      transform: state ? "translateY(0%)" : `translateY(-${translateAmount}%)`,
     });
   }, [state, api]);
 
@@ -103,16 +122,20 @@ export const useBtnSlide = (state, isNext) => {
     config: { ...config.gentle },
     from: {
       transform: "translateX(0%)",
-      // width: "100%"
+      width: "100%",
     },
   }));
 
   useEffect(() => {
     api.start({
       transform: state
-        ? `translateX(${isNext ? "" : "-"}10%)`
+        ? `${
+            isNext == undefined
+              ? "translateX(0%)"
+              : `translateX(${isNext ? "" : "-"}10%)`
+          }`
         : "translateX(0%)",
-      // width: state ? "110%" : "100%",
+      width: state ? `${isNext == undefined ? "105%" : "100%"}` : "100%",
     });
   }, [state, api]);
 
@@ -206,4 +229,30 @@ export const useGrowOut = (state) => {
   }, [state, api]);
 
   return growOut;
+};
+
+// WORK CONTENT TEXT TRANSITIONS
+export const useWorkTextTransition = (
+  currentProject,
+  setCurrentProject,
+  counter
+) => {
+  const [textTransition, springApi] = useSpring(() => ({
+    opacity: 1,
+    transform: "translateY(0px)",
+    config: { tension: 200, friction: 20 },
+  }));
+
+  useEffect(() => {
+    springApi.start({ opacity: 0, transform: "translateY(-10px)" });
+
+    const timeout = setTimeout(() => {
+      setCurrentProject(currentProject);
+      springApi.start({ opacity: 1, transform: "translateY(0px)" });
+    }, 300);
+
+    return () => clearTimeout(timeout);
+  }, [counter, springApi]);
+
+  return textTransition;
 };

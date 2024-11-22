@@ -1,16 +1,20 @@
 import { useEffect, useState, useRef } from "react";
-import { isTouchDevice } from "@/utils/utilityFunctions";
+import { useClickPrevention } from "@/hooks/utilityHooks";
 import { animated } from "@react-spring/web";
 import { useBtnSlide, useBtnFade } from "@/hooks/useSpring";
 import lottie from "lottie-web";
+import { muteAllSounds, muteToggle, unMuteAllSounds } from "@/utils/sound";
 
 const PauseBtn = ({ resumeProjects, pauseProjects }) => {
+  const [isDisabled, handleClick] = useClickPrevention(250);
+
   const [paused, setPaused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
   const slide = useBtnSlide(isHovered);
   const fade = useBtnFade(isHovered);
 
+  const pauseBtn = useRef(null);
   const container = useRef(null);
   const animationRef = useRef(null);
 
@@ -36,7 +40,8 @@ const PauseBtn = ({ resumeProjects, pauseProjects }) => {
     };
   }, []);
 
-  const handleClick = () => {
+  const handlePause = () => {
+    muteToggle();
     animationRef.current.setSpeed(1.5);
     if (paused) {
       resumeProjects();
@@ -49,6 +54,20 @@ const PauseBtn = ({ resumeProjects, pauseProjects }) => {
     }
   };
 
+  // PAUSE ON SPACE BAR PRESS
+  const handleSpacebar = (event) => {
+    if (event.code === "Space") {
+      pauseBtn.current.click();
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleSpacebar);
+    return () => {
+      document.removeEventListener("keydown", handleSpacebar);
+    };
+  }, []);
+
   return (
     <div
       className="control-btn pause-btn"
@@ -56,10 +75,11 @@ const PauseBtn = ({ resumeProjects, pauseProjects }) => {
         setIsHovered(true);
       }}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => handleClick()}
+      onClick={() => handleClick(handlePause)}
+      ref={pauseBtn}
     >
-      <animated.div className="btn-bg" style={fade}></animated.div>
-      <animated.div>
+      {/* <animated.div className="btn-bg"></animated.div> */}
+      <animated.div style={slide}>
         <div className="skip-lottie pause-lottie" ref={container}></div>
       </animated.div>
       <p>{paused ? "Play" : "Pause"}</p>

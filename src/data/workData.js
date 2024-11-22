@@ -37,6 +37,7 @@ export const workData = [
       artists: "Mitch Duncan & Lahiru De Silva",
     },
     link: "https://sff-prototype-staging.netlify.app/",
+    github: "https://github.com/Joshvdw/silver-fern-farms-prototype",
   },
   {
     title: "Mobi Headquarters",
@@ -60,7 +61,7 @@ export const workData = [
     github: "https://github.com/Joshvdw/mobi-custom-code",
   },
   {
-    title: "Top Design Agencies",
+    title: "Design Agencies NZ",
     description: `An immersive website crafted to highlight the diverse design talent across New Zealand.
     It features an annually updated directory of leading agencies in branding, web development, digital marketing, 
     and motion graphics. I developed this website with Webflow, then integrated GSAP and custom JavaScript 
@@ -92,7 +93,7 @@ export const workData = [
     github: "https://github.com/Joshvdw/strings-of-elysium",
   },
   {
-    title: "wwweb3",
+    title: "wwweb3 Info",
     description: `During my internship at Psychoactive Studios, I crafted an educational web experience aimed at providing an immersive introduction to the world of web 3.
     This informational website delves into the fundamentals of topics such as blockchain, crypto, and NFTs.
     I was eager to push the boundaries of Webflow's capabilities, and so I ventured into new territories, exploring creative coding with JavaScript libraries such as p5.js.`,
@@ -105,19 +106,6 @@ export const workData = [
       director: "Andrew Hillstead",
     },
     link: "https://wwweb3.webflow.io/",
-  },
-  {
-    title: "The Tale of Abe",
-    description: `This portfolio piece served to hone and showcase my newly acquired WebGL skills, which I had spent the preceding months developing.
-    I created and exported glTF assets from Blender, then rendered and manipulated them using Three.js and React.
-    The 3D scene was inspired by the then popular Hape.io website and the poem was written in collaboration with ChatGPT`,
-    tools: ["React", "TypeScript", "Nextjs", "Three.js", "Blender"],
-    role: "Developer",
-    client: "N/A",
-    year: "2022",
-    credits: "N/A",
-    link: "https://the-tale-of-abe.vercel.app/",
-    github: "https://github.com/Joshvdw/the-tale-of-abe",
   },
   {
     title: "Torotoro",
@@ -138,5 +126,18 @@ export const workData = [
     },
     link: "https://torotoro.vercel.app/",
     github: "https://github.com/Joshvdw/torotoro",
+  },
+  {
+    title: "The Tale of Abe",
+    description: `This portfolio piece served to hone and showcase my newly acquired WebGL skills, which I had spent the preceding months developing.
+    I created and exported glTF assets from Blender, then rendered and manipulated them using Three.js and React.
+    The 3D scene was inspired by the then popular Hape.io website and the poem was written in collaboration with ChatGPT`,
+    tools: ["React", "TypeScript", "Nextjs", "Three.js", "Blender"],
+    role: "Developer",
+    client: "N/A",
+    year: "2022",
+    credits: "N/A",
+    link: "https://the-tale-of-abe.vercel.app/",
+    github: "https://github.com/Joshvdw/the-tale-of-abe",
   },
 ];

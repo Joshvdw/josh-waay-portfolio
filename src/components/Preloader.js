@@ -33,7 +33,7 @@ const Preloader = ({ isLoading }) => {
     };
   }, []);
 
-  const fadeIn = useFadeIn(animationLoaded);
+  const fadeIn = useFadeIn(animationLoaded, false);
   const fadeOut = usePreloaderFadeOut(isLoading);
   const growIn = useGrowIn(animationLoaded);
   const growOut = useGrowOut(isLoading);

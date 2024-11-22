@@ -1,4 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+
+export const useClickPrevention = (timeout = 1000) => {
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  const handleClick = useCallback(
+    (callback) => {
+      if (isDisabled) return;
+
+      setIsDisabled(true); // Prevent further clicks
+      callback(); // Execute the actual click logic
+
+      // Re-enable clicking after the timeout
+      setTimeout(() => setIsDisabled(false), timeout);
+    },
+    [isDisabled, timeout]
+  );
+
+  return [isDisabled, handleClick];
+};
 
 export const useIsSmallScreen = () => {
   const [isSmall, setIsSmall] = useState(true);
