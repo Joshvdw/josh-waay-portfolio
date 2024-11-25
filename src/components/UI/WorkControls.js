@@ -13,7 +13,7 @@ const WorkControls = ({
   return (
     <>
       <div className="work-body__left">
-        <div className="controls-bg"> </div>
+        {/* <div className="controls-bg"> </div> */}
         <div className="controls-wrapper">
           <div className="controls-inner">
             <SkipBtn handleNavigation={handleNavigation} isNext={false} />

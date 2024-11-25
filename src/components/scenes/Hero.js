@@ -33,8 +33,8 @@ const Hero = () => {
         </animated.p>
         <animated.div style={slideIn3}>
           <div className="hero__cta--wrapper">
-            <span class="right-slanted" onClick={handleStartClick}>
-              <div class="hero__cta optimise-font">
+            <span className="right-slanted" onClick={handleStartClick}>
+              <div className="hero__cta optimise-font">
                 <p>View Portfolio</p>
               </div>
             </span>

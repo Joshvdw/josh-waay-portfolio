@@ -1,14 +1,14 @@
-import ScrolldownIndicator from "@/components/UI/lotties/not-mvp/ScrolldownIndicator";
-import HexagonSVG from "@/components/UI/svgs/HexagonSVG";
-import ServicesContent from "./ServicesContent";
+// import ScrolldownIndicator from "@/components/UI/lotties/not-mvp/ScrolldownIndicator";
+// import HexagonSVG from "@/components/UI/svgs/HexagonSVG";
+// import ServicesContent from "./ServicesContent";
 
 const Services = () => {
   return (
     <div>
-      Services
+      {/* Services
       <HexagonSVG />
       <ServicesContent />
-      <ScrolldownIndicator />
+      <ScrolldownIndicator /> */}
     </div>
   );
 };

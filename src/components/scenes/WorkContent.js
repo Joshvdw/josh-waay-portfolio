@@ -6,7 +6,7 @@ import {
   useOpacityShift,
   useWorkTextTransition,
 } from "@/hooks/useSpring";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { animated } from "@react-spring/web";
 import WorkControls from "../UI/WorkControls";
 import LinkSVG from "../UI/svgs/LinkSVG";
@@ -137,7 +137,7 @@ const WorkContent = ({
             <div>
               <div className="work-tools__wrapper">
                 {currentProject.tools.map((tool, index) => (
-                  <div key={index} className="work-tools__item">
+                  <div key={tool} className="work-tools__item">
                     <p>{tool}</p>
                     <div
                       className={`tool-spacer__line ${
@@ -153,7 +153,7 @@ const WorkContent = ({
                 {currentProject.description // for strings of elysium description include link in text
                   .split("this link")
                   .map((text, index, array) => (
-                    <>
+                    <React.Fragment key={index}>
                       {text}
                       {index < array.length - 1 && (
                         <a
@@ -168,7 +168,7 @@ const WorkContent = ({
                           this link
                         </a>
                       )}
-                    </>
+                    </React.Fragment>
                   ))}
               </p>
             </div>
