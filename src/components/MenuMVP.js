@@ -1,4 +1,4 @@
-import Logo from "./UI/Logo";
+import Logo from "./UI/svgs/Logo";
 import Socials from "./UI/Socials";
 import SoundBtn from "./UI/lotties/SoundBtn";
 import { useSlideInTop } from "@/hooks/useSpring";

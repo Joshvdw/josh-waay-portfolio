@@ -4,7 +4,7 @@ import {
   useGrowIn,
   useGrowOut,
 } from "@/hooks/useSpring";
-import Logo from "./UI/Logo";
+import Logo from "./UI/svgs/Logo";
 import { useEffect, useState, useRef } from "react";
 import { animated } from "@react-spring/web";
 import lottie from "lottie-web";

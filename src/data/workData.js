@@ -61,7 +61,7 @@ export const workData = [
     github: "https://github.com/Joshvdw/mobi-custom-code",
   },
   {
-    title: "Design Agencies NZ",
+    title: "Top Agencies NZ",
     description: `An immersive website crafted to highlight the diverse design talent across New Zealand.
     It features an annually updated directory of leading agencies in branding, web development, digital marketing, 
     and motion graphics. I developed this website with Webflow, then integrated GSAP and custom JavaScript 
