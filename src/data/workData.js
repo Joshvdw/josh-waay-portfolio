@@ -1,4 +1,20 @@
 export const workData = [
+  // {
+  //   title: "RWC Jersey Launch",
+  //   description: ``,
+  //   tools: ["React", "TypeScript", "Nextjs", "WebGL"],
+  //   role: "Lead Developer / Sound",
+  //   client: "Adidas",
+  //   year: "2023",
+  //   credits: {
+  //     agency: "Psychoactive Studios",
+  //     director: "Andrew Hillstead",
+  //     designer: "Laura Garcia",
+  //     artists: "Mitch Duncan & Tales Trindade",
+  //   },
+  //   link: "https://rwc-jersey-launch-128qtq1o6-psychoactive.vercel.app/",
+  //   github: "https://github.com/Joshvdw/adidas-jersey-launch",
+  // },
   {
     title: "Mosaic Pathways",
     description: `This project involved transforming a deck of physical question
@@ -59,6 +75,21 @@ export const workData = [
     },
     link: "https://www.mobihq.com/",
     github: "https://github.com/Joshvdw/mobi-custom-code",
+  },
+  {
+    title: "Gravity",
+    description: ``,
+    tools: ["Figma", "Illustrator", "Photoshop", "Midjourney"],
+    role: "Designer",
+    client: "Gravity",
+    year: "2023",
+    credits: {
+      agency: "Psychoactive Studios",
+      director: "Andrew Hillstead",
+      developer: "Kunyang Ji",
+      motionArtist: "Linus Nelson",
+    },
+    link: "https://www.thisisgravity.co/",
   },
   {
     title: "Top Agencies NZ",
