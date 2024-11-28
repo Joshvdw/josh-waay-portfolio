@@ -79,7 +79,7 @@ const PauseBtn = ({ resumeProjects, pauseProjects }) => {
       ref={pauseBtn}
     >
       {/* <animated.div className="btn-bg"></animated.div> */}
-      <animated.div style={slide}>
+      <animated.div>
         <div className="skip-lottie pause-lottie" ref={container}></div>
       </animated.div>
       <p>{paused ? "Play" : "Pause"}</p>
