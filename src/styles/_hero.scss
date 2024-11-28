@@ -1,5 +1,5 @@
 .hero {
-  padding-left: $g2 * 0.875;
+  padding-left: $g2 * 0.75;
   @include fullscreen_wrapper;
   display: flex;
   align-items: center;
@@ -12,8 +12,8 @@
 .hero__paragraph {
   max-width: 27rem;
   color: $off-white;
-  margin: 1rem 0;
-  margin-bottom: 1.5rem;
+  margin: 1.5rem 0;
+  // margin-bottom: 1.5rem;
   font-size: 1.125rem;
 }
 

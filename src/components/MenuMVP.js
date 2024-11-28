@@ -22,7 +22,7 @@ const Menu = () => {
   return (
     <animated.div className="side-menu__wrapper" style={slideIn}>
       <div>
-        <Logo />
+        <Logo isPreloader={false} />
       </div>
       {/* <Socials /> */}
       {/* <SoundBtn /> */}

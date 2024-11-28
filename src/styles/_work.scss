@@ -15,7 +15,7 @@
   // margin-top: 7vh;
   width: 66.66vw;
   min-width: 70rem; // fix
-  padding: 7rem 0;
+  padding: 7rem 1rem;
   // max-width: 70rem; // fix
 }
 
@@ -250,6 +250,11 @@
 
 .credit-role {
   width: 7.5rem;
+}
+
+.work-underline__wrapper {
+  display: flex;
+  justify-content: center;
 }
 
 .work-underline {

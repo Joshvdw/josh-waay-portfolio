@@ -24,6 +24,10 @@ a {
   text-decoration: none;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 // REM SCALING
 html {
   font-size: calc((0.625rem + 0.41666666666666663vw) - 2px);
@@ -123,3 +127,4 @@ body {
   font-size: 1.25rem;
   line-height: 140%;
 }
+@import "./mediaQueries";

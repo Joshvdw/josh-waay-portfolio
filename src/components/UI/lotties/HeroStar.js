@@ -31,7 +31,7 @@ const HeroStar = forwardRef((props, ref) => {
     },
   }));
 
-  return <div ref={container}></div>;
+  return <div className="heroStar_inner" ref={container}></div>;
 });
 
 HeroStar.displayName = "HeroStar";
