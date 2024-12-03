@@ -19,6 +19,36 @@ export const useClickPrevention = (timeout = 1000) => {
   return [isDisabled, handleClick];
 };
 
+export const useDebouncedScrollClickSimulate = (clickEvent) => {
+  const debounce = (func, delay) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  const handleScroll = useCallback(
+    (event) => {
+      if (clickEvent.name == "handleStartClick") {
+        clickEvent(); // hero start
+      } else {
+        if (event.deltaY > 0 && clickEvent.name == "handleSkip") {
+          clickEvent();
+          // trigger next
+          console.log("Scrolling down");
+        } else if (event.deltaY < 0) {
+          // trigger
+          console.log("Scrolling up");
+        }
+      }
+    },
+    [clickEvent]
+  );
+
+  return debounce(handleScroll, 300);
+};
+
 export const useIsSmallScreen = () => {
   const [isSmall, setIsSmall] = useState(true);
 

@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import { useClickPrevention } from "@/hooks/utilityHooks";
 import { animated } from "@react-spring/web";
 import { useBtnSlide, useBtnFade } from "@/hooks/useSpring";
+import { useDebouncedScrollClickSimulate } from "@/hooks/utilityHooks";
 import lottie from "lottie-web";
 
 const SkipBtn = ({ handleNavigation, isNext }) => {
@@ -10,7 +11,7 @@ const SkipBtn = ({ handleNavigation, isNext }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const slide = useBtnSlide(isHovered, isNext);
-  const fade = useBtnFade(isHovered);
+  // const fade = useBtnFade(isHovered);
 
   const skipBtn = useRef(null);
   const container = useRef(null);
@@ -63,6 +64,8 @@ const SkipBtn = ({ handleNavigation, isNext }) => {
     };
   }, []);
 
+  const debouncedHandleScroll = useDebouncedScrollClickSimulate(handleSkip);
+
   return (
     <div
       className="control-btn"
@@ -72,8 +75,8 @@ const SkipBtn = ({ handleNavigation, isNext }) => {
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => handleClick(handleSkip)}
       ref={skipBtn}
+      onWheel={debouncedHandleScroll}
     >
-      {/* <animated.div className="btn-bg"></animated.div> */}
       <animated.div style={slide}>
         <div
           className={`skip-lottie ${isNext ? "next-lottie" : "prev-lottie"}`}

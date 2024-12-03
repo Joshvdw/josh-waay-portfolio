@@ -21,7 +21,9 @@ const WorkContent = ({
   const workHeaderRef = useRef(null);
   const desktopPositionRef = useRef(null);
   const mobilePositionRef = useRef(null);
+  const intervalRef = useRef(null);
 
+  const [moveH1, setMoveh1] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 700);
   const [linkHovered, setLinkHovered] = useState(false);
   const [githubHovered, setGithubHovered] = useState(false);
@@ -97,6 +99,42 @@ const WorkContent = ({
     playOnMount: false,
   });
 
+  // show "visit website" every 5 seconds
+  useEffect(() => {
+    startInterval();
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, []);
+
+  const startInterval = () => {
+    intervalRef.current = setInterval(() => {
+      setLinkHovered(true);
+      setTimeout(() => {
+        setLinkHovered(false);
+      }, 2500);
+    }, 10000);
+  };
+
+  const handleMouseEnter = () => {
+    setMoveh1(true);
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+    setLinkHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setLinkHovered(false);
+    setTimeout(() => {
+      setMoveh1(false);
+    }, 500);
+    startInterval();
+  };
+
   return (
     <div className="work-wrapper__outer">
       <div className="work-wrapper__inner" ref={desktopPositionRef}>
@@ -106,11 +144,11 @@ const WorkContent = ({
               href={project.link}
               target="_blank"
               rel="noopener noreferrer"
-              onMouseEnter={() => setLinkHovered(true)}
-              onMouseLeave={() => setLinkHovered(false)}
-              style={colourShifterLink}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              style={moveH1 ? colourShifterLink : null}
             >
-              <animated.h1 ref={ref} style={headerSlider}>
+              <animated.h1 ref={ref} style={moveH1 ? headerSlider : null}>
                 {project.title}
               </animated.h1>
             </animated.a>
