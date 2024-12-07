@@ -1,7 +1,7 @@
 import SceneContext from "@/hooks/sceneContext";
 import UnityContext from "@/hooks/unityContext";
 import { useContext } from "react";
-import NavItem from "./UI/NavItem";
+import NavItem from "./ui/NavItem";
 import { useEffect, useState } from "react";
 
 const Nav = () => {

@@ -1,10 +1,10 @@
 import {
   useFadeIn,
   usePreloaderFadeOut,
-  useGrowIn,
-  useGrowOut,
+  // useGrowIn,
+  // useGrowOut,
 } from "@/hooks/useSpring";
-import Logo from "./UI/svgs/Logo";
+import Logo from "./UI/svgs/LogoSVG";
 import { useEffect, useState, useRef } from "react";
 import { animated } from "@react-spring/web";
 import lottie from "lottie-web";
@@ -35,8 +35,8 @@ const Preloader = ({ isLoading }) => {
 
   const fadeIn = useFadeIn(animationLoaded, false);
   const fadeOut = usePreloaderFadeOut(isLoading);
-  const growIn = useGrowIn(animationLoaded);
-  const growOut = useGrowOut(isLoading);
+  // const growIn = useGrowIn(animationLoaded);
+  // const growOut = useGrowOut(isLoading);
 
   return (
     <animated.div className="preloader-wrapper" style={fadeOut}>

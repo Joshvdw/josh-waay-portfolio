@@ -1,6 +1,6 @@
 import Nav from "./Nav";
-import Logo from "./UI/svgs/Logo";
-import Socials from "./UI/Socials";
+import Logo from "../components/UI/svgs/LogoSVG";
+import Socials from "../components/UI/Socials";
 import { useSlideIn } from "@/hooks/useSpring";
 import { useContext } from "react";
 import SceneContext from "@/hooks/sceneContext";

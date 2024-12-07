@@ -4,7 +4,6 @@ import {
   isMuted,
   muteAllSounds,
   unMuteAllSounds,
-  muteToggle,
 } from "@/utils/sound";
 import { useEffect, useRef, memo } from "react";
 

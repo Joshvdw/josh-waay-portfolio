@@ -2,7 +2,7 @@ import HeroFlipText from "../UI/HeroFlipText";
 import SceneContext from "@/hooks/sceneContext";
 import UnityContext from "@/hooks/unityContext";
 import { animated } from "@react-spring/web";
-import { useContext, useCallback } from "react";
+import { useContext } from "react";
 import { useFadeIn, useSlideIn } from "@/hooks/useSpring";
 import { heroText } from "@/data/personalData";
 import { playSound } from "@/utils/sound";

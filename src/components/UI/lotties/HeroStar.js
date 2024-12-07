@@ -13,8 +13,6 @@ const HeroStar = forwardRef((props, ref) => {
       autoplay: false,
       path: "/lotties/hero_star.json",
     });
-
-    // Display the first frame initially
     animation.current.goToAndStop(0, true);
 
     return () => {

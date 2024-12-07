@@ -8,7 +8,6 @@ const WorkControls = ({
   handleNavigation,
   counter,
   handleClick,
-  onScrollTrigger,
   interval,
 }) => {
   return (
@@ -20,7 +19,6 @@ const WorkControls = ({
               handleNavigation={handleNavigation}
               isNext={false}
               handleClick={handleClick}
-              onScrollTrigger={onScrollTrigger}
               interval={interval}
             />
             <PauseBtn
@@ -32,7 +30,6 @@ const WorkControls = ({
               handleNavigation={handleNavigation}
               isNext={true}
               handleClick={handleClick}
-              onScrollTrigger={onScrollTrigger}
               interval={interval}
             />
           </div>

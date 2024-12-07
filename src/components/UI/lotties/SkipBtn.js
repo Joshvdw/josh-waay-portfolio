@@ -1,19 +1,17 @@
 import { useEffect, useState, useRef } from "react";
 import { animated } from "@react-spring/web";
-import { useBtnSlide, useBtnFade } from "@/hooks/useSpring";
+import { useBtnSlide } from "@/hooks/useSpring";
 import lottie from "lottie-web";
 
 const SkipBtn = ({
   handleNavigation,
   isNext,
   handleClick,
-  onScrollTrigger,
   interval
 }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const slide = useBtnSlide(isHovered, isNext);
-  // const fade = useBtnFade(isHovered);
 
   const skipBtn = useRef(null);
   const container = useRef(null);
@@ -69,13 +67,6 @@ const SkipBtn = ({
       document.removeEventListener("keydown", handleKeypress);
     };
   }, []);
-
-  // Listen for parent scroll triggers
-  useEffect(() => {
-    if (onScrollTrigger) {
-      // onScrollTrigger(isNext);
-    }
-  }, [onScrollTrigger, isNext]);
 
   return (
     <div

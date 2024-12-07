@@ -9,7 +9,6 @@ const ProgressBar = ({ progressBarRef, progress, transition }) => {
           ref={progressBarRef}
           style={{
             transform: `scaleX(${progress})`,
-            // play transition animation at global variable rate if true
             transition: transition
               ? `transform ${projectChangeTime / 1000}s linear`
               : "none",

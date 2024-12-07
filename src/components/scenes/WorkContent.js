@@ -232,7 +232,6 @@ const WorkContent = ({
             handleNavigation={handleNavigation}
             counter={counter}
             handleClick={handleClick}
-            onScrollTrigger={debouncedHandleScroll}
             interval={intervalRef.current}
           />
           <animated.div

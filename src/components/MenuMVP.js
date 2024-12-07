@@ -1,4 +1,4 @@
-import Logo from "./UI/svgs/Logo";
+import Logo from "./UI/svgs/LogoSVG";
 import { useSlideInTop } from "@/hooks/useSpring";
 import { useContext } from "react";
 import SceneContext from "@/hooks/sceneContext";

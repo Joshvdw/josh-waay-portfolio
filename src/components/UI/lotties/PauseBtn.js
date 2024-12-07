@@ -1,15 +1,10 @@
 import { useEffect, useState, useRef } from "react";
-import { animated } from "@react-spring/web";
-import { useBtnSlide, useBtnFade } from "@/hooks/useSpring";
 import lottie from "lottie-web";
-import { muteAllSounds, muteToggle, unMuteAllSounds } from "@/utils/sound";
+import { muteToggle } from "@/utils/sound";
 
 const PauseBtn = ({ resumeProjects, pauseProjects, handleClick }) => {
   const [paused, setPaused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-
-  const slide = useBtnSlide(isHovered);
-  const fade = useBtnFade(isHovered);
 
   const pauseBtn = useRef(null);
   const container = useRef(null);
@@ -75,10 +70,7 @@ const PauseBtn = ({ resumeProjects, pauseProjects, handleClick }) => {
       onClick={() => handleClick(handlePause)}
       ref={pauseBtn}
     >
-      {/* <animated.div className="btn-bg"></animated.div> */}
-      <animated.div>
-        <div className="skip-lottie pause-lottie" ref={container}></div>
-      </animated.div>
+      <div className="skip-lottie pause-lottie" ref={container}></div>
       <p>{paused ? "Play" : "Pause"}</p>
     </div>
   );

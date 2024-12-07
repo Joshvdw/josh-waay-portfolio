@@ -7,7 +7,7 @@ import Audio from "@/components/Audio";
 import Scenes from "@/components/Scenes";
 import MenuMVP from "@/components/MenuMVP";
 import WebGL from "@/components/WebGL";
-import SoundWave from "@/components/UI/lotties/SoundBtn";
+import SoundWave from "@/not-mvp/lotties/SoundBtn";
 import ErrorBoundary from "@/components/errors/ErrorBoundary";
 import ErrorMessage from "../components/errors/ErrorModal";
 import SceneContext, { SceneProvider } from "@/hooks/sceneContext";

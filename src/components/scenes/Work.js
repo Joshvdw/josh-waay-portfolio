@@ -1,7 +1,5 @@
 import ProgressBar from "../UI/ProgressBar";
-import WorkTimeline from "../UI/WorkTimeline";
 import WorkContent from "./WorkContent";
-import WorkControls from "../UI/WorkControls";
 import { useProjectVideoControls } from "@/hooks/videoControlsHook";
 import { useEffect, useMemo } from "react";
 import { animated } from "@react-spring/web";

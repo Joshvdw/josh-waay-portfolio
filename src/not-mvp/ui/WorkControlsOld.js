@@ -2,7 +2,7 @@ import SceneContext from "@/hooks/sceneContext";
 import { useContext } from "react";
 import { animated } from "@react-spring/web";
 import { useSlideIn } from "@/hooks/useSpring";
-import PauseBtn from "../lotties/PauseBtn";
+import PauseBtn from "../../components/UI/lotties/PauseBtn";
 
 const WorkControls = ({ pauseProjects, resumeProjects, handleNavigation }) => {
   const { sceneState } = useContext(SceneContext);

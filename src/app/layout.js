@@ -21,7 +21,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${poppins.className} ${baj_jamjuree.variable}`}>
       <body>
-        {/* <link rel="icon" href="/images/logos/star.png" sizes="any" /> */}
         {children}
       </body>
     </html>
