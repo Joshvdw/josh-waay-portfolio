@@ -43,7 +43,7 @@ function Audio() {
   return (
     <>
       <audio
-        src="/audio/all-these-worlds.mp3"
+        src="/audio/background-music-v2.mp3"
         ref={bgMusic}
         id="bgMusic"
         loop

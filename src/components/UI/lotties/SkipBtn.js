@@ -1,13 +1,15 @@
 import { useEffect, useState, useRef } from "react";
-import { useClickPrevention } from "@/hooks/utilityHooks";
 import { animated } from "@react-spring/web";
 import { useBtnSlide, useBtnFade } from "@/hooks/useSpring";
-import { useDebouncedScrollClickSimulate } from "@/hooks/utilityHooks";
 import lottie from "lottie-web";
 
-const SkipBtn = ({ handleNavigation, isNext }) => {
-  const [isDisabled, handleClick] = useClickPrevention(750);
-
+const SkipBtn = ({
+  handleNavigation,
+  isNext,
+  handleClick,
+  onScrollTrigger,
+  interval
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const slide = useBtnSlide(isHovered, isNext);
@@ -38,6 +40,10 @@ const SkipBtn = ({ handleNavigation, isNext }) => {
   }, []);
 
   const handleSkip = () => {
+    if (interval) {
+      clearInterval(interval);
+      interval = null;
+    }
     handleNavigation(isNext ? "Next" : "Previous");
     animationRef.current.setSpeed(2);
     animationRef.current.playSegments([enterFrame, endFrame], true);
@@ -64,7 +70,12 @@ const SkipBtn = ({ handleNavigation, isNext }) => {
     };
   }, []);
 
-  const debouncedHandleScroll = useDebouncedScrollClickSimulate(handleSkip);
+  // Listen for parent scroll triggers
+  useEffect(() => {
+    if (onScrollTrigger) {
+      // onScrollTrigger(isNext);
+    }
+  }, [onScrollTrigger, isNext]);
 
   return (
     <div
@@ -75,7 +86,6 @@ const SkipBtn = ({ handleNavigation, isNext }) => {
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => handleClick(handleSkip)}
       ref={skipBtn}
-      onWheel={debouncedHandleScroll}
     >
       <animated.div style={slide}>
         <div

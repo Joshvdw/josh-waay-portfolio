@@ -1,6 +1,4 @@
 import Logo from "./UI/svgs/Logo";
-import Socials from "./UI/Socials";
-import SoundBtn from "./UI/lotties/SoundBtn";
 import { useSlideInTop } from "@/hooks/useSpring";
 import { useContext } from "react";
 import SceneContext from "@/hooks/sceneContext";
@@ -13,19 +11,17 @@ const Menu = () => {
 
   const slideIn = useSlideInTop(sceneState, 100);
 
-  // reset hero optionally
-  // const handleClick = () => {
-  //   updateScene("hero");
-  //   msgUnity("SetHeroScene");
-  // };
+  // reset to hero
+  const handleClick = () => {
+    updateScene("hero");
+    msgUnity("SetHeroScene");
+  };
 
   return (
     <animated.div className="side-menu__wrapper" style={slideIn}>
-      <div>
+      <div onClick={handleClick} className="pointer">
         <Logo isPreloader={false} />
       </div>
-      {/* <Socials /> */}
-      {/* <SoundBtn /> */}
     </animated.div>
   );
 };

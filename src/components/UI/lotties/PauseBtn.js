@@ -1,13 +1,10 @@
 import { useEffect, useState, useRef } from "react";
-import { useClickPrevention } from "@/hooks/utilityHooks";
 import { animated } from "@react-spring/web";
 import { useBtnSlide, useBtnFade } from "@/hooks/useSpring";
 import lottie from "lottie-web";
 import { muteAllSounds, muteToggle, unMuteAllSounds } from "@/utils/sound";
 
-const PauseBtn = ({ resumeProjects, pauseProjects }) => {
-  const [isDisabled, handleClick] = useClickPrevention(250);
-
+const PauseBtn = ({ resumeProjects, pauseProjects, handleClick }) => {
   const [paused, setPaused] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 

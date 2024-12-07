@@ -52,8 +52,6 @@ const Work = () => {
     <animated.div style={fadeIn}>
       <WorkContent {...workProps} />
       <ProgressBar {...progressBarProps} />
-      {/* <WorkControls {...workControlsProps} />
-      <WorkTimeline counter={counter} /> */}
     </animated.div>
   );
 };

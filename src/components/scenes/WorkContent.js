@@ -11,6 +11,10 @@ import { animated } from "@react-spring/web";
 import WorkControls from "../UI/WorkControls";
 import LinkSVG from "../UI/svgs/LinkSVG";
 import GithubSVG from "../UI/svgs/GithubSVG";
+import {
+  useClickPrevention,
+  useDebouncedScrollClickSimulate,
+} from "@/hooks/utilityHooks";
 
 const WorkContent = ({
   pauseProjects,
@@ -28,6 +32,8 @@ const WorkContent = ({
   const [linkHovered, setLinkHovered] = useState(false);
   const [githubHovered, setGithubHovered] = useState(false);
   const [currentProject, setCurrentProject] = useState(workData[counter]);
+
+  const [isDisabled, handleClick] = useClickPrevention(750);
 
   const handleResize = () => {
     setIsMobile(window.innerWidth < 700);
@@ -99,7 +105,7 @@ const WorkContent = ({
     playOnMount: false,
   });
 
-  // show "visit website" every 5 seconds
+  // show "visit website" every few seconds
   useEffect(() => {
     startInterval();
     return () => {
@@ -114,7 +120,7 @@ const WorkContent = ({
       setLinkHovered(true);
       setTimeout(() => {
         setLinkHovered(false);
-      }, 2500);
+      }, 1500);
     }, 10000);
   };
 
@@ -130,13 +136,26 @@ const WorkContent = ({
   const handleMouseLeave = () => {
     setLinkHovered(false);
     setTimeout(() => {
-      setMoveh1(false);
+      if (!linkHovered) setMoveh1(false);
     }, 500);
     startInterval();
   };
 
+  const debouncedHandleScroll = useDebouncedScrollClickSimulate((direction) => {
+    if (isDisabled) return;
+    if (direction === "down") {
+      handleClick(() => handleNavigation("Next"));
+    } else if (direction === "up") {
+      handleClick(() => handleNavigation("Previous"));
+    }
+  });
+
   return (
-    <div className="work-wrapper__outer">
+    <div
+      className="work-wrapper__outer"
+      onTouchMove={debouncedHandleScroll}
+      onWheel={debouncedHandleScroll}
+    >
       <div className="work-wrapper__inner" ref={desktopPositionRef}>
         <div className="work-header__wrapper" ref={workHeaderRef}>
           <div className="work-header__inner">
@@ -147,6 +166,7 @@ const WorkContent = ({
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
               style={moveH1 ? colourShifterLink : null}
+              className="project-title"
             >
               <animated.h1 ref={ref} style={moveH1 ? headerSlider : null}>
                 {project.title}
@@ -158,8 +178,8 @@ const WorkContent = ({
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onMouseEnter={() => setLinkHovered(true)}
-                  onMouseLeave={() => setLinkHovered(false)}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
                   style={linkSlider}
                 >
                   <LinkSVG colourShifterLink={colourShifterLink} />
@@ -211,6 +231,9 @@ const WorkContent = ({
             resumeProjects={resumeProjects}
             handleNavigation={handleNavigation}
             counter={counter}
+            handleClick={handleClick}
+            onScrollTrigger={debouncedHandleScroll}
+            interval={intervalRef.current}
           />
           <animated.div
             className="work-body__right"
