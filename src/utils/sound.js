@@ -25,6 +25,16 @@ function playSound(sound) {
   }
 }
 
+function restartSound(sound) {
+  if (!isTouchDevice()) {
+    if (sound !== "undefined" && sounds[sound]) {
+      sounds[sound].pause(); // Stop the audio if it's playing
+      sounds[sound].currentTime = 0; // Reset the playback position to the start
+      sounds[sound].play(); // Play the audio again
+    }
+  }
+}
+
 function reduceVolume(target, amount) {
   sounds[target].volume = amount;
   storeVolumes();
@@ -111,9 +121,22 @@ function animateVolume(element, targetVolume, duration) {
   }, interval);
 }
 
+let num = 1;
+function playTransitionSound(arg) {
+  if (arg == "NextVideo" || arg == "PreviousVideo") {
+    playSound(`transitionSound${num}`);
+    if (num == 1) {
+      num++;
+    } else {
+      num--;
+    }
+  }
+}
+
 export {
   setAudioRefs,
   playSound,
+  restartSound,
   muteToggle,
   visibilitySoundToggle,
   fadeAllSounds,
@@ -123,4 +146,5 @@ export {
   animateVolume,
   muteAllSounds,
   unMuteAllSounds,
+  playTransitionSound,
 };

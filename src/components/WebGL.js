@@ -11,6 +11,7 @@ import {
 import { Unity, useUnityContext } from "react-unity-webgl";
 import Preloader from "./Preloader";
 import SceneContext from "@/hooks/sceneContext";
+import { playTransitionSound } from "@/utils/sound";
 
 const WebGL = forwardRef((props, ref) => {
   const { unityProvider, sendMessage, initialisationError, isLoaded } =
@@ -39,6 +40,7 @@ const WebGL = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     sendMessage(functionName, argument) {
+      playTransitionSound(argument);
       // console.log(`msg sent to unity: '${functionName}' argument: ${argument}`);
       sendMessage("UnityFromReact", functionName, argument);
     },

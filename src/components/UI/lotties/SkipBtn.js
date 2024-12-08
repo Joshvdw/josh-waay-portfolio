@@ -1,15 +1,14 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { animated } from "@react-spring/web";
 import { useBtnSlide } from "@/hooks/useSpring";
 import lottie from "lottie-web";
+import { playSound } from "@/utils/sound";
+import UnityContext from "@/hooks/unityContext";
 
-const SkipBtn = ({
-  handleNavigation,
-  isNext,
-  handleClick,
-  interval
-}) => {
+const SkipBtn = ({ handleNavigation, isNext, handleClick, interval }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [hasHoveredOut, setHasHoveredOut] = useState(true);
+  const { msgUnity, preventSpam, isDisabled } = useContext(UnityContext);
 
   const slide = useBtnSlide(isHovered, isNext);
 
@@ -38,6 +37,11 @@ const SkipBtn = ({
   }, []);
 
   const handleSkip = () => {
+    //spam prevention
+    if (isDisabled) return;
+    preventSpam();
+
+    playSound("clickSound");
     if (interval) {
       clearInterval(interval);
       interval = null;
@@ -45,6 +49,7 @@ const SkipBtn = ({
     handleNavigation(isNext ? "Next" : "Previous");
     animationRef.current.setSpeed(2);
     animationRef.current.playSegments([enterFrame, endFrame], true);
+    // playSound("swishSound");
   };
 
   // SKIP ON ARROW KEY PRESS
@@ -68,13 +73,23 @@ const SkipBtn = ({
     };
   }, []);
 
+  const handleHover = () => {
+    if (hasHoveredOut) playSound("hoverSound");
+    setIsHovered(true);
+    setHasHoveredOut(false);
+  };
+
+  const handleHoverOut = () => {
+    // playSound("hoverOutSound");
+    setIsHovered(false);
+    setHasHoveredOut(true);
+  };
+
   return (
     <div
       className="control-btn"
-      onMouseEnter={() => {
-        setIsHovered(true);
-      }}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={handleHover}
+      onMouseLeave={handleHoverOut}
       onClick={() => handleClick(handleSkip)}
       ref={skipBtn}
     >

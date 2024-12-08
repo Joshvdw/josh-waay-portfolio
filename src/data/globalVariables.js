@@ -1,1 +1,1 @@
-export const projectChangeTime = 24000; // in time with music
+export const projectChangeTime = 8400; // in time with music

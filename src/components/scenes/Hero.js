@@ -5,17 +5,30 @@ import { animated } from "@react-spring/web";
 import { useContext } from "react";
 import { useFadeIn, useSlideIn } from "@/hooks/useSpring";
 import { heroText } from "@/data/personalData";
-import { playSound } from "@/utils/sound";
+import { isMuted, muteToggle, playSound, restartSound } from "@/utils/sound";
 import { useDebouncedScrollClickSimulate } from "@/hooks/utilityHooks";
 
 const Hero = () => {
   const { sceneState, updateScene } = useContext(SceneContext);
-  const { msgUnity } = useContext(UnityContext);
+  const { msgUnity, preventSpam, isDisabled } = useContext(UnityContext);
 
   const handleStartClick = () => {
+    //spam prevention
+    if (isDisabled) return;
+    preventSpam();
+
     updateScene("work");
     msgUnity("StartExperience");
-    playSound("bgMusic");
+    if (isMuted() === true) {
+      muteToggle();
+      restartSound("bgMusic");
+      restartSound("enterSound");
+    } else {
+      playSound("enterSound");
+      setTimeout(() => {
+        playSound("bgMusic");
+      }, 200);
+    }
   };
 
   const debouncedHandleScroll =
@@ -40,7 +53,11 @@ const Hero = () => {
         <animated.p className="hero__paragraph optimise-font" style={slideIn2}>
           {heroText.paragraph}
         </animated.p>
-        <animated.div style={slideIn3}>
+        <animated.div
+          style={slideIn3}
+          onMouseEnter={() => playSound("hoverOutSound")}
+          // onClick={() => playSound("clickSound2")}
+        >
           <div className="hero__cta--wrapper">
             <span className="right-slanted" onClick={handleStartClick}>
               <div className="hero__cta optimise-font">

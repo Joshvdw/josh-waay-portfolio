@@ -13,7 +13,6 @@ import ErrorMessage from "../components/errors/ErrorModal";
 import SceneContext, { SceneProvider } from "@/hooks/sceneContext";
 import UnityContext, { UnityProvider } from "@/hooks/unityContext";
 import Socials from "@/components/UI/Socials";
-import { playSound } from "@/utils/sound";
 
 export default function Home() {
   return (
@@ -34,14 +33,13 @@ const App = () => {
 
   return (
     <ErrorBoundary fallback={<ErrorMessage />}>
-      <main onClick={() => playSound("bgMusic")}>
+      <main>
         <WebGL ref={unityBuild} />
         <PreloadResources />
         <Audio />
         {LoadFinished && <Scenes />}
         {!HeroShowing && <MenuMVP />}
         {!HeroShowing && <Socials />}
-        {!HeroShowing && <SoundWave />}
       </main>
     </ErrorBoundary>
   );

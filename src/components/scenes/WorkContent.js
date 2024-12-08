@@ -15,6 +15,7 @@ import {
   useClickPrevention,
   useDebouncedScrollClickSimulate,
 } from "@/hooks/utilityHooks";
+import { playSound } from "@/utils/sound";
 
 const WorkContent = ({
   pauseProjects,
@@ -30,6 +31,7 @@ const WorkContent = ({
   const [moveH1, setMoveh1] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 700);
   const [linkHovered, setLinkHovered] = useState(false);
+  const [hasHoveredOut, setHasHoveredOut] = useState(true);
   const [githubHovered, setGithubHovered] = useState(false);
   const [currentProject, setCurrentProject] = useState(workData[counter]);
 
@@ -118,23 +120,29 @@ const WorkContent = ({
   const startInterval = () => {
     intervalRef.current = setInterval(() => {
       setLinkHovered(true);
+      if (hasHoveredOut) playSound("hoverSound2");
       setTimeout(() => {
         setLinkHovered(false);
+        playSound("hoverOutSound");
       }, 1500);
     }, 10000);
   };
 
   const handleMouseEnter = () => {
+    if (hasHoveredOut) playSound("hoverSound");
     setMoveh1(true);
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
     setLinkHovered(true);
+    setHasHoveredOut(false);
   };
 
   const handleMouseLeave = () => {
+    playSound("hoverOutSound");
     setLinkHovered(false);
+    setHasHoveredOut(true);
     setTimeout(() => {
       if (!linkHovered) setMoveh1(false);
     }, 500);
@@ -165,6 +173,7 @@ const WorkContent = ({
               rel="noopener noreferrer"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
+              onClick={() => playSound("clickSound2")}
               style={moveH1 ? colourShifterLink : null}
               className="project-title"
             >
@@ -180,6 +189,7 @@ const WorkContent = ({
                   rel="noopener noreferrer"
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
+                  onClick={() => playSound("clickSound2")}
                   style={linkSlider}
                 >
                   <LinkSVG colourShifterLink={colourShifterLink} />
@@ -199,8 +209,12 @@ const WorkContent = ({
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    onMouseEnter={() => setGithubHovered(true)}
+                    onMouseEnter={() => {
+                      setGithubHovered(true);
+                      playSound("hoverSound");
+                    }}
                     onMouseLeave={() => setGithubHovered(false)}
+                    onClick={() => playSound("clickSound2")}
                   >
                     <GithubSVG colourShifterGithub={colourShifterGithub} />
                   </a>

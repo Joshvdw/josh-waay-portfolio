@@ -6,6 +6,7 @@ import { animated } from "@react-spring/web";
 import { useFadeIn } from "@/hooks/useSpring";
 import { useContext } from "react";
 import SceneContext from "@/hooks/sceneContext";
+import { playSound } from "@/utils/sound";
 
 const Work = () => {
   const {
@@ -23,7 +24,7 @@ const Work = () => {
     () => ({
       progressBarRef,
       progress,
-      transition,
+      transition
     }),
     [progressBarRef, progress, transition]
   );
@@ -47,7 +48,7 @@ const Work = () => {
   const fadeIn = useFadeIn(sceneState, true);
 
   return (
-    <animated.div style={fadeIn}>
+    <animated.div style={fadeIn} onClick={() => playSound("bgMusic")}>
       <WorkContent {...workProps} />
       <ProgressBar {...progressBarProps} />
     </animated.div>

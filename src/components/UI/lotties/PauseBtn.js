@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import lottie from "lottie-web";
-import { muteToggle } from "@/utils/sound";
+import { muteToggle, playSound } from "@/utils/sound";
 
 const PauseBtn = ({ resumeProjects, pauseProjects, handleClick }) => {
   const [paused, setPaused] = useState(false);
@@ -33,6 +33,7 @@ const PauseBtn = ({ resumeProjects, pauseProjects, handleClick }) => {
   }, []);
 
   const handlePause = () => {
+    playSound("clickSound");
     muteToggle();
     animationRef.current.setSpeed(1.5);
     if (paused) {
@@ -60,13 +61,21 @@ const PauseBtn = ({ resumeProjects, pauseProjects, handleClick }) => {
     };
   }, []);
 
+  const handleHover = () => {
+    playSound("hoverOutSound");
+    setIsHovered(true);
+  };
+
+  const handleHoverOut = () => {
+    // playSound("hoverOutSound");
+    setIsHovered(false);
+  };
+
   return (
     <div
       className="control-btn pause-btn"
-      onMouseEnter={() => {
-        setIsHovered(true);
-      }}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={handleHover}
+      onMouseLeave={handleHoverOut}
       onClick={() => handleClick(handlePause)}
       ref={pauseBtn}
     >

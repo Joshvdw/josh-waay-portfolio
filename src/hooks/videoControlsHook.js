@@ -3,28 +3,52 @@ import { projectChangeTime } from "@/data/globalVariables";
 import UnityContext from "@/hooks/unityContext";
 import { workData } from "@/data/workData";
 
-let pause = false; // variable set outside to persist value on hook call
+export const usePauseState = () => {
+  const pause = useRef(false);
+
+  const setPause = () => {
+    pause.current = true;
+  };
+  const resetPause = () => {
+    pause.current = false;
+  };
+
+  return {
+    pause,
+    setPause,
+    resetPause,
+  };
+};
 
 export const useProjectVideoControls = () => {
+  const { pause, setPause, resetPause } = usePauseState();
   const [currentScaleX, setCurrentScaleX] = useState(1);
   const [progress, setProgress] = useState(0);
   const [hasResumed, setHasResumed] = useState(false);
   const [transition, setTransition] = useState(true);
   const [counter, setCounter] = useState(0);
 
+  const { msgUnity, preventSpam, isDisabled } = useContext(UnityContext);
+
   const progressBarRef = useRef(null);
   const timerRef = useRef(null);
+  const isDisabledRef = useRef(isDisabled);
+
+  // Update the ref whenever isDisabled changes
+  useEffect(() => {
+    isDisabledRef.current = isDisabled;
+  }, [isDisabled]);
 
   const progressBar = progressBarRef.current;
-  const { msgUnity } = useContext(UnityContext);
 
   const animateProgress = useCallback(() => {
-    if (!pause) {
+    if (!pause.current) {
       clearTimeout(timerRef.current);
       setProgress(1);
       setTransition(true);
       timerRef.current = setTimeout(() => {
-        if (!pause) {
+        if (!pause.current && !isDisabledRef.current) {
+          preventSpam();
           navTo("Next");
         }
       }, projectChangeTime);
@@ -41,7 +65,9 @@ export const useProjectVideoControls = () => {
     resetProgressBar();
     counterLogic(direction);
     setTimeout(() => {
-      animateProgress();
+      if (!pause.current) {
+        animateProgress();
+      }
     }, 20);
   };
 
@@ -49,7 +75,7 @@ export const useProjectVideoControls = () => {
     setHasResumed(false);
     msgUnity("VideoController", "PauseVideo");
     clearTimeout(timerRef.current);
-    pause = true;
+    setPause();
     const computedStyle = window.getComputedStyle(progressBar);
     const scaleX = computedStyle.transform
       .split("(")[1]
@@ -61,6 +87,8 @@ export const useProjectVideoControls = () => {
   };
 
   const resumeProjects = () => {
+    resetPause();
+
     setHasResumed(true);
     msgUnity("VideoController", "PlayVideo");
     progressBar.style.transform = `scaleX(1)`;
@@ -73,12 +101,13 @@ export const useProjectVideoControls = () => {
       .split(")")[0]
       .split(",")[0];
     if (scaleX == 0) {
-      pause = false;
       animateProgress();
     } else {
       timerRef.current = setTimeout(() => {
-        pause = false;
-        navTo("Next");
+        if (!isDisabledRef.current) {
+          preventSpam();
+          navTo("Next");
+        }
       }, remainingTime);
     }
   };
@@ -97,11 +126,12 @@ export const useProjectVideoControls = () => {
 
   const handleNavigation = (direction) => {
     if (hasResumed) {
-      pause = false;
+      resetPause();
       setHasResumed(false);
     }
     clearTimeout(timerRef.current);
     setCurrentScaleX(0);
+    resetProgressBar();
     navTo(direction);
   };
 
