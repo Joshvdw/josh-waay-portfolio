@@ -19,38 +19,6 @@ export const useClickPrevention = (timeout = 1000) => {
   return [isDisabled, handleClick];
 };
 
-export const useDebouncedScrollClickSimulate = (clickEvent, delay = 300) => {
-  const debounce = (func, delay) => {
-    let timer;
-    return (...args) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => func(...args), delay);
-    };
-  };
-
-  const handleScroll = useCallback(
-    (event) => {
-      if (clickEvent.name === "handleStartClick") {
-        clickEvent(); // hero start
-        return;
-      }
-
-      const isScrollingDown = event.deltaY > 0;
-
-      if (clickEvent) {
-        if (isScrollingDown) {
-          clickEvent("down"); // Simulate the "Next" action
-        } else {
-          clickEvent("up"); // Simulate the "Previous" action
-        }
-      }
-    },
-    [clickEvent]
-  );
-
-  return debounce(handleScroll, delay);
-};
-
 export const useIsSmallScreen = () => {
   const [isSmall, setIsSmall] = useState(true);
 
@@ -69,6 +37,42 @@ export const useIsSmallScreen = () => {
     }
   }, []);
   return isSmall;
+};
+
+export const useDebouncedScrollClickSimulate = (clickEvent, delay = 300) => {
+  const isSmallScreen = useIsSmallScreen();
+
+  const debounce = (func, delay) => {
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => func(...args), delay);
+    };
+  };
+
+  const handleScroll = useCallback(
+    (event) => {
+      if (clickEvent.name === "handleStartClick") {
+        clickEvent(); // hero start
+        return;
+      }
+
+      const isScrollingDown = event.deltaY > 0;
+      if (clickEvent) {
+        if (isScrollingDown) {
+          clickEvent("down"); // Simulate the "Next" action
+        } else {
+          clickEvent("up"); // Simulate the "Previous" action
+        }
+      }
+    },
+    [clickEvent]
+  );
+
+  const debouncedScrollHandler = debounce(handleScroll, delay);
+
+  // Return the no-op function if on a small screen, otherwise the debounced scroll handler.
+  return isSmallScreen ? () => {} : debouncedScrollHandler;
 };
 
 export const useIsIOS = () => {

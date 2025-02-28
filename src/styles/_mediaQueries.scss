@@ -13,7 +13,7 @@
   }
 }
 
-@media (min-width: 700px) and (max-width: 926px) {
+@media (min-width: 767px) and (max-width: 926px) {
   h1 {
     font-size: 4.5rem;
   }
@@ -62,16 +62,16 @@
 }
 
 // MOBILE DESIGN SWITCH
-@media (max-width: 700px) {
+@media (max-width: 767px) {
   .hero {
     align-items: flex-end;
     padding: 0 1rem;
-
     padding-bottom: 10vh;
     justify-content: center;
   }
   .work-wrapper__outer {
     overflow-y: scroll;
+    align-items: flex-start;
   }
   .work-header__wrapper,
   .work-description {
@@ -80,11 +80,10 @@
   .work-body__wrapper {
     flex-direction: column;
     align-items: center;
-    // justify-content: flex-end;
   }
   .work-body__right {
     width: 100vw;
-    padding: 1rem;
+    padding: 0 5vw;
   }
   .work-header__inner h1 {
     font-size: 7vw;
@@ -98,8 +97,9 @@
   }
   .work-wrapper__inner {
     padding: 0;
-    margin-top: 30rem;
-    height: unset;
+    justify-content: flex-start;
+    // margin-top: 30rem;
+    // height: unset;
   }
   .progress-bar {
     top: 0;
@@ -107,8 +107,8 @@
   }
   .body-right__inner {
     display: flex;
-    gap: 2rem;
-    justify-content: center;
+    gap: 4rem;
+    justify-content: space-between;
     > :first-child {
       width: 50%;
     }
@@ -145,9 +145,6 @@
     height: 44px;
     margin-top: 0;
   }
-  .work-underline {
-    width: 90%;
-  }
   .work-info__wrapper {
     display: flex;
     flex-direction: column;
@@ -157,8 +154,35 @@
   }
   .work-header__inner {
     margin-bottom: 1rem;
+    justify-content: flex-start;
+  }
+  .laptop-spacer {
+    display: block;
+    height: 100%;
+    min-height: $laptop-min-height;
   }
 }
+
+// display scroll indicator of device height is less than min-heights required
+// $min-device-height doesn't work sadly, but should be the correct value
+@media (max-height: 860px) {
+  .scroll-indicator {
+    pointer-events: none;
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 2rem;
+    background: linear-gradient(
+      0deg,
+      rgba(28, 28, 27, 0.7511598389355743) 0%,
+      rgba(28, 28, 27, 0) 15%
+    );
+  }
+}
+
 @media (max-width: 600px) {
   .body-right__inner {
     flex-direction: column;

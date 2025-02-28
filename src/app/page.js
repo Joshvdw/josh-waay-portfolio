@@ -13,6 +13,7 @@ import ErrorMessage from "../components/errors/ErrorModal";
 import SceneContext, { SceneProvider } from "@/hooks/sceneContext";
 import UnityContext, { UnityProvider } from "@/hooks/unityContext";
 import Socials from "@/components/UI/Socials";
+import { customLogStatement } from "@/utils/utilityFunctions";
 
 export default function Home() {
   return (
@@ -30,6 +31,8 @@ const App = () => {
 
   const LoadFinished = sceneState !== "loading";
   const HeroShowing = sceneState == "loading" || sceneState == "hero";
+
+  customLogStatement();
 
   return (
     <ErrorBoundary fallback={<ErrorMessage />}>

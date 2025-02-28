@@ -32,16 +32,16 @@ function Audio() {
       transitionSound2,
       swishSound,
     ]);
-    reduceVolume("bgMusic", 0.1);
-    reduceVolume("enterSound", 0.3);
+    reduceVolume("bgMusic", 0.15);
+    reduceVolume("enterSound", 0.4);
     reduceVolume("hoverSound", 0.2);
     reduceVolume("hoverSound2", 0.05);
-    reduceVolume("hoverOutSound", 0.4);
-    reduceVolume("clickSound", 0.1);
-    reduceVolume("clickSound2", 0.1);
+    reduceVolume("hoverOutSound", 0.2);
+    reduceVolume("clickSound", 0.05);
+    reduceVolume("clickSound2", 0.05);
     reduceVolume("transitionSound1", 0.5);
     reduceVolume("transitionSound2", 0.5);
-    reduceVolume("swishSound", 0.6);
+    // reduceVolume("swishSound", 0.9);
   }, []);
 
   // mute / unmute if user moves away from active tab

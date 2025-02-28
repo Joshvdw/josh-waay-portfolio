@@ -14,8 +14,10 @@ $muted-black: #2b2b2a;
 $mid-black: #1c1c1b;
 $full-black: #111111;
 
-// // breakpoints
-// $mobile: 557px;
+// // mobile sizes
+$laptop-min-height: 350px;
+$project-text-min-height: 510px;
+$min-device-height: $project-text-min-height + $laptop-min-height;
 
 // // grid-sizes
 $g1: calc(100vw / 12 * 1);

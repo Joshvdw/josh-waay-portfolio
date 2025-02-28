@@ -1,3 +1,5 @@
+let hasVisited = false;
+
 function isTouchDevice() {
   if (typeof navigator !== "undefined") {
     const userAgent = navigator.userAgent.toLowerCase();
@@ -25,4 +27,22 @@ function playLottie(start, end, animation) {
   return animation.playSegments([start, end], true);
 }
 
-export { isTouchDevice, playLottie };
+function customLogStatement() {
+  if (!hasVisited) {
+    console.log(
+      `
+      ▗▖ ▗▖▗▄▄▄▖    ▗▄▄▄▖▗▖ ▗▖▗▄▄▄▖▗▄▄▖ ▗▄▄▄▖
+      ▐▌ ▐▌  █        █  ▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌   
+      ▐▛▀▜▌  █        █  ▐▛▀▜▌▐▛▀▀▘▐▛▀▚▖▐▛▀▀▘
+      ▐▌ ▐▌▗▄█▄▖      █  ▐▌ ▐▌▐▙▄▄▖▐▌ ▐▌▐▙▄▄▖
+                                                                                    
+      Welcome to my website! 
+
+      If you would like to check out the code, please see: https://github.com/Joshvdw/josh-waay-portfolio
+    `
+    );
+  }
+  hasVisited = true;
+}
+
+export { isTouchDevice, playLottie, customLogStatement };

@@ -85,7 +85,7 @@
 .work-body__wrapper {
   display: flex;
   height: 100%;
-  min-height: 510px;
+  min-height: $project-text-min-height;
 }
 
 .work-body__left {

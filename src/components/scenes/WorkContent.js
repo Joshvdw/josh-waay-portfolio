@@ -12,6 +12,7 @@ import WorkControls from "../UI/WorkControls";
 import LinkSVG from "../UI/svgs/LinkSVG";
 import GithubSVG from "../UI/svgs/GithubSVG";
 import {
+  useIsSmallScreen,
   useClickPrevention,
   useDebouncedScrollClickSimulate,
 } from "@/hooks/utilityHooks";
@@ -36,6 +37,7 @@ const WorkContent = ({
   const [currentProject, setCurrentProject] = useState(workData[counter]);
 
   const [isDisabled, handleClick] = useClickPrevention(750);
+  const isSmallScreen = useIsSmallScreen();
 
   const handleResize = () => {
     setIsMobile(window.innerWidth < 700);
@@ -109,13 +111,16 @@ const WorkContent = ({
 
   // show "visit website" every few seconds
   useEffect(() => {
-    startInterval();
+    if (!isSmallScreen) {
+      startInterval();
+    }
+
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
     };
-  }, []);
+  }, [isSmallScreen]);
 
   const startInterval = () => {
     intervalRef.current = setInterval(() => {
@@ -239,6 +244,7 @@ const WorkContent = ({
             />
           </div>
         </div>
+        <div className="laptop-spacer hide"></div>
         <div className="work-body__wrapper">
           <WorkControls
             pauseProjects={pauseProjects}
@@ -363,6 +369,7 @@ const WorkContent = ({
           </animated.div>
         </div>
       </div>
+      <div className="scroll-indicator hide">{/* <div>SCROLL</div> */}</div>
     </div>
   );
 };
