@@ -1,3 +1,4 @@
+import { mobileSwitchSize } from "@/data/globalVariables";
 import { useState, useEffect, useCallback } from "react";
 
 export const useClickPrevention = (timeout = 1000) => {
@@ -25,7 +26,7 @@ export const useIsSmallScreen = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       const handleResize = () => {
-        setIsSmall(window.innerWidth <= 806);
+        setIsSmall(window.innerWidth <= mobileSwitchSize);
       };
 
       handleResize();
@@ -120,4 +121,48 @@ export const useAdjustDivHeight = (isIOS, ref) => {
       };
     }
   }, [isIOS, ref]);
+};
+
+export const useShowScrollIndicator = () => {
+  const [showIndicator, setShowIndicator] = useState(false);
+  const isSmallScreen = useIsSmallScreen(); // Use the useIsSmallScreen hook
+
+  // Function to calculate the combined height of the elements
+  const calculateHeights = () => {
+    const laptopSpacer = document.querySelector(".laptop-spacer");
+    const workBodyLeft = document.querySelector(".work-body__left");
+    const workBodyRight = document.querySelector(".work-body__right");
+
+    const combinedHeight =
+      (laptopSpacer ? laptopSpacer.offsetHeight : 0) +
+      (workBodyLeft ? workBodyLeft.offsetHeight : 0) +
+      (workBodyRight ? workBodyRight.offsetHeight : 0);
+
+    const viewportHeight = window.innerHeight;
+    setShowIndicator(combinedHeight > viewportHeight && isSmallScreen); // Add isSmallScreen check
+  };
+
+  // Function to hide the scroll indicator on scroll or swipe
+  const hideScrollIndicator = () => {
+    setShowIndicator(false); // Hide the indicator if the user has scrolled
+  };
+
+  // Add event listeners for scroll, touch, resize, and load
+  useEffect(() => {
+    calculateHeights(); // Initial calculation
+    window.addEventListener("scroll", hideScrollIndicator);
+    window.addEventListener("touchmove", hideScrollIndicator);
+    window.addEventListener("resize", calculateHeights);
+    window.addEventListener("load", calculateHeights);
+
+    // Cleanup event listeners on component unmount
+    return () => {
+      window.removeEventListener("scroll", hideScrollIndicator);
+      window.removeEventListener("touchmove", hideScrollIndicator);
+      window.removeEventListener("resize", calculateHeights);
+      window.removeEventListener("load", calculateHeights);
+    };
+  }, [isSmallScreen]); // Re-run effect when isSmallScreen changes
+
+  return showIndicator;
 };

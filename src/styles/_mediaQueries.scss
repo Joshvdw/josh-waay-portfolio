@@ -98,8 +98,8 @@
   .work-wrapper__inner {
     padding: 0;
     justify-content: flex-start;
-    // margin-top: 30rem;
-    // height: unset;
+    min-width: auto;
+    width: 100%;
   }
   .progress-bar {
     top: 0;
@@ -161,27 +161,55 @@
     height: 100%;
     min-height: $laptop-min-height;
   }
+  .control-btn {
+    width: unset;
+  }
+  .skip-lottie {
+    width: 4rem;
+    height: 4rem;
+    svg {
+      width: 4rem;
+      height: 4rem;
+    }
+  }
+  .pause-lottie {
+    transform: scale(2);
+    transform-origin: center;
+    margin-bottom: 0;
+  }
+  .timeline-item {
+    width: 1.75rem;
+  }
+  .work-body__left p {
+    font-size: 0.75rem;
+  }
+  .mobile-laptop-mask__wrapper {
+    display: block;
+  }
 }
 
 // display scroll indicator of device height is less than min-heights required
 // $min-device-height doesn't work sadly, but should be the correct value
-@media (max-height: 860px) {
-  .scroll-indicator {
-    pointer-events: none;
-    position: fixed;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    padding-bottom: 2rem;
-    background: linear-gradient(
-      0deg,
-      rgba(28, 28, 27, 0.7511598389355743) 0%,
-      rgba(28, 28, 27, 0) 15%
-    );
-  }
-}
+// @media (max-height: 860px) and (max-width: 767px) {
+//   .scroll-indicator {
+//     pointer-events: none;
+//     position: fixed;
+//     height: 100vh;
+//     width: 100%;
+//     display: flex;
+//     align-items: flex-end;
+//     justify-content: center;
+//     padding-bottom: 2rem;
+//     background: linear-gradient(
+//       0deg,
+//       rgba(28, 28, 27, 0.7511598389355743) 0%,
+//       rgba(28, 28, 27, 0) 20%
+//     );
+//   }
+//   .swipe-down__lottie {
+//     width: 10rem;
+//   }
+// }
 
 @media (max-width: 600px) {
   .body-right__inner {
@@ -192,7 +220,7 @@
     font-size: 1rem;
   }
   .work-body__right {
-    align-items: center;
+    align-items: stretch;
   }
   .body-right__inner {
     width: 100%;
@@ -236,9 +264,42 @@
   .credit-role p {
     width: 6rem;
   }
+  .work-body__left {
+    padding: 0 1.5rem;
+    align-items: flex-start;
+  }
+  .work-link__wrapper {
+    display: none;
+  }
+  .work-header__inner h1 {
+    font-size: 8.2vw;
+  }
+  .mobile-link__wrapper {
+    margin: 2rem 0;
+    display: flex;
+    // flex-direction: column;
+    gap: 2rem;
+  }
+  .mobile-link__inner {
+    display: flex;
+    gap: 1rem;
+  }
+  .work-link__icon {
+    width: 12px;
+    height: 12px;
+  }
+  .github-link__icon {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+  }
 }
 
 @media (max-width: 480px) {
+  .work-header__inner h1 {
+    line-height: 120%;
+    font-size: 11vw;
+  }
   .work-info__wrapper {
     flex-direction: column;
     gap: 2rem;

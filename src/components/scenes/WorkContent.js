@@ -15,8 +15,12 @@ import {
   useIsSmallScreen,
   useClickPrevention,
   useDebouncedScrollClickSimulate,
+  useShowScrollIndicator,
 } from "@/hooks/utilityHooks";
 import { playSound } from "@/utils/sound";
+import { mobileSwitchSize } from "@/data/globalVariables";
+import SwipeDown from "../UI/lotties/SwipeDown";
+import BlackMobileOverlay from "../UI/BlackMobileOverlay";
 
 const WorkContent = ({
   pauseProjects,
@@ -30,7 +34,9 @@ const WorkContent = ({
   const intervalRef = useRef(null);
 
   const [moveH1, setMoveh1] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 700);
+  const [isMobile, setIsMobile] = useState(
+    window.innerWidth < mobileSwitchSize
+  );
   const [linkHovered, setLinkHovered] = useState(false);
   const [hasHoveredOut, setHasHoveredOut] = useState(true);
   const [githubHovered, setGithubHovered] = useState(false);
@@ -38,9 +44,10 @@ const WorkContent = ({
 
   const [isDisabled, handleClick] = useClickPrevention(750);
   const isSmallScreen = useIsSmallScreen();
+  const showIndicator = useShowScrollIndicator();
 
   const handleResize = () => {
-    setIsMobile(window.innerWidth < 700);
+    setIsMobile(window.innerWidth < mobileSwitchSize);
   };
 
   // Move header to mobilePosition and vice versa based on screen size
@@ -246,6 +253,7 @@ const WorkContent = ({
         </div>
         <div className="laptop-spacer hide"></div>
         <div className="work-body__wrapper">
+          <BlackMobileOverlay />
           <WorkControls
             pauseProjects={pauseProjects}
             resumeProjects={resumeProjects}
@@ -365,11 +373,25 @@ const WorkContent = ({
                   )}
                 </div>
               </div>
+              <div className="mobile-link__wrapper hide">
+                <div className="mobile-link__inner">
+                  <p>View Website</p>
+                  <LinkSVG />
+                </div>
+                <div className="mobile-link__inner">
+                  <p>View Github</p>
+                  <GithubSVG />
+                </div>
+              </div>
             </div>
           </animated.div>
         </div>
       </div>
-      <div className="scroll-indicator hide">{/* <div>SCROLL</div> */}</div>
+      {showIndicator && (
+        <div className="scroll-indicator">
+          <SwipeDown />
+        </div>
+      )}
     </div>
   );
 };
