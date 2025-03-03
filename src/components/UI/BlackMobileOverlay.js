@@ -1,8 +1,16 @@
 import { useState, useEffect, useRef } from "react";
 import { animated, useSpring } from "@react-spring/web";
+import { getMobileContentHeight } from "@/utils/utilityFunctions";
+import { useIsSmallScreen } from "@/hooks/utilityHooks";
 
 const BlackMobileOverlay = ({ laptopSpacerRef }) => {
   const [opacity, setOpacity] = useState(0);
+  const isSmallScreen = useIsSmallScreen();
+
+  useEffect(() => {
+    const combinedHeight = getMobileContentHeight();
+    // if (isSmallScreen) document.body.style.height = `${combinedHeight}px`;
+  }, []);
 
   useEffect(() => {
     const laptopSpacer = laptopSpacerRef.current;

@@ -97,8 +97,11 @@
   .hero {
     align-items: flex-end;
     padding: 0 1rem;
-    padding-bottom: 10dvh;
     justify-content: center;
+  }
+  .hero__wrapper {
+    position: fixed;
+    bottom: max(10vh, env(safe-area-inset-bottom));
   }
   .work-wrapper__outer {
     overflow-y: scroll;
