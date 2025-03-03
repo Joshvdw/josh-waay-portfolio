@@ -101,7 +101,7 @@
   }
   .hero__wrapper {
     position: fixed;
-    bottom: max(10vh, env(safe-area-inset-bottom));
+    bottom: max(2rem, env(safe-area-inset-bottom));
   }
   .work-wrapper__outer {
     overflow-y: scroll;
@@ -255,6 +255,8 @@
   }
   .work-body__right {
     align-items: stretch;
+    padding: 1.5rem;
+    padding-bottom: 5rem;
   }
   .body-right__inner {
     width: 100%;
@@ -263,9 +265,6 @@
   }
   .body-right__inner > :first-child {
     width: 100%;
-  }
-  .work-body__right {
-    padding: 1.5rem;
   }
   .work-underline {
     width: 100%;
@@ -326,6 +325,19 @@
     width: 16px;
     height: 16px;
     margin-top: 2px;
+  }
+  .side-menu__wrapper {
+    padding: 1rem;
+  }
+  .socials-wrapper {
+    top: 1rem;
+    right: 1rem;
+  }
+  .work-body__left {
+    margin-bottom: 0;
+  }
+  .controls-inner {
+    margin-bottom: 0.75rem;
   }
 }
 

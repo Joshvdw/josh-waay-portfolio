@@ -252,9 +252,12 @@ const WorkContent = ({
             />
           </div>
         </div>
+        <BlackMobileOverlay
+          laptopSpacerRef={laptopSpacerRef}
+          scrollContainerRef={mobilePositionRef}
+        />
         <div className="laptop-spacer hide" ref={laptopSpacerRef}></div>
         <div className="work-body__wrapper">
-          <BlackMobileOverlay laptopSpacerRef={laptopSpacerRef} />
           <WorkControls
             pauseProjects={pauseProjects}
             resumeProjects={resumeProjects}
