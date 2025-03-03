@@ -32,6 +32,7 @@ const WorkContent = ({
   const desktopPositionRef = useRef(null);
   const mobilePositionRef = useRef(null);
   const intervalRef = useRef(null);
+  const laptopSpacerRef = useRef(null);
 
   const [moveH1, setMoveh1] = useState(false);
   const [isMobile, setIsMobile] = useState(
@@ -118,26 +119,26 @@ const WorkContent = ({
 
   // show "visit website" every few seconds
   useEffect(() => {
-    if (!isSmallScreen) {
-      startInterval();
-    }
+    startInterval();
 
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isSmallScreen]);
+  }, []);
 
   const startInterval = () => {
-    intervalRef.current = setInterval(() => {
-      setLinkHovered(true);
-      if (hasHoveredOut) playSound("hoverSound2");
-      setTimeout(() => {
-        setLinkHovered(false);
-        playSound("hoverOutSound");
-      }, 1500);
-    }, 10000);
+    if (!isSmallScreen) {
+      intervalRef.current = setInterval(() => {
+        setLinkHovered(true);
+        if (hasHoveredOut) playSound("hoverSound2");
+        setTimeout(() => {
+          setLinkHovered(false);
+          playSound("hoverOutSound");
+        }, 1500);
+      }, 10000);
+    }
   };
 
   const handleMouseEnter = () => {
@@ -251,9 +252,9 @@ const WorkContent = ({
             />
           </div>
         </div>
-        <div className="laptop-spacer hide"></div>
+        <div className="laptop-spacer hide" ref={laptopSpacerRef}></div>
         <div className="work-body__wrapper">
-          <BlackMobileOverlay />
+          <BlackMobileOverlay laptopSpacerRef={laptopSpacerRef} />
           <WorkControls
             pauseProjects={pauseProjects}
             resumeProjects={resumeProjects}
@@ -374,14 +375,26 @@ const WorkContent = ({
                 </div>
               </div>
               <div className="mobile-link__wrapper hide">
-                <div className="mobile-link__inner">
+                <a
+                  className="mobile-link__inner"
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <p>View Website</p>
                   <LinkSVG />
-                </div>
-                <div className="mobile-link__inner">
-                  <p>View Github</p>
-                  <GithubSVG />
-                </div>
+                </a>
+                {project.github && (
+                  <a
+                    className="mobile-link__inner"
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <p>View Github</p>
+                    <GithubSVG />
+                  </a>
+                )}
               </div>
             </div>
           </animated.div>

@@ -1,3 +1,32 @@
+@media (min-width: 2921px) {
+  .work-link__icon {
+    width: 2rem;
+    height: 2rem;
+  }
+  .github-link__icon {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+// 2K Monitors
+@media (min-width: 1921px) {
+  .logo img {
+    width: 4rem;
+  }
+  .social-icon img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .control-btn {
+    width: 3rem;
+  }
+  .pause-lottie {
+    transform: scale(2);
+    transform-origin: center;
+    margin-bottom: 0;
+  }
+}
+
 @media (max-width: 1600px) {
   .hero {
     padding-left: $g1;
@@ -52,7 +81,9 @@
   .work-wrapper__outer {
     overflow-y: scroll;
   }
-  .work-header__wrapper,
+  .work-header__wrapper {
+    margin-bottom: 1rem;
+  }
   .work-description {
     margin-bottom: 2rem;
   }
@@ -165,11 +196,11 @@
     width: unset;
   }
   .skip-lottie {
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     svg {
-      width: 4rem;
-      height: 4rem;
+      width: 3rem;
+      height: 3rem;
     }
   }
   .pause-lottie {
@@ -329,5 +360,34 @@
     font-size: 1rem;
     max-width: 22rem;
     margin: 1.25rem 0;
+  }
+  .skip-lottie {
+    width: 2.5rem;
+    height: 2.5rem;
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+  .controls-inner {
+    gap: 3rem;
+  }
+  .timeline-item {
+    width: 1.25rem;
+  }
+  .work-body__left p {
+    font-size: 0.5rem;
+  }
+  .mobile-link__inner p {
+    font-size: 0.75rem;
+    text-decoration: underline;
+    text-underline-offset: 8px; /* Adds a 5px space above the underline */
+  }
+  .work-link__icon {
+    margin-top: 0.2rem !important;
+    width: 0.6rem !important;
+  }
+  .github-link__icon {
+    width: 0.75rem !important;
   }
 }

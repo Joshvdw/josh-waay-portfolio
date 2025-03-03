@@ -27,6 +27,19 @@ function playLottie(start, end, animation) {
   return animation.playSegments([start, end], true);
 }
 
+function getMobileContentHeight() {
+  const laptopSpacer = document.querySelector(".laptop-spacer");
+  const workBodyLeft = document.querySelector(".work-body__left");
+  const workBodyRight = document.querySelector(".work-body__right");
+
+  const combinedHeight =
+    (laptopSpacer ? laptopSpacer.offsetHeight : 0) +
+    (workBodyLeft ? workBodyLeft.offsetHeight : 0) +
+    (workBodyRight ? workBodyRight.offsetHeight : 0);
+
+  return combinedHeight;
+}
+
 function customLogStatement() {
   if (!hasVisited) {
     console.log(
@@ -45,4 +58,9 @@ function customLogStatement() {
   hasVisited = true;
 }
 
-export { isTouchDevice, playLottie, customLogStatement };
+export {
+  isTouchDevice,
+  playLottie,
+  getMobileContentHeight,
+  customLogStatement,
+};

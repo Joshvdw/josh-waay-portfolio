@@ -1,4 +1,5 @@
 import { mobileSwitchSize } from "@/data/globalVariables";
+import { getMobileContentHeight } from "@/utils/utilityFunctions";
 import { useState, useEffect, useCallback } from "react";
 
 export const useClickPrevention = (timeout = 1000) => {
@@ -129,15 +130,7 @@ export const useShowScrollIndicator = () => {
 
   // Function to calculate the combined height of the elements
   const calculateHeights = () => {
-    const laptopSpacer = document.querySelector(".laptop-spacer");
-    const workBodyLeft = document.querySelector(".work-body__left");
-    const workBodyRight = document.querySelector(".work-body__right");
-
-    const combinedHeight =
-      (laptopSpacer ? laptopSpacer.offsetHeight : 0) +
-      (workBodyLeft ? workBodyLeft.offsetHeight : 0) +
-      (workBodyRight ? workBodyRight.offsetHeight : 0);
-
+    const combinedHeight = getMobileContentHeight();
     const viewportHeight = window.innerHeight;
     setShowIndicator(combinedHeight > viewportHeight && isSmallScreen); // Add isSmallScreen check
   };

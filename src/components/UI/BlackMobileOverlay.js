@@ -1,51 +1,60 @@
-import { useState, useEffect } from "react";
-import { useSpring, animated } from "@react-spring/web";
+import { useState, useEffect, useRef } from "react";
+import { animated, useSpring } from "@react-spring/web";
 
-const BlackMobileOverlay = () => {
-  const [scrollProgress, setScrollProgress] = useState(0);
+const BlackMobileOverlay = ({ laptopSpacerRef }) => {
+  const [opacity, setOpacity] = useState(0);
 
-  // Smooth transition using react-spring
-  const styles = useSpring({
-    opacity: scrollProgress,
+  useEffect(() => {
+    const laptopSpacer = laptopSpacerRef.current;
+
+    if (!laptopSpacer) return;
+
+    const handleScroll = () => {
+      console.log("handle scroll triggered");
+
+      const rect = laptopSpacer.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      // Calculate the visible height of the laptopSpacer element
+      const visibleHeight =
+        Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+
+      // Calculate the opacity based on the visible height
+      const newOpacity = 1 - visibleHeight / rect.height;
+      console.log(rect, viewportHeight, visibleHeight, newOpacity);
+      setOpacity(newOpacity);
+    };
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll);
+
+    // Initial calculation
+    handleScroll();
+
+    // Cleanup
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Use react-spring to animate the opacity
+  const springs = useSpring({
+    opacity,
     config: { tension: 200, friction: 30 },
   });
 
-  useEffect(() => {
-    const updateOpacity = () => {
-      // Get scroll position
-      const scrollTop = window.scrollY;
-      const scrollHeight = document.documentElement.scrollHeight;
-      const clientHeight = window.innerHeight;
-
-      // Log scroll values for debugging
-      console.log("ScrollTop:", scrollTop);
-      console.log("ScrollHeight:", scrollHeight);
-      console.log("ClientHeight:", clientHeight);
-
-      // Prevent division by zero
-      const progress =
-        scrollHeight > clientHeight
-          ? scrollTop / (scrollHeight - clientHeight)
-          : 0;
-
-      setScrollProgress(progress);
-
-      // Log the scroll progress after calculation
-      console.log("Scroll Progress:", progress);
-    };
-
-    // Initial update
-    updateOpacity();
-
-    // Add event listener to track scroll
-    window.addEventListener("scroll", updateOpacity, { passive: true });
-
-    // Cleanup on component unmount
-    return () => window.removeEventListener("scroll", updateOpacity);
-  }, []);
-
   return (
-    <animated.div style={styles} className="mobile-laptop-mask__wrapper" />
+    <>
+      <animated.div
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          backgroundColor: "black",
+          pointerEvents: "none", // Allows clicks through the overlay
+          zIndex: 9999, // Ensure it's on top
+          ...springs, // Apply animated opacity
+        }}
+      />
+    </>
   );
 };
 
