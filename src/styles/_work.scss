@@ -343,7 +343,7 @@
 .scroll-indicator {
   pointer-events: none;
   position: fixed;
-  height: 100vh;
+  height: 100svh;
   width: 100%;
   display: flex;
   align-items: flex-end;
@@ -357,7 +357,7 @@
 }
 .swipe-down__lottie {
   width: 10rem;
-  margin-bottom: -1rem;
+  // margin-bottom: -1rem;
 }
 .mobile-laptop-mask__wrapper {
   position: absolute;

@@ -101,7 +101,7 @@
   }
   .hero__wrapper {
     position: fixed;
-    bottom: max(2rem, env(safe-area-inset-bottom));
+    bottom: max(1rem, env(safe-area-inset-bottom));
   }
   .work-wrapper__outer {
     overflow-y: scroll;
@@ -256,7 +256,7 @@
   .work-body__right {
     align-items: stretch;
     padding: 1.5rem;
-    padding-bottom: 5rem;
+    padding-bottom: 7rem;
   }
   .body-right__inner {
     width: 100%;
@@ -344,7 +344,7 @@
 @media (max-width: 480px) {
   .work-header__inner h1 {
     line-height: 120%;
-    font-size: 11vw;
+    font-size: 7.8vw;
   }
   .work-info__wrapper {
     flex-direction: column;
