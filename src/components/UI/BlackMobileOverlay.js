@@ -5,72 +5,123 @@ import { useIsSmallScreen } from "@/hooks/utilityHooks";
 
 const BlackMobileOverlay = ({ laptopSpacerRef, scrollContainerRef }) => {
   const [opacity, setOpacity] = useState(0);
+  const [height, setHeight] = useState(0);
   const isSmallScreen = useIsSmallScreen();
-  const combinedHeight = getMobileContentHeight();
 
+  // Update height when content changes
   useEffect(() => {
-    if (isSmallScreen) document.body.style.height = `${combinedHeight}px`;
-  }, []);
+    if (!isSmallScreen) return;
+
+    const updateHeight = () => {
+      const newHeight = getMobileContentHeight();
+      setHeight(newHeight);
+      document.body.style.height = `${newHeight}px`;
+    };
+
+    // Initial calculation
+    updateHeight();
+
+    // Create a MutationObserver to watch for content changes
+    const observer = new MutationObserver(updateHeight);
+
+    // Observe the work body elements for changes
+    const workBodyLeft = document.querySelector(".work-body__left");
+    const workBodyRight = document.querySelector(".work-body__right");
+
+    if (workBodyLeft) {
+      observer.observe(workBodyLeft, {
+        childList: true,
+        subtree: true,
+        characterData: true,
+      });
+    }
+
+    if (workBodyRight) {
+      observer.observe(workBodyRight, {
+        childList: true,
+        subtree: true,
+        characterData: true,
+      });
+    }
+
+    // Cleanup
+    return () => observer.disconnect();
+  }, [isSmallScreen]);
 
   useEffect(() => {
     const laptopSpacer = laptopSpacerRef.current;
     const scrollContainer = scrollContainerRef?.current;
 
-    console.log("Laptop Spacer Element:", laptopSpacer); // Debugging log
-    console.log("Scroll Container:", scrollContainer); // Debugging log
-
     if (!laptopSpacer || !scrollContainer) return;
 
-    // Touch event handler for touch-based scrolling
-    const handleTouchMove = (e) => {
-      console.log("handle touch move triggered");
-
+    const calculateOpacity = () => {
       const rect = laptopSpacer.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      // Calculate the visible height of the laptopSpacer element
-      const visibleHeight =
-        Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+      // Calculate how much of the element is visible
+      const elementTop = rect.top;
+      const elementBottom = rect.bottom;
 
-      // Calculate the opacity based on the visible height
-      const newOpacity = 1 - visibleHeight / rect.height;
-      console.log("Rect:", rect);
-      console.log("Viewport Height:", viewportHeight);
-      console.log("Visible Height:", visibleHeight);
-      console.log("New Opacity:", newOpacity);
-      setOpacity(newOpacity);
+      // If the element is completely above the viewport
+      if (elementBottom <= 0) {
+        setOpacity(1);
+        return;
+      }
+
+      // If the element is completely below the viewport
+      if (elementTop >= viewportHeight) {
+        setOpacity(0);
+        return;
+      }
+
+      // Calculate the visible height
+      const visibleHeight =
+        Math.min(elementBottom, viewportHeight) - Math.max(elementTop, 0);
+
+      // Calculate opacity based on how much of the element is visible
+      // Multiply by 1.25 to reach black 25% sooner
+      const newOpacity = (1 - visibleHeight / rect.height) * 1.25;
+
+      // Ensure opacity stays between 0 and 1
+      setOpacity(Math.max(0, Math.min(1, newOpacity)));
     };
 
-    // Add touch event listener to the scrollable container
-    scrollContainer.addEventListener("touchmove", handleTouchMove);
+    // Handle both touch and scroll events
+    const handleScroll = () => {
+      requestAnimationFrame(calculateOpacity);
+    };
+
+    // Add event listeners
+    scrollContainer.addEventListener("scroll", handleScroll);
+    scrollContainer.addEventListener("touchmove", handleScroll);
 
     // Initial calculation
-    handleTouchMove();
+    calculateOpacity();
 
     // Cleanup
-    return () =>
-      scrollContainer.removeEventListener("touchmove", handleTouchMove);
+    return () => {
+      scrollContainer.removeEventListener("scroll", handleScroll);
+      scrollContainer.removeEventListener("touchmove", handleScroll);
+    };
   }, [laptopSpacerRef, scrollContainerRef]);
 
-  // Use react-spring to animate the opacity
+  // Use react-spring to animate the opacity with smoother transitions
   const springs = useSpring({
     opacity,
-    config: { tension: 200, friction: 30 },
+    config: { tension: 120, friction: 20 },
   });
 
   return (
-    <>
-      <animated.div
-        style={{
-          position: "absolute",
-          width: "100%",
-          height: `${combinedHeight}px`,
-          backgroundColor: "#111111",
-          pointerEvents: "none", // Allows clicks through the overlay
-          ...springs, // Apply animated opacity
-        }}
-      />
-    </>
+    <animated.div
+      style={{
+        position: "absolute",
+        width: "100%",
+        height: `${height}px`,
+        backgroundColor: "#111111",
+        pointerEvents: "none",
+        ...springs,
+      }}
+    />
   );
 };
 

@@ -33,10 +33,15 @@ function getMobileContentHeight() {
   const workBodyLeft = document.querySelector(".work-body__left");
   const workBodyRight = document.querySelector(".work-body__right");
 
+  if (!laptopSpacer || !workBodyLeft || !workBodyRight) {
+    return 0;
+  }
+
+  // Force a reflow to get updated heights
   const combinedHeight =
-    (laptopSpacer ? laptopSpacer.offsetHeight : 0) +
-    (workBodyLeft ? workBodyLeft.offsetHeight : 0) +
-    (workBodyRight ? workBodyRight.offsetHeight : 0);
+    laptopSpacer.offsetHeight +
+    workBodyLeft.offsetHeight +
+    workBodyRight.offsetHeight;
 
   return combinedHeight;
 }
@@ -49,34 +54,19 @@ function isIOSDevice() {
 }
 
 async function enableGyro() {
-  console.log("enableGyro called");
-
   // Only iOS devices need explicit permission
   if (!isIOSDevice()) {
-    console.log("Not an iOS device - no permission needed");
     return;
   }
-
-  // iOS 13+ requires explicit permission
   if (
     typeof DeviceMotionEvent !== "undefined" &&
     typeof DeviceMotionEvent.requestPermission === "function"
   ) {
     try {
-      console.log("Requesting gyro permission...");
-      const permission = await DeviceMotionEvent.requestPermission();
-      console.log("Permission result:", permission);
-
-      if (permission === "granted") {
-        console.log("Gyro Permission Granted");
-      } else {
-        console.log("Gyro Permission Denied");
-      }
+      await DeviceMotionEvent.requestPermission();
     } catch (error) {
       console.error("Error requesting gyro permission:", error);
     }
-  } else {
-    console.log("iOS device but no permission request needed (pre-iOS 13)");
   }
 }
 
