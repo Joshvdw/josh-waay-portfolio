@@ -7,16 +7,17 @@ import { useFadeIn, useSlideIn } from "@/hooks/useSpring";
 import { heroText } from "@/data/personalData";
 import { isMuted, muteToggle, playSound, restartSound } from "@/utils/sound";
 import { useDebouncedScrollClickSimulate } from "@/hooks/utilityHooks";
+import { enableGyro } from "@/utils/utilityFunctions";
 
 const Hero = () => {
   const { sceneState, updateScene } = useContext(SceneContext);
   const { msgUnity, preventSpam, isDisabled } = useContext(UnityContext);
 
-  const handleStartClick = () => {
+  const handleStartClick = async () => {
     //spam prevention
     if (isDisabled) return;
     preventSpam();
-
+    await enableGyro();
     updateScene("work");
     msgUnity("StartExperience");
     if (isMuted() === true) {

@@ -1,4 +1,5 @@
 let hasVisited = false;
+let gyroEnabled = false;
 
 function isTouchDevice() {
   if (typeof navigator !== "undefined") {
@@ -40,6 +41,32 @@ function getMobileContentHeight() {
   return combinedHeight;
 }
 
+async function enableGyro() {
+  console.log("enableGyro called");
+
+  // iOS 13+ requires explicit permission
+  if (
+    typeof DeviceMotionEvent !== "undefined" &&
+    typeof DeviceMotionEvent.requestPermission === "function"
+  ) {
+    try {
+      console.log("Requesting gyro permission...");
+      const permission = await DeviceMotionEvent.requestPermission();
+      console.log("Permission result:", permission);
+
+      if (permission === "granted") {
+        console.log("Gyro Permission Granted");
+      } else {
+        console.log("Gyro Permission Denied");
+      }
+    } catch (error) {
+      console.error("Error requesting gyro permission:", error);
+    }
+  } else {
+    console.log("No permission request needed for this device");
+  }
+}
+
 function customLogStatement() {
   if (!hasVisited) {
     console.log(
@@ -63,4 +90,5 @@ export {
   playLottie,
   getMobileContentHeight,
   customLogStatement,
+  enableGyro,
 };
