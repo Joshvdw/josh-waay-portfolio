@@ -17,7 +17,8 @@
 }
 
 .preloader_lottie {
-  width: 65%;
+  // width: 65%;
+  max-width: 10rem;
   margin-bottom: 0.625rem;
   position: relative;
   z-index: 2;
@@ -38,4 +39,19 @@
   position: absolute;
   filter: blur(200px);
   opacity: 0.5;
+}
+
+.mobile-notice__wrapper {
+  position: relative;
+  width: 100vw;
+  @include flex_centre;
+  margin-top: 4rem;
+}
+
+.mobile-notice {
+  max-width: 10rem;
+  opacity: 0.8;
+  text-align: center;
+  font-size: 0.75rem;
+  position: absolute;
 }

@@ -8,9 +8,12 @@ import Logo from "./UI/svgs/LogoSVG";
 import { useEffect, useState, useRef } from "react";
 import { animated } from "@react-spring/web";
 import lottie from "lottie-web";
+import { useIsSmallScreen } from "@/hooks/utilityHooks";
 
 const Preloader = ({ isLoading }) => {
   const [animationLoaded, setAnimationLoaded] = useState(false);
+
+  const isSmallScreen = useIsSmallScreen();
 
   const container = useRef(null);
   const animation = useRef(null);
@@ -46,6 +49,13 @@ const Preloader = ({ isLoading }) => {
           className="lottie-container preloader_lottie"
         ></div>
         {animationLoaded && <Logo isPreloader={true} />}
+        {isSmallScreen && (
+          <div className="mobile-notice__wrapper">
+            <p className="mobile-notice">
+              This website is best viewed on a larger screen
+            </p>
+          </div>
+        )}
         {/* <animated.div style={growOut} className="preloader-gradient__wrapper">
           <animated.div style={growIn} className="preloader-gradient" />
         </animated.div> */}
