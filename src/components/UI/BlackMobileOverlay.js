@@ -86,22 +86,38 @@ const BlackMobileOverlay = ({ laptopSpacerRef, scrollContainerRef }) => {
       setOpacity(Math.max(0, Math.min(1, newOpacity)));
     };
 
-    // Handle both touch and scroll events
+    // Handle all touch events
+    const handleTouchStart = () => {
+      requestAnimationFrame(calculateOpacity);
+    };
+
+    const handleTouchMove = () => {
+      requestAnimationFrame(calculateOpacity);
+    };
+
+    const handleTouchEnd = () => {
+      requestAnimationFrame(calculateOpacity);
+    };
+
     const handleScroll = () => {
       requestAnimationFrame(calculateOpacity);
     };
 
     // Add event listeners
+    scrollContainer.addEventListener("touchstart", handleTouchStart);
+    scrollContainer.addEventListener("touchmove", handleTouchMove);
+    scrollContainer.addEventListener("touchend", handleTouchEnd);
     scrollContainer.addEventListener("scroll", handleScroll);
-    scrollContainer.addEventListener("touchmove", handleScroll);
 
     // Initial calculation
     calculateOpacity();
 
     // Cleanup
     return () => {
+      scrollContainer.removeEventListener("touchstart", handleTouchStart);
+      scrollContainer.removeEventListener("touchmove", handleTouchMove);
+      scrollContainer.removeEventListener("touchend", handleTouchEnd);
       scrollContainer.removeEventListener("scroll", handleScroll);
-      scrollContainer.removeEventListener("touchmove", handleScroll);
     };
   }, [laptopSpacerRef, scrollContainerRef]);
 
