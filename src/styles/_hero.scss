@@ -1,6 +1,7 @@
 .hero {
   padding-left: $g2 * 0.75;
   @include fullscreen_wrapper;
+  height: 100svh;
   display: flex;
   align-items: center;
 }
