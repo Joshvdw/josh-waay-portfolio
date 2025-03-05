@@ -6,10 +6,14 @@ import { useContext } from "react";
 import { useFadeIn, useSlideIn } from "@/hooks/useSpring";
 import { heroText } from "@/data/personalData";
 import { isMuted, muteToggle, playSound, restartSound } from "@/utils/sound";
-import { useDebouncedScrollClickSimulate } from "@/hooks/utilityHooks";
-import { enableGyro } from "@/utils/utilityFunctions";
+import {
+  useDebouncedScrollClickSimulate,
+  useIsSmallScreen,
+} from "@/hooks/utilityHooks";
+import { enableGyro, isTouchDevice } from "@/utils/utilityFunctions";
 
 const Hero = () => {
+  const runGyroCheck = useIsSmallScreen() && isTouchDevice();
   const { sceneState, updateScene } = useContext(SceneContext);
   const { msgUnity, preventSpam, isDisabled } = useContext(UnityContext);
 
@@ -17,7 +21,7 @@ const Hero = () => {
     //spam prevention
     if (isDisabled) return;
     preventSpam();
-    await enableGyro();
+    if (runGyroCheck) await enableGyro(); // enable gyro on ios
     updateScene("work");
     msgUnity("StartExperience");
     if (isMuted() === true) {

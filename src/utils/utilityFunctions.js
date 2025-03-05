@@ -41,8 +41,21 @@ function getMobileContentHeight() {
   return combinedHeight;
 }
 
+function isIOSDevice() {
+  if (typeof navigator !== "undefined") {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  }
+  return false;
+}
+
 async function enableGyro() {
   console.log("enableGyro called");
+
+  // Only iOS devices need explicit permission
+  if (!isIOSDevice()) {
+    console.log("Not an iOS device - no permission needed");
+    return;
+  }
 
   // iOS 13+ requires explicit permission
   if (
@@ -63,7 +76,7 @@ async function enableGyro() {
       console.error("Error requesting gyro permission:", error);
     }
   } else {
-    console.log("No permission request needed for this device");
+    console.log("iOS device but no permission request needed (pre-iOS 13)");
   }
 }
 
