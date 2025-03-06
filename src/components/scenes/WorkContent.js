@@ -252,10 +252,12 @@ const WorkContent = ({
             />
           </div>
         </div>
-        <BlackMobileOverlay
-          laptopSpacerRef={laptopSpacerRef}
-          scrollContainerRef={mobilePositionRef}
-        />
+        {isSmallScreen && (
+          <BlackMobileOverlay
+            laptopSpacerRef={laptopSpacerRef}
+            scrollContainerRef={mobilePositionRef}
+          />
+        )}
         <div className="laptop-spacer hide" ref={laptopSpacerRef}></div>
         <div className="work-body__wrapper">
           <WorkControls

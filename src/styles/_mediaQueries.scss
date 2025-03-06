@@ -315,7 +315,7 @@
   }
   .mobile-link__inner {
     display: flex;
-    gap: 1rem;
+    gap: 0.625rem;
   }
   .work-link__icon {
     width: 12px;
@@ -324,7 +324,7 @@
   .github-link__icon {
     width: 16px;
     height: 16px;
-    margin-top: 2px;
+    margin-top: 0;
   }
   .side-menu__wrapper {
     padding: 1rem;
@@ -351,7 +351,7 @@
 @media (max-width: 480px) {
   .work-header__inner h1 {
     line-height: 120%;
-    font-size: 7.7vw;
+    font-size: 7.5vw;
   }
   .work-info__wrapper {
     flex-direction: column;
@@ -359,7 +359,7 @@
   }
   .work-tools__item p {
     font-size: 0.875rem;
-    text-transform: uppercase;
+    // text-transform: uppercase;
   }
   .work-overview__wrapper {
     margin-bottom: 0;
@@ -367,8 +367,13 @@
   .work-credits__inner {
     gap: 2rem;
   }
+  .work-overview__wrapper > :first-child,
+  .client-item,
   .credit-role {
-    width: 7rem;
+    width: 105px;
+  }
+  .work-overview__wrapper > :last-child {
+    margin-left: 2rem;
   }
   h1 {
     font-size: 14.5vw;
@@ -403,14 +408,23 @@
   }
   .mobile-link__inner p {
     font-size: 0.75rem;
-    text-decoration: underline;
-    text-underline-offset: 8px; /* Adds a 5px space above the underline */
+    text-transform: uppercase;
+    // text-decoration: underline;
+    // text-underline-offset: 8px; /* Adds a 5px space above the underline */
   }
   .work-link__icon {
-    margin-top: 0.2rem !important;
+    margin-top: 0.1rem !important;
     width: 0.6rem !important;
   }
   .github-link__icon {
     width: 0.75rem !important;
+  }
+  .work-overview__wrapper,
+  .mobile-link__wrapper,
+  .work-credits__inner {
+    gap: 1rem;
+  }
+  .mobile-link__inner {
+    width: 105px;
   }
 }

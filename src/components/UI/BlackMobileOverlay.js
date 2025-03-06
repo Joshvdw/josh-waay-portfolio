@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { animated, useSpring } from "@react-spring/web";
 import { getMobileContentHeight } from "@/utils/utilityFunctions";
 import { useIsSmallScreen } from "@/hooks/utilityHooks";
@@ -8,21 +8,30 @@ const BlackMobileOverlay = ({ laptopSpacerRef, scrollContainerRef }) => {
   const [height, setHeight] = useState(0);
   const isSmallScreen = useIsSmallScreen();
 
+  // Debounced height update function
+  const updateHeight = useCallback(() => {
+    let timeoutId;
+    return () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        const newHeight = getMobileContentHeight();
+        setHeight(newHeight);
+        document.body.style.height = `${newHeight}px`;
+      }, 150); // 150ms debounce
+    };
+  }, []);
+
   // Update height when content changes
   useEffect(() => {
     if (!isSmallScreen) return;
 
-    const updateHeight = () => {
-      const newHeight = getMobileContentHeight();
-      setHeight(newHeight);
-      document.body.style.height = `${newHeight}px`;
-    };
+    const debouncedUpdate = updateHeight();
 
     // Initial calculation
-    updateHeight();
+    debouncedUpdate();
 
     // Create a MutationObserver to watch for content changes
-    const observer = new MutationObserver(updateHeight);
+    const observer = new MutationObserver(debouncedUpdate);
 
     // Observe the work body elements for changes
     const workBodyLeft = document.querySelector(".work-body__left");
@@ -30,101 +39,56 @@ const BlackMobileOverlay = ({ laptopSpacerRef, scrollContainerRef }) => {
 
     if (workBodyLeft) {
       observer.observe(workBodyLeft, {
-        childList: true,
-        subtree: true,
-        characterData: true,
+        childList: true, // Only observe direct children changes
+        attributes: true, // Observe attribute changes that might affect layout
+        attributeFilter: ["style", "class"], // Only specific attributes
       });
     }
 
     if (workBodyRight) {
       observer.observe(workBodyRight, {
         childList: true,
-        subtree: true,
-        characterData: true,
+        attributes: true,
+        attributeFilter: ["style", "class"],
       });
     }
 
     // Cleanup
-    return () => observer.disconnect();
-  }, [isSmallScreen]);
-
-  useEffect(() => {
-    const laptopSpacer = laptopSpacerRef.current;
-    const scrollContainer = scrollContainerRef?.current;
-
-    if (!laptopSpacer || !scrollContainer) return;
-
-    const calculateOpacity = () => {
-      const rect = laptopSpacer.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-
-      // Calculate how much of the element is visible
-      const elementTop = rect.top;
-      const elementBottom = rect.bottom;
-
-      // If the element is completely above the viewport
-      if (elementBottom <= 0) {
-        setOpacity(1);
-        return;
-      }
-
-      // If the element is completely below the viewport
-      if (elementTop >= viewportHeight) {
-        setOpacity(0);
-        return;
-      }
-
-      // Calculate the visible height
-      const visibleHeight =
-        Math.min(elementBottom, viewportHeight) - Math.max(elementTop, 0);
-
-      // Calculate opacity based on how much of the element is visible
-      // Multiply by 1.25 to reach black 25% sooner
-      const newOpacity = (1 - visibleHeight / rect.height) * 1.25;
-
-      // Ensure opacity stays between 0 and 1
-      setOpacity(Math.max(0, Math.min(1, newOpacity)));
-    };
-
-    // Handle all touch events
-    const handleTouchStart = () => {
-      requestAnimationFrame(calculateOpacity);
-    };
-
-    const handleTouchMove = () => {
-      requestAnimationFrame(calculateOpacity);
-    };
-
-    const handleTouchEnd = () => {
-      requestAnimationFrame(calculateOpacity);
-    };
-
-    const handleScroll = () => {
-      requestAnimationFrame(calculateOpacity);
-    };
-
-    // Add event listeners
-    scrollContainer.addEventListener("touchstart", handleTouchStart);
-    scrollContainer.addEventListener("touchmove", handleTouchMove);
-    scrollContainer.addEventListener("touchend", handleTouchEnd);
-    scrollContainer.addEventListener("scroll", handleScroll);
-
-    // Initial calculation
-    calculateOpacity();
-
-    // Cleanup
     return () => {
-      scrollContainer.removeEventListener("touchstart", handleTouchStart);
-      scrollContainer.removeEventListener("touchmove", handleTouchMove);
-      scrollContainer.removeEventListener("touchend", handleTouchEnd);
-      scrollContainer.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+      clearTimeout(debouncedUpdate.timeoutId);
     };
-  }, [laptopSpacerRef, scrollContainerRef]);
+  }, [isSmallScreen, updateHeight]);
+
+  // Use Intersection Observer to track element visibility
+  useEffect(() => {
+    if (!isSmallScreen || !laptopSpacerRef.current) return;
+
+    // Create intersection observer
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        // When laptop-spacer is fully visible, opacity is 0
+        // When it's 50% out of view, opacity reaches 1
+        // Double the inverse ratio and clamp between 0 and 1
+        const opacity = Math.min(1, (1 - entry.intersectionRatio) * 2);
+        setOpacity(opacity);
+      },
+      {
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1], // Reduced threshold points for better performance
+        rootMargin: "0px",
+      }
+    );
+
+    observer.observe(laptopSpacerRef.current);
+
+    return () => observer.disconnect();
+  }, [isSmallScreen, laptopSpacerRef]);
 
   // Use react-spring to animate the opacity with smoother transitions
   const springs = useSpring({
     opacity,
-    config: { tension: 120, friction: 20 },
+    config: { tension: 180, friction: 24 }, // Adjusted for snappier transitions
   });
 
   return (
