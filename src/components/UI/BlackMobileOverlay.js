@@ -8,6 +8,13 @@ const BlackMobileOverlay = ({ laptopSpacerRef, scrollContainerRef }) => {
   const [height, setHeight] = useState(0);
   const isSmallScreen = useIsSmallScreen();
 
+  // Cleanup function to reset body height
+  useEffect(() => {
+    return () => {
+      document.body.style.height = "";
+    };
+  }, []);
+
   // Debounced height update function
   const updateHeight = useCallback(() => {
     let timeoutId;
@@ -16,19 +23,24 @@ const BlackMobileOverlay = ({ laptopSpacerRef, scrollContainerRef }) => {
       timeoutId = setTimeout(() => {
         const newHeight = getMobileContentHeight();
         setHeight(newHeight);
-        document.body.style.height = `${newHeight}px`;
+
+        // Set body height on small screens
+        if (isSmallScreen) {
+          document.body.style.height = `${newHeight}px`;
+        }
       }, 150); // 150ms debounce
     };
-  }, []);
+  }, [isSmallScreen]);
 
   // Update height when content changes
   useEffect(() => {
-    if (!isSmallScreen) return;
+    if (!isSmallScreen) {
+      document.body.style.height = "";
+      return;
+    }
 
     const debouncedUpdate = updateHeight();
-
-    // Initial calculation
-    debouncedUpdate();
+    debouncedUpdate(); // Initial calculation
 
     // Create a MutationObserver to watch for content changes
     const observer = new MutationObserver(debouncedUpdate);
@@ -39,9 +51,9 @@ const BlackMobileOverlay = ({ laptopSpacerRef, scrollContainerRef }) => {
 
     if (workBodyLeft) {
       observer.observe(workBodyLeft, {
-        childList: true, // Only observe direct children changes
-        attributes: true, // Observe attribute changes that might affect layout
-        attributeFilter: ["style", "class"], // Only specific attributes
+        childList: true,
+        attributes: true,
+        attributeFilter: ["style", "class"],
       });
     }
 
@@ -53,10 +65,12 @@ const BlackMobileOverlay = ({ laptopSpacerRef, scrollContainerRef }) => {
       });
     }
 
-    // Cleanup
     return () => {
       observer.disconnect();
-      clearTimeout(debouncedUpdate.timeoutId);
+      if (debouncedUpdate.timeoutId) {
+        clearTimeout(debouncedUpdate.timeoutId);
+      }
+      document.body.style.height = "";
     };
   }, [isSmallScreen, updateHeight]);
 

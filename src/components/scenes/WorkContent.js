@@ -6,7 +6,7 @@ import {
   useOpacityShift,
   useWorkTextTransition,
 } from "@/hooks/useSpring";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, lazy, Suspense } from "react";
 import { animated } from "@react-spring/web";
 import WorkControls from "../UI/WorkControls";
 import LinkSVG from "../UI/svgs/LinkSVG";
@@ -20,7 +20,9 @@ import {
 import { playSound } from "@/utils/sound";
 import { mobileSwitchSize } from "@/data/globalVariables";
 import SwipeDown from "../UI/lotties/SwipeDown";
-import BlackMobileOverlay from "../UI/BlackMobileOverlay";
+
+// Lazy load BlackMobileOverlay
+const BlackMobileOverlay = lazy(() => import("../UI/BlackMobileOverlay"));
 
 const WorkContent = ({
   pauseProjects,
@@ -255,10 +257,12 @@ const WorkContent = ({
           </div>
         </div>
         {isSmallScreen && (
-          <BlackMobileOverlay
-            laptopSpacerRef={laptopSpacerRef}
-            scrollContainerRef={mobilePositionRef}
-          />
+          <Suspense fallback={null}>
+            <BlackMobileOverlay
+              laptopSpacerRef={laptopSpacerRef}
+              scrollContainerRef={mobilePositionRef}
+            />
+          </Suspense>
         )}
         <div className="laptop-spacer hide" ref={laptopSpacerRef}></div>
         <div className="work-body__wrapper">
