@@ -45,7 +45,7 @@ const WorkContent = ({
 
   const [isDisabled, handleClick] = useClickPrevention(750);
   const isSmallScreen = useIsSmallScreen();
-  const showIndicator = useShowScrollIndicator();
+  const { showIndicator, shouldRender } = useShowScrollIndicator();
 
   const handleResize = () => {
     setIsMobile(window.innerWidth < mobileSwitchSize);
@@ -170,6 +170,8 @@ const WorkContent = ({
       handleClick(() => handleNavigation("Previous"));
     }
   });
+
+  const fadeOut = useOpacityShift(!showIndicator, "gentle", 1, 0);
 
   return (
     <div
@@ -405,10 +407,10 @@ const WorkContent = ({
           </animated.div>
         </div>
       </div>
-      {showIndicator && (
-        <div className="scroll-indicator">
+      {shouldRender && (
+        <animated.div className="scroll-indicator" style={fadeOut}>
           <SwipeDown />
-        </div>
+        </animated.div>
       )}
     </div>
   );

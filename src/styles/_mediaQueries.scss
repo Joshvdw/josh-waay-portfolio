@@ -370,11 +370,11 @@
   .work-overview__wrapper > :first-child,
   .client-item,
   .credit-role {
-    width: 105px;
+    width: 100px;
   }
-  .work-overview__wrapper > :last-child {
-    margin-left: 2rem;
-  }
+  // .work-overview__wrapper > :last-child {
+  //   margin-left: 2rem;
+  // }
   h1 {
     font-size: 14.5vw;
   }
@@ -425,6 +425,6 @@
     gap: 1rem;
   }
   .mobile-link__inner {
-    width: 105px;
+    width: 100px;
   }
 }

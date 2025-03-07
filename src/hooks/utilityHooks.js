@@ -126,18 +126,24 @@ export const useAdjustDivHeight = (isIOS, ref) => {
 
 export const useShowScrollIndicator = () => {
   const [showIndicator, setShowIndicator] = useState(false);
-  const isSmallScreen = useIsSmallScreen(); // Use the useIsSmallScreen hook
+  const [shouldRender, setShouldRender] = useState(false);
+  const isSmallScreen = useIsSmallScreen();
 
   // Function to calculate the combined height of the elements
   const calculateHeights = () => {
     const combinedHeight = getMobileContentHeight();
     const viewportHeight = window.innerHeight;
-    setShowIndicator(combinedHeight > viewportHeight && isSmallScreen); // Add isSmallScreen check
+    const shouldShow = combinedHeight > viewportHeight && isSmallScreen;
+    setShowIndicator(shouldShow);
+    setShouldRender(shouldShow);
   };
 
-  // Function to hide the scroll indicator on scroll or swipe
+  // Function to hide the scroll indicator on scroll or swipe with animation
   const hideScrollIndicator = () => {
-    setShowIndicator(false); // Hide the indicator if the user has scrolled
+    setShowIndicator(false); // Trigger fade out animation
+    setTimeout(() => {
+      setShouldRender(false); // Actually remove from DOM after animation
+    }, 500); // Match this with your animation duration
   };
 
   // Add event listeners for scroll, touch, resize, and load
@@ -157,5 +163,5 @@ export const useShowScrollIndicator = () => {
     };
   }, [isSmallScreen]); // Re-run effect when isSmallScreen changes
 
-  return showIndicator;
+  return { showIndicator, shouldRender };
 };

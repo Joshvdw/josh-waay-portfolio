@@ -20,18 +20,7 @@ const SwipeDown = ({}) => {
     };
   }, []);
 
-  // useImperativeHandle(ref, () => ({
-  //   play: () => {
-  //     if (animation.current) {
-  //       animation.current.setSpeed(1.5);
-  //       animation.current.goToAndPlay(0, true);
-  //     }
-  //   },
-  // }));
-
   return <div className="swipe-down__lottie" ref={container}></div>;
 };
-
-// HeroStar.displayName = "HeroStar";
 
 export default SwipeDown;
