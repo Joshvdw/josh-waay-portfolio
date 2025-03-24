@@ -31,6 +31,9 @@
   .hero {
     padding-left: $g1;
   }
+  .work-body__left {
+    padding-bottom: 3rem;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -39,6 +42,12 @@
   }
   .work-body__left {
     width: 50%;
+  }
+  .work-wrapper__inner {
+    max-height: 70rem;
+  }
+  .work-wrapper__outer {
+    align-items: center;
   }
 }
 
@@ -90,10 +99,25 @@
   .controls-wrapper {
     padding: 0;
   }
+  .work-body__left {
+    padding-bottom: 4rem;
+  }
+  .controls-wrapper {
+    padding: 0;
+  }
 }
 
 // MOBILE DESIGN SWITCH
 @media (max-width: 767px) {
+  .work-wrapper__inner {
+    max-height: none;
+  }
+  .work-wrapper__outer {
+    align-items: flex-start;
+  }
+  .work-body__left {
+    padding-bottom: 0;
+  }
   .hero {
     align-items: flex-end;
     padding: 0 1rem;

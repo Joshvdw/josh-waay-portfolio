@@ -94,6 +94,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  // padding-bottom: 2rem;
   p {
     // color: $creme;
     opacity: 90%;
@@ -117,7 +118,7 @@
 }
 
 .controls-wrapper {
-  padding: 0 6rem 0 0;
+  padding: 0 10rem 0 0;
   position: relative;
   // margin-bottom: 2rem;
 }

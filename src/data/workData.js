@@ -23,7 +23,7 @@ export const workData = [
     I made crucial decisions regarding the development and tech stack. I
     implemented a custom commenting CMS using Sanity.io and developed an 
     email API system with SendGrid.`,
-    tools: ["React", "Nextjs", "Sanity", "Spring", "Sass"],
+    tools: ["React", "Nextjs", "Sanity", "Spring", "Lottie"],
     role: "Lead Developer / Sound",
     client: "Ara Taiohi",
     year: "2024",
@@ -62,7 +62,7 @@ export const workData = [
     my main role centred around writing the custom code for the website, such as the GSAP animations and JavaScript. 
     Overcoming Webflow's limitations and ensuring optimal performance across all browsers and devices posed 
     a unique challenge that I had to address successfully.`,
-    tools: ["Webflow", "GSAP", "Javascript"],
+    tools: ["Webflow", "GSAP", "Javascript", "Lottie"],
     role: "Developer",
     client: "Mobi",
     year: "2024",

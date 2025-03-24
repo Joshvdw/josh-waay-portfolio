@@ -49,13 +49,14 @@ const Preloader = ({ isLoading }) => {
           className="lottie-container preloader_lottie"
         ></div>
         {animationLoaded && <Logo isPreloader={true} />}
-        {isSmallScreen && (
+        {/* SMALL SCREEN NOTICE OPTION BELOW */}
+        {/* {isSmallScreen && (
           <div className="mobile-notice__wrapper">
             <p className="mobile-notice">
               This website is best viewed on a larger screen
             </p>
           </div>
-        )}
+        )} */}
         {/* <animated.div style={growOut} className="preloader-gradient__wrapper">
           <animated.div style={growIn} className="preloader-gradient" />
         </animated.div> */}

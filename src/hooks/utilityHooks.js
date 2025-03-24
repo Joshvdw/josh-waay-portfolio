@@ -1,6 +1,7 @@
-import { mobileSwitchSize } from "@/data/globalVariables";
+import { mobileSwitchSize, ipadSwitchSize } from "@/data/globalVariables";
 import { getMobileContentHeight } from "@/utils/utilityFunctions";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useContext } from "react";
+import UnityContext from "@/hooks/unityContext";
 
 export const useClickPrevention = (timeout = 1000) => {
   const [isDisabled, setIsDisabled] = useState(false);
@@ -164,4 +165,28 @@ export const useShowScrollIndicator = () => {
   }, [isSmallScreen]); // Re-run effect when isSmallScreen changes
 
   return { showIndicator, shouldRender };
+};
+
+export const useIsTabletSize = () => {
+  const [isTablet, setIsTablet] = useState(false);
+  const { msgUnity } = useContext(UnityContext);
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        const width = window.innerWidth;
+        const isTabletSize =
+          width > mobileSwitchSize && width <= ipadSwitchSize;
+        setIsTablet(isTabletSize);
+        msgUnity("isTabletSize", isTabletSize);
+      };
+
+      handleResize();
+      window.addEventListener("resize", handleResize);
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, [msgUnity]);
+
+  return isTablet;
 };

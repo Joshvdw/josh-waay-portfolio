@@ -19,20 +19,20 @@ function storeVolumes() {
 }
 
 function playSound(sound) {
-  if (!isTouchDevice()) {
-    soundHasStarted = true;
-    if (!muted && sound !== "undefined") sounds[sound].play();
-  }
+  // if (!isTouchDevice()) {
+  soundHasStarted = true;
+  if (!muted && sound !== "undefined") sounds[sound].play();
+  // }
 }
 
 function restartSound(sound) {
-  if (!isTouchDevice()) {
-    if (sound !== "undefined" && sounds[sound]) {
-      sounds[sound].pause(); // Stop the audio if it's playing
-      sounds[sound].currentTime = 0; // Reset the playback position to the start
-      sounds[sound].play(); // Play the audio again
-    }
+  // if (!isTouchDevice()) {
+  if (sound !== "undefined" && sounds[sound]) {
+    sounds[sound].pause(); // Stop the audio if it's playing
+    sounds[sound].currentTime = 0; // Reset the playback position to the start
+    sounds[sound].play(); // Play the audio again
   }
+  // }
 }
 
 function reduceVolume(target, amount) {
@@ -41,7 +41,8 @@ function reduceVolume(target, amount) {
 }
 
 function muteToggle() {
-  if (soundHasStarted && !isTouchDevice()) {
+  if (soundHasStarted) {
+    // && !isTouchDevice()
     if (!muted) {
       // fadeAllSounds(0);
       // setTimeout(() => {
@@ -56,7 +57,8 @@ function muteToggle() {
 }
 
 function visibilitySoundToggle(visibilityState) {
-  if (soundHasStarted && !muted && !isTouchDevice()) {
+  if (soundHasStarted && !muted) {
+    // && !isTouchDevice()
     if (!visibilityState) {
       fadeAllSounds(0);
       setTimeout(() => {
