@@ -1,6 +1,6 @@
 import { mobileSwitchSize, ipadSwitchSize } from "@/data/globalVariables";
 import { getMobileContentHeight } from "@/utils/utilityFunctions";
-import { useState, useEffect, useCallback, useContext } from "react";
+import { useState, useEffect, useCallback, useContext, useRef } from "react";
 import UnityContext from "@/hooks/unityContext";
 
 export const useClickPrevention = (timeout = 1000) => {
@@ -170,14 +170,23 @@ export const useShowScrollIndicator = () => {
 export const useIsTabletSize = () => {
   const [isTablet, setIsTablet] = useState(false);
   const { msgUnity } = useContext(UnityContext);
+  const prevIsTabletRef = useRef(false);
+
   useEffect(() => {
     if (typeof window !== "undefined") {
       const handleResize = () => {
         const width = window.innerWidth;
         const isTabletSize =
           width > mobileSwitchSize && width <= ipadSwitchSize;
-        setIsTablet(isTabletSize);
-        msgUnity("isTabletSize", isTabletSize);
+
+        // Only update state and send message if there's a change
+        if (isTabletSize !== prevIsTabletRef.current) {
+          setIsTablet(isTabletSize);
+          prevIsTabletRef.current = isTabletSize;
+
+          // Send message for both entering and exiting tablet mode
+          msgUnity("isTabletSize", `${isTabletSize}`);
+        }
       };
 
       handleResize();

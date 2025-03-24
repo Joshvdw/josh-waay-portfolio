@@ -14,6 +14,7 @@ import SceneContext, { SceneProvider } from "@/hooks/sceneContext";
 import UnityContext, { UnityProvider } from "@/hooks/unityContext";
 import Socials from "@/components/UI/Socials";
 import { customLogStatement } from "@/utils/utilityFunctions";
+import { useIsTabletSize } from "@/hooks/utilityHooks";
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ const App = () => {
   const HeroShowing = sceneState == "loading" || sceneState == "hero";
 
   customLogStatement();
+  useIsTabletSize();
 
   return (
     <ErrorBoundary fallback={<ErrorMessage />}>

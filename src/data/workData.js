@@ -78,7 +78,7 @@ export const workData = [
   },
   {
     title: "Gravity",
-    description: ``,
+    description: `I designed this website for Gravity, a creative agency based in Auckland.`,
     tools: ["Figma", "Illustrator", "Photoshop", "Midjourney"],
     role: "Designer",
     client: "Gravity",

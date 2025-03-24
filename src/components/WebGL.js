@@ -41,7 +41,7 @@ const WebGL = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     sendMessage(functionName, argument) {
       playTransitionSound(argument);
-      // console.log(`msg sent to unity: '${functionName}' argument: ${argument}`);
+      console.log(`msg sent to unity: '${functionName}' argument: ${argument}`);
       sendMessage("UnityFromReact", functionName, argument);
     },
   }));
