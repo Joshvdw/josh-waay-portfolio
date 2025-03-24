@@ -78,7 +78,9 @@ export const workData = [
   },
   {
     title: "Gravity",
-    description: `I designed this website for Gravity, a creative agency based in Auckland.`,
+    description: `I helped design this experiential website for Gravity, a creative agency based in Auckland 
+    that specialises in innovative product and application development. I used storyboarding to craft the structure 
+    and narrative of the experience, and designed key assets using Figma and the Adobe Suite.`,
     tools: ["Figma", "Illustrator", "Photoshop", "Midjourney"],
     role: "Designer",
     client: "Gravity",
