@@ -13,7 +13,7 @@ import { useIsSmallScreen } from "@/hooks/utilityHooks";
 const Preloader = ({ isLoading }) => {
   const [animationLoaded, setAnimationLoaded] = useState(false);
 
-  const isSmallScreen = useIsSmallScreen();
+  // const isSmallScreen = useIsSmallScreen();
 
   const container = useRef(null);
   const animation = useRef(null);
@@ -25,6 +25,7 @@ const Preloader = ({ isLoading }) => {
       loop: true,
       autoplay: true,
       path: "/lotties/preloader_star.json",
+      crossorigin: "anonymous",
     });
 
     animation.current.addEventListener("DOMLoaded", () => {

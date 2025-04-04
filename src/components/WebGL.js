@@ -20,6 +20,9 @@ const WebGL = forwardRef((props, ref) => {
       dataUrl: "/Assets/Laptop/Build/Laptop.data.gz",
       frameworkUrl: "/Assets/Laptop/Build/Laptop.framework.js.gz",
       codeUrl: "/Assets/Laptop/Build/Laptop.wasm.gz",
+      companyName: "Josh Waay",
+      productName: "Developer Portfolio",
+      productVersion: "1.0",
     });
 
   const { sceneState } = useContext(SceneContext);
@@ -41,14 +44,20 @@ const WebGL = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     sendMessage(functionName, argument) {
       playTransitionSound(argument);
-      console.log(`msg sent to unity: '${functionName}' argument: ${argument}`);
-      sendMessage("UnityFromReact", functionName, argument);
+      if (isLoaded) {
+        console.log(
+          `msg sent to unity: '${functionName}' argument: ${argument}`
+        );
+        sendMessage("UnityFromReact", functionName, argument);
+      }
     },
   }));
 
   useEffect(() => {
     if (initialisationError) console.log(initialisationError);
   }, [initialisationError]);
+
+  const canvasID = "react-unity-webgl-canvas";
 
   return (
     <div>
@@ -58,7 +67,11 @@ const WebGL = forwardRef((props, ref) => {
         onClick={() => sendMessage("UnityFromReact", "HasLoaded")}
       ></button>
       {sceneState == "loading" && <Preloader isLoading={isLoading} />}
-      <Unity unityProvider={unityProvider} className="unity_canvas" />
+      <Unity
+        unityProvider={unityProvider}
+        className="unity_canvas"
+        id={canvasID}
+      />
     </div>
   );
 });

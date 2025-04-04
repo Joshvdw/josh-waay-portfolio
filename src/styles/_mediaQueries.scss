@@ -51,64 +51,64 @@
   }
 }
 
-@media (min-width: 767px) and (max-width: 926px) {
-  h1 {
-    font-size: 4.5rem;
-  }
-  .hero__paragraph {
-    font-size: 1rem;
-    max-width: 22rem;
-    margin: 1rem 0;
-  }
-  .hero__cta {
-    font-size: 10px;
-    padding: 1rem 2.5rem;
-  }
-  .heroStar_inner {
-    width: 50px;
-  }
-  .flip {
-    height: 10px !important;
-  }
-  .work-underline {
-    width: 75%;
-  }
-  .work-body__wrapper {
-    min-height: auto;
-  }
-  .work-link__wrapper {
-    gap: 0;
-  }
-  .work-link__icon {
-    margin-top: 4px;
-    width: 16px;
-  }
-  .github-link__icon {
-    width: 16px;
-    margin-top: -8px;
-  }
-  .work-wrapper__outer {
-    overflow-y: scroll;
-  }
-  .work-header__wrapper {
-    margin-bottom: 1rem;
-  }
-  .work-description {
-    margin-bottom: 2rem;
-  }
-  .controls-wrapper {
-    padding: 0;
-  }
-  .work-body__left {
-    padding-bottom: 4rem;
-  }
-  .controls-wrapper {
-    padding: 0;
-  }
-}
+// @media (min-width: 767px) and (max-width: 926px) {
+//   h1 {
+//     font-size: 4.5rem;
+//   }
+//   .hero__paragraph {
+//     font-size: 1rem;
+//     max-width: 22rem;
+//     margin: 1rem 0;
+//   }
+//   .hero__cta {
+//     font-size: 10px;
+//     padding: 1rem 2.5rem;
+//   }
+//   .heroStar_inner {
+//     width: 50px;
+//   }
+//   .flip {
+//     height: 10px !important;
+//   }
+//   .work-underline {
+//     width: 75%;
+//   }
+//   .work-body__wrapper {
+//     min-height: auto;
+//   }
+//   .work-link__wrapper {
+//     gap: 0;
+//   }
+//   .work-link__icon {
+//     margin-top: 4px;
+//     width: 16px;
+//   }
+//   .github-link__icon {
+//     width: 16px;
+//     margin-top: -8px;
+//   }
+//   .work-wrapper__outer {
+//     overflow-y: scroll;
+//   }
+//   .work-header__wrapper {
+//     margin-bottom: 1rem;
+//   }
+//   .work-description {
+//     margin-bottom: 2rem;
+//   }
+//   .controls-wrapper {
+//     padding: 0;
+//   }
+//   .work-body__left {
+//     padding-bottom: 4rem;
+//   }
+//   .controls-wrapper {
+//     padding: 0;
+//   }
+// }
 
 // MOBILE DESIGN SWITCH
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
   .work-wrapper__inner {
     max-height: none;
   }

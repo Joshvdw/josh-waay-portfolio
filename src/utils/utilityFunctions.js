@@ -70,9 +70,9 @@ async function enableGyro() {
   }
 }
 
-function customLogStatement() {
+function customLogStatement(originalLog) {
   if (!hasVisited) {
-    console.log(
+    originalLog(
       `
       ▗▖ ▗▖▗▄▄▄▖    ▗▄▄▄▖▗▖ ▗▖▗▄▄▄▖▗▄▄▖ ▗▄▄▄▖
       ▐▌ ▐▌  █        █  ▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌   

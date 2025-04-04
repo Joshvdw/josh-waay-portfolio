@@ -48,7 +48,7 @@ const Work = () => {
   const fadeIn = useFadeIn(sceneState, true);
 
   return (
-    <animated.div style={fadeIn} onClick={() => playSound("bgMusic")}>
+    <animated.div style={fadeIn}>
       <WorkContent {...workProps} />
       <ProgressBar {...progressBarProps} />
     </animated.div>

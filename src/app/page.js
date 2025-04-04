@@ -1,13 +1,15 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import "../styles/globals.scss";
-import { PreloadResources } from "./resources";
+import {
+  PreloadCriticalResources,
+  preloadNonCriticalResources,
+} from "./resources";
 import Audio from "@/components/Audio";
 import Scenes from "@/components/Scenes";
 import MenuMVP from "@/components/MenuMVP";
 import WebGL from "@/components/WebGL";
-import SoundWave from "@/not-mvp/lotties/SoundBtn";
 import ErrorBoundary from "@/components/errors/ErrorBoundary";
 import ErrorMessage from "../components/errors/ErrorModal";
 import SceneContext, { SceneProvider } from "@/hooks/sceneContext";
@@ -15,6 +17,7 @@ import UnityContext, { UnityProvider } from "@/hooks/unityContext";
 import Socials from "@/components/UI/Socials";
 import { customLogStatement } from "@/utils/utilityFunctions";
 import { useIsTabletSize } from "@/hooks/utilityHooks";
+// import SoundWave from "@/not-mvp/lotties/SoundBtn";
 
 export default function Home() {
   return (
@@ -33,14 +36,26 @@ const App = () => {
   const LoadFinished = sceneState !== "loading";
   const HeroShowing = sceneState == "loading" || sceneState == "hero";
 
-  customLogStatement();
   useIsTabletSize();
+
+  useEffect(() => {
+    // preloadNonCriticalResources(); // preload resources
+
+    // overide webgl logs
+    const originalLog = console.log;
+    console.log = function () {
+      customLogStatement(originalLog); // welcome log msg
+    };
+    return () => {
+      console.log = originalLog;
+    };
+  }, []);
 
   return (
     <ErrorBoundary fallback={<ErrorMessage />}>
       <main>
         <WebGL ref={unityBuild} />
-        <PreloadResources />
+        <PreloadCriticalResources />
         <Audio />
         {LoadFinished && <Scenes />}
         {!HeroShowing && <MenuMVP />}
