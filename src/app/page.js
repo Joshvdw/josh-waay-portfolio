@@ -16,8 +16,8 @@ import SceneContext, { SceneProvider } from "@/hooks/sceneContext";
 import UnityContext, { UnityProvider } from "@/hooks/unityContext";
 import Socials from "@/components/UI/Socials";
 import { customLogStatement } from "@/utils/utilityFunctions";
-import { useIsTabletSize } from "@/hooks/utilityHooks";
-// import SoundWave from "@/not-mvp/lotties/SoundBtn";
+// import { useIsTabletSize } from "@/hooks/utilityHooks";
+import { MuteBtn } from "@/components/UI/lotties/MuteBtn";
 
 export default function Home() {
   return (
@@ -36,7 +36,7 @@ const App = () => {
   const LoadFinished = sceneState !== "loading";
   const HeroShowing = sceneState == "loading" || sceneState == "hero";
 
-  useIsTabletSize();
+  // useIsTabletSize();
 
   useEffect(() => {
     // preloadNonCriticalResources(); // preload resources
@@ -58,8 +58,13 @@ const App = () => {
         <PreloadCriticalResources />
         <Audio />
         {LoadFinished && <Scenes />}
-        {!HeroShowing && <MenuMVP />}
-        {!HeroShowing && <Socials />}
+        {!HeroShowing && (
+          <>
+            <MenuMVP />
+            <Socials />
+            <MuteBtn />
+          </>
+        )}
       </main>
     </ErrorBoundary>
   );

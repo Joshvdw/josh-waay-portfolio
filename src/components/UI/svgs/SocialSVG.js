@@ -6,7 +6,7 @@ import { playSound } from "@/utils/sound";
 const SocialSVG = ({ icon, link }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const opacityShifter = useOpacityShift(isHovered, "gentle", 0.4, 1);
+  const opacityShifter = useOpacityShift(isHovered, "gentle", 0.6, 1);
 
   const handleHover = () => {
     playSound("hoverSound2");

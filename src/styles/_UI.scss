@@ -5,3 +5,18 @@
     width: 75%;
   }
 }
+
+.mute-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  svg {
+    transform: scale(10.2) !important; 
+    transform-origin: center;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+}

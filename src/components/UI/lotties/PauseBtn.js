@@ -34,7 +34,7 @@ const PauseBtn = ({ resumeProjects, pauseProjects, handleClick }) => {
 
   const handlePause = () => {
     playSound("clickSound");
-    muteToggle();
+    // muteToggle();
     animationRef.current.setSpeed(1.5);
     if (paused) {
       resumeProjects();

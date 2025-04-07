@@ -121,7 +121,8 @@
   .hero {
     align-items: flex-end;
     padding: 0 1rem;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-left: 5rem;
   }
   .hero__wrapper {
     position: fixed;
@@ -243,6 +244,13 @@
   }
   .mobile-laptop-mask__wrapper {
     display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero {
+    margin-left: 0;
+    justify-content: center;
   }
 }
 
