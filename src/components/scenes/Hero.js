@@ -25,9 +25,10 @@ const Hero = () => {
     updateScene("work");
     msgUnity("StartExperience");
     if (isMuted() === true) {
-      muteToggle();
-      restartSound("bgMusic");
-      restartSound("enterSound");
+      // if wanting sound to always active on start:
+      // muteToggle();
+      // restartSound("bgMusic");
+      // restartSound("enterSound");
     } else {
       playSound("enterSound");
       setTimeout(() => {

@@ -35,6 +35,7 @@ export const workData = [
     },
     link: "https://mosaicaotearoa.nz/",
     github: "https://github.com/psychoactive-studios/mosaic",
+    removeLiveLinkFromMobile: false,
   },
   {
     title: "Silver Fern Farms",
@@ -54,6 +55,7 @@ export const workData = [
     },
     link: "https://sff-prototype-staging.netlify.app/",
     github: "https://github.com/Joshvdw/silver-fern-farms-prototype",
+    removeLiveLinkFromMobile: false,
   },
   {
     title: "Mobi Headquarters",
@@ -75,6 +77,7 @@ export const workData = [
     },
     link: "https://www.mobihq.com/",
     github: "https://github.com/Joshvdw/mobi-custom-code",
+    removeLiveLinkFromMobile: false,
   },
   {
     title: "Gravity",
@@ -92,6 +95,7 @@ export const workData = [
       motionArtist: "Linus Nelson",
     },
     link: "https://www.thisisgravity.co/",
+    removeLiveLinkFromMobile: false,
   },
   {
     title: "Top Agencies NZ",
@@ -108,6 +112,7 @@ export const workData = [
       director: "Andrew Hillstead",
     },
     link: "https://www.designagencies.co.nz/",
+    removeLiveLinkFromMobile: false,
   },
   {
     title: "Strings of Elysium",
@@ -124,6 +129,7 @@ export const workData = [
     },
     link: "https://strings-of-elysium.vercel.app/",
     github: "https://github.com/Joshvdw/strings-of-elysium",
+    removeLiveLinkFromMobile: true,
   },
   {
     title: "wwweb3 Info",
@@ -139,6 +145,7 @@ export const workData = [
       director: "Andrew Hillstead",
     },
     link: "https://wwweb3.webflow.io/",
+    removeLiveLinkFromMobile: true,
   },
   {
     title: "Torotoro",
@@ -159,6 +166,7 @@ export const workData = [
     },
     link: "https://torotoro.vercel.app/",
     github: "https://github.com/Joshvdw/torotoro",
+    removeLiveLinkFromMobile: true,
   },
   {
     title: "The Tale of Abe",
@@ -172,5 +180,6 @@ export const workData = [
     credits: "N/A",
     link: "https://the-tale-of-abe.vercel.app/",
     github: "https://github.com/Joshvdw/the-tale-of-abe",
+    removeLiveLinkFromMobile: true,
   },
 ];

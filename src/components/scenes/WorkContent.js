@@ -386,15 +386,19 @@ const WorkContent = ({
                 </div>
               </div>
               <div className="mobile-link__wrapper hide">
-                <a
-                  className="mobile-link__inner"
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <p>View Website</p>
-                  <LinkSVG />
-                </a>
+                {project.removeLiveLinkFromMobile ? (
+                  <></>
+                ) : (
+                  <a
+                    className="mobile-link__inner"
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <p>View Website</p>
+                    <LinkSVG />
+                  </a>
+                )}
                 {project.github && (
                   <a
                     className="mobile-link__inner"

@@ -40,6 +40,10 @@
   .hero {
     padding-left: $g1 / 2;
   }
+  .hero__cta {
+    font-size: 10px;
+    padding: 1rem 2.5rem;
+  }
   .work-body__left {
     width: 50%;
   }
@@ -50,62 +54,6 @@
     align-items: center;
   }
 }
-
-// @media (min-width: 767px) and (max-width: 926px) {
-//   h1 {
-//     font-size: 4.5rem;
-//   }
-//   .hero__paragraph {
-//     font-size: 1rem;
-//     max-width: 22rem;
-//     margin: 1rem 0;
-//   }
-//   .hero__cta {
-//     font-size: 10px;
-//     padding: 1rem 2.5rem;
-//   }
-//   .heroStar_inner {
-//     width: 50px;
-//   }
-//   .flip {
-//     height: 10px !important;
-//   }
-//   .work-underline {
-//     width: 75%;
-//   }
-//   .work-body__wrapper {
-//     min-height: auto;
-//   }
-//   .work-link__wrapper {
-//     gap: 0;
-//   }
-//   .work-link__icon {
-//     margin-top: 4px;
-//     width: 16px;
-//   }
-//   .github-link__icon {
-//     width: 16px;
-//     margin-top: -8px;
-//   }
-//   .work-wrapper__outer {
-//     overflow-y: scroll;
-//   }
-//   .work-header__wrapper {
-//     margin-bottom: 1rem;
-//   }
-//   .work-description {
-//     margin-bottom: 2rem;
-//   }
-//   .controls-wrapper {
-//     padding: 0;
-//   }
-//   .work-body__left {
-//     padding-bottom: 4rem;
-//   }
-//   .controls-wrapper {
-//     padding: 0;
-//   }
-// }
 
 // MOBILE DESIGN SWITCH
 @media (max-width: 1024px) {
@@ -118,15 +66,29 @@
   .work-body__left {
     padding-bottom: 0;
   }
+  h1 {
+    font-size: 7rem;
+  }
   .hero {
     align-items: flex-end;
     padding: 0 1rem;
-    justify-content: flex-start;
-    margin-left: 5rem;
+    justify-content: center;
+    // margin-left: 5rem;
+  }
+  .hero__cta {
+    font-size: 13px;
+    padding: 1.125rem 3.5rem;
   }
   .hero__wrapper {
     position: fixed;
     bottom: max(3rem, env(safe-area-inset-bottom));
+  }
+  .hero__paragraph {
+    font-size: 1.5rem;
+    max-width: 33rem;
+  }
+  .hero__cta--wrapper {
+    width: 50%;
   }
   .work-wrapper__outer {
     overflow-y: scroll;
@@ -247,6 +209,48 @@
   }
 }
 
+@media (min-width: 767px) and (max-width: 1024px) {
+  //   .work-underline {
+  //     width: 75%;
+  //   }
+  //   .work-body__wrapper {
+  //     min-height: auto;
+  //   }
+  .work-link__wrapper {
+    gap: 0;
+    flex-direction: column;
+  }
+  .work-link__icon {
+    margin-top: 4px;
+    width: 18px;
+  }
+  .github-link__icon {
+    width: 18px;
+    margin-top: -16px;
+  }
+  .work-info__wrapper {
+    margin-right: 1rem;
+  }
+  //   .work-wrapper__outer {
+  //     overflow-y: scroll;
+  //   }
+  //   .work-header__wrapper {
+  //     margin-bottom: 1rem;
+  //   }
+  //   .work-description {
+  //     margin-bottom: 2rem;
+  //   }
+  //   .controls-wrapper {
+  //     padding: 0;
+  //   }
+  //   .work-body__left {
+  //     padding-bottom: 4rem;
+  //   }
+  //   .controls-wrapper {
+  //     padding: 0;
+  //   }
+}
+
 @media (max-width: 767px) {
   .hero {
     margin-left: 0;
@@ -278,6 +282,20 @@
 // }
 
 @media (max-width: 600px) {
+  h1 {
+    font-size: 4.5rem;
+  }
+  .hero__paragraph {
+    font-size: 1.125rem;
+    max-width: 25rem;
+  }
+  .flip {
+    height: 12px !important;
+  }
+  .hero__cta {
+    font-size: 12px;
+    padding: 1.125rem 3.5rem;
+  }
   .body-right__inner {
     flex-direction: column;
   }
@@ -306,11 +324,11 @@
     margin-top: 5px;
     width: 22px;
   }
-  .github-link__icon {
-    width: 22px;
-    height: 29px;
-    margin-top: 5px;
-  }
+  // .github-link__icon {
+  //   width: 22px;
+  //   height: 29px;
+  //   margin-top: 15px;
+  // }
   .work-header__inner {
     margin-bottom: 1rem;
   }
@@ -356,7 +374,7 @@
   .github-link__icon {
     width: 16px;
     height: 16px;
-    margin-top: 0;
+    margin-top: 4px;
   }
   .side-menu__wrapper {
     padding: 1rem;
@@ -378,12 +396,20 @@
     margin-bottom: 0;
     margin-top: 1rem;
   }
+  .work-info__wrapper {
+    flex-direction: column;
+    gap: 0rem;
+  }
 }
 
 @media (max-width: 480px) {
   .work-header__inner h1 {
     line-height: 120%;
     font-size: 7.5vw;
+  }
+  .hero__cta {
+    font-size: 10px;
+    padding: 1rem 2.5rem;
   }
   .work-info__wrapper {
     flex-direction: column;
@@ -408,7 +434,7 @@
   //   margin-left: 2rem;
   // }
   h1 {
-    font-size: 14.5vw;
+    font-size: 14vw;
   }
   .flip {
     height: 1.75vw !important;
@@ -419,7 +445,7 @@
   .hero__paragraph {
     font-size: 1rem;
     max-width: 22rem;
-    margin: 1.25rem 0;
+    margin: 1rem 0;
   }
   .skip-lottie {
     width: 2.5rem;
@@ -450,6 +476,7 @@
   }
   .github-link__icon {
     width: 0.75rem !important;
+    margin-top: -2px !important;
   }
   .work-overview__wrapper,
   .mobile-link__wrapper,

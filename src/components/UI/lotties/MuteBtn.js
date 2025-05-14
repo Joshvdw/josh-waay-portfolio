@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import lottie from "lottie-web";
-import { muteToggle, playSound } from "@/utils/sound";
+import { isMuted as getIsMuted, muteToggle, playSound } from "@/utils/sound";
 import { useOpacityShift } from "@/hooks/useSpring";
 import { animated } from "@react-spring/web";
 
@@ -27,6 +27,13 @@ export const MuteBtn = () => {
       path: "/lotties/mute_lottie.json",
     });
     animationRef.current.setSpeed(1.5);
+
+    const soundIsMuted = getIsMuted();
+
+    if (soundIsMuted) {
+      animationRef.current.goToAndStop(holdFrame, true);
+    }
+
     return () => {
       if (animationRef.current) {
         animationRef.current.destroy();
@@ -40,12 +47,14 @@ export const MuteBtn = () => {
 
   const handleClick = () => {
     muteToggle();
-    if (!isMuted) {
-      playLottie(enterFrame, holdFrame, animationRef.current);
-      setIsMuted(true);
-    } else {
-      playLottie(holdFrame, endFrame, animationRef.current);
-      setIsMuted(false);
+    const newMuteState = getIsMuted();
+    if (newMuteState !== isMuted) {
+      if (newMuteState) {
+        playLottie(enterFrame, holdFrame, animationRef.current);
+      } else {
+        playLottie(holdFrame, endFrame, animationRef.current);
+      }
+      setIsMuted(newMuteState);
     }
   };
 
