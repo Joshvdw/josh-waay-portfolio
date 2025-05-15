@@ -28,7 +28,8 @@ export const useProjectVideoControls = () => {
   const [transition, setTransition] = useState(true);
   const [counter, setCounter] = useState(0);
 
-  const { msgUnity, preventSpam, isDisabled } = useContext(UnityContext);
+  const { msgUnity, preventSpam, isDisabled, currentCounter } =
+    useContext(UnityContext);
 
   const progressBarRef = useRef(null);
   const timerRef = useRef(null);
@@ -114,13 +115,19 @@ export const useProjectVideoControls = () => {
 
   const counterLogic = (direction) => {
     if (direction === "Next") {
-      setCounter((prevCounter) =>
-        prevCounter + 1 === workData.length ? 0 : prevCounter + 1
-      );
+      setCounter((prevCounter) => {
+        const newCounter =
+          prevCounter + 1 === workData.length ? 0 : prevCounter + 1;
+        currentCounter.current = newCounter;
+        return newCounter;
+      });
     } else {
-      setCounter((prevCounter) =>
-        prevCounter === 0 ? workData.length - 1 : prevCounter - 1
-      );
+      setCounter((prevCounter) => {
+        const newCounter =
+          prevCounter === 0 ? workData.length - 1 : prevCounter - 1;
+        currentCounter.current = newCounter;
+        return newCounter;
+      });
     }
   };
 

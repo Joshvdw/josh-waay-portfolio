@@ -7,6 +7,7 @@ export const UnityProvider = ({ children }) => {
   const spamPreventionState = useSpamPrevention();
 
   const unityBuild = useRef();
+  const currentCounter = useRef(0);
 
   const msgUnity = (functionName, argument) => {
     return unityBuild.current?.sendMessage(functionName, argument);
@@ -19,6 +20,7 @@ export const UnityProvider = ({ children }) => {
       msgUnity,
       preventSpam: spamPreventionState.preventSpam,
       isDisabled: spamPreventionState.isDisabled,
+      currentCounter,
     }),
     [msgUnity, spamPreventionState.preventSpam, spamPreventionState.isDisabled]
   );

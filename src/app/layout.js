@@ -4,12 +4,14 @@ import { meta } from "@/data/personalData";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400"],
+  display: "swap", // Add this for better loading behavior
 });
 
 const baj_jamjuree = Bai_Jamjuree({
   subsets: ["latin"],
   variable: "--font-baj_jamjuree",
   weight: ["400", "700"],
+  display: "swap", // Add this
 });
 
 export const metadata = {

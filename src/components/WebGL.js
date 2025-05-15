@@ -13,7 +13,8 @@ import Preloader from "./Preloader";
 import SceneContext from "@/hooks/sceneContext";
 import { playTransitionSound } from "@/utils/sound";
 import { workData } from "@/data/workData";
-import { useProjectVideoControls } from "@/hooks/videoControlsHook";
+import UnityContext from "@/hooks/unityContext";
+import { useIsSmallScreen } from "@/hooks/utilityHooks";
 
 const WebGL = forwardRef((props, ref) => {
   const { unityProvider, sendMessage, initialisationError, isLoaded } =
@@ -28,12 +29,10 @@ const WebGL = forwardRef((props, ref) => {
     });
 
   const { sceneState } = useContext(SceneContext);
+  const { currentCounter } = useContext(UnityContext);
 
   const [isLoading, setIsLoading] = useState(true);
   const hiddenBtn = useRef(null);
-
-  const { progress, counter } = useProjectVideoControls();
-  const currentProject = workData[counter];
 
   useEffect(() => {
     if (isLoaded) {
@@ -63,22 +62,22 @@ const WebGL = forwardRef((props, ref) => {
   }, [initialisationError]);
 
   const canvasID = "react-unity-webgl-canvas";
-
+  const isSmallScreen = useIsSmallScreen();
   // unity to react
   useEffect(() => {
     if (typeof window === "undefined") return; // SSR safe
 
     // Define a function to open the project link
     window.openCurrentProject = () => {
+      const currentProject = workData[currentCounter.current];
       if (sceneState === "work" && currentProject?.link) {
+        if (currentProject.removeLiveLinkFromMobile && isSmallScreen) return;
         window.open(currentProject.link, "_blank");
       }
     };
 
     // Define the global dispatch function Unity calls
     window.dispatchReactUnityEvent = (eventName, data) => {
-      console.log("Event from Unity:", eventName, data);
-
       if (eventName === "UnityToFrontend") {
         // data is your message string from Unity
         if (data === "LAPTOP_CLICKED") {
@@ -93,20 +92,7 @@ const WebGL = forwardRef((props, ref) => {
       delete window.dispatchReactUnityEvent;
       delete window.openCurrentProject;
     };
-  }, [sceneState, currentProject]);
-
-  // window.dispatchReactUnityEvent = function (eventName, data) {
-  //   console.log("Event from Unity:", eventName, data);
-  //   if (eventName === "LAPTOP_CLICKED") {
-  //     openCurrentProject();
-  //   }
-  // };
-
-  // const openCurrentProject = () => {
-  //   if (sceneState === "work") {
-  //     window.open(currentProject.link, "_blank");
-  //   }
-  // };
+  }, [sceneState, currentCounter]);
 
   return (
     <div>

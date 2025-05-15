@@ -5,6 +5,7 @@
   @include flex_centre;
   align-items: flex-start;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .work-wrapper__inner {
@@ -30,6 +31,10 @@
 
 .work-header__wrapper {
   margin-bottom: 3rem;
+  pointer-events: auto;
+}
+.body-right__inner {
+  pointer-events: auto;
 }
 
 .work-link__inner {
@@ -129,6 +134,7 @@
   justify-content: center;
   gap: 4rem;
   margin-bottom: 1.75rem;
+  pointer-events: auto;
 }
 
 .control-btn {
