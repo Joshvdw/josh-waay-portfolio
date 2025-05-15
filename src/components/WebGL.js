@@ -66,19 +66,32 @@ const WebGL = forwardRef((props, ref) => {
 
   // unity to react
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    if (typeof window === "undefined") return; // SSR safe
 
+    // Define a function to open the project link
     window.openCurrentProject = () => {
-      if (sceneState === "work") {
+      if (sceneState === "work" && currentProject?.link) {
         window.open(currentProject.link, "_blank");
       }
     };
 
-    window.dispatchReactUnityEvent = function (eventName) {
-      console.log("Event from Unity:", eventName);
-      if (eventName === "LAPTOP_CLICKED") {
-        window.openCurrentProject();
+    // Define the global dispatch function Unity calls
+    window.dispatchReactUnityEvent = (eventName, data) => {
+      console.log("Event from Unity:", eventName, data);
+
+      if (eventName === "UnityToFrontend") {
+        // data is your message string from Unity
+        if (data === "LAPTOP_CLICKED") {
+          window.openCurrentProject();
+        }
+        // handle other message strings here if needed
       }
+    };
+
+    // Cleanup: remove these from window when component unmounts
+    return () => {
+      delete window.dispatchReactUnityEvent;
+      delete window.openCurrentProject;
     };
   }, [sceneState, currentProject]);
 
