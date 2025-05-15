@@ -1,8 +1,8 @@
 import {
   useFadeIn,
   usePreloaderFadeOut,
-  // useGrowIn,
-  // useGrowOut,
+  useGrowIn,
+  useGrowOut,
 } from "@/hooks/useSpring";
 import Logo from "./UI/svgs/LogoSVG";
 import { useEffect, useState, useRef } from "react";
@@ -13,7 +13,7 @@ import { useIsSmallScreen } from "@/hooks/utilityHooks";
 const Preloader = ({ isLoading }) => {
   const [animationLoaded, setAnimationLoaded] = useState(false);
 
-  // const isSmallScreen = useIsSmallScreen();
+  const isSmallScreen = useIsSmallScreen();
 
   const container = useRef(null);
   const animation = useRef(null);
@@ -39,8 +39,8 @@ const Preloader = ({ isLoading }) => {
 
   const fadeIn = useFadeIn(animationLoaded, false);
   const fadeOut = usePreloaderFadeOut(isLoading);
-  // const growIn = useGrowIn(animationLoaded);
-  // const growOut = useGrowOut(isLoading);
+  const growIn = useGrowIn(animationLoaded, isSmallScreen);
+  const growOut = useGrowOut(isLoading);
 
   return (
     <animated.div className="preloader-wrapper" style={fadeOut}>
@@ -58,9 +58,9 @@ const Preloader = ({ isLoading }) => {
             </p>
           </div>
         )} */}
-        {/* <animated.div style={growOut} className="preloader-gradient__wrapper">
+        <animated.div style={growOut} className="preloader-gradient__wrapper">
           <animated.div style={growIn} className="preloader-gradient" />
-        </animated.div> */}
+        </animated.div>
       </animated.div>
     </animated.div>
   );

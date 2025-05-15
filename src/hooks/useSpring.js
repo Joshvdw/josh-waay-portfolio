@@ -1,7 +1,7 @@
 import { useSpring, config } from "@react-spring/web";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 import SceneContext from "@/hooks/sceneContext";
-
+import { useIsSmallScreen } from "@/hooks/utilityHooks";
 // FADE IN
 export const useFadeIn = (state, isWorkText) => {
   const [pageFade, api] = useSpring(() => ({
@@ -185,30 +185,70 @@ export const usePreloaderFadeOut = (state) => {
 
 // GROW IN
 export const useGrowIn = (state) => {
+  const isSmallScreen = useIsSmallScreen(); // Starts as `true` (your requirement)
   const [animationLoaded, setAnimationLoaded] = useState(false);
+
+  useEffect(() => {
+    console.log("Current isSmallScreen (live):", isSmallScreen);
+  }, [isSmallScreen]);
+
   useEffect(() => {
     if (state) {
       setTimeout(() => {
         setAnimationLoaded(true);
-      }, [200]);
+      }, 200);
+    } else {
+      setAnimationLoaded(false);
     }
   }, [state]);
 
   const [growIn, api] = useSpring(() => ({
     config: {
-      duration: 3500, // Increase duration for slower animation (in milliseconds)
-      // delay: 1500, // Delay before animation starts (in milliseconds)
-      tension: 220, // Adjust tension for smoothness
-      friction: 126, // Adjust friction for smoothness
+      duration: 2000,
+      tension: 220,
+      friction: 126,
     },
     from: { transform: "scale(0.001)" },
   }));
 
-  useEffect(() => {
+  const startPulsation = useCallback(() => {
     api.start({
-      transform: animationLoaded ? "scale(1)" : "scale(0.01)",
+      to: [
+        {
+          transform: isSmallScreen ? "scale(0.1)" : "scale(0.4)",
+          config: { duration: 700, immediate: true },
+        },
+        {
+          transform: isSmallScreen ? "scale(1.5)" : "scale(0.7)",
+          config: { duration: 700, immediate: true },
+        },
+        {
+          transform: isSmallScreen ? "scale(0.2)" : "scale(0.5)",
+          config: { duration: 700, immediate: true },
+        },
+        {
+          transform: isSmallScreen ? "scale(1.2)" : "scale(0.6)",
+          config: { duration: 700, immediate: true },
+        },
+      ],
+      onRest: startPulsation, // This makes it loop by calling itself when animation completes
     });
-  }, [animationLoaded, api]);
+  }, [api, isSmallScreen]);
+
+  useEffect(() => {
+    if (animationLoaded) {
+      // Initial grow animation
+      api.start({
+        transform: isSmallScreen ? "scale(1.2)" : "scale(0.4)",
+        config: { immediate: true },
+        onRest: startPulsation, // Start pulsation after initial growth
+      });
+    } else {
+      // Stop any ongoing animations and reset
+      api.stop();
+      api.start({ transform: "scale(0.001)" });
+    }
+  }, [animationLoaded, api, startPulsation, isSmallScreen]);
 
   return growIn;
 };

@@ -207,6 +207,10 @@
   .mobile-laptop-mask__wrapper {
     display: block;
   }
+  .preloader-gradient {
+    filter: blur(75px);
+    opacity: 0.75;
+  }
 }
 
 @media (min-width: 767px) and (max-width: 1024px) {
@@ -480,5 +484,9 @@
   }
   .mobile-link__inner {
     width: 100px;
+  }
+  .preloader-gradient {
+    filter: blur(50px);
+    opacity: 0.6;
   }
 }
