@@ -169,35 +169,35 @@ export const useShowScrollIndicator = () => {
   return { showIndicator, shouldRender };
 };
 
-// export const useIsTabletSize = () => {
-//   const [isTablet, setIsTablet] = useState(false);
-//   const { msgUnity } = useContext(UnityContext);
-//   const prevIsTabletRef = useRef(false);
+export const useIsTabletSize = () => {
+  const [isTablet, setIsTablet] = useState(false);
+  const { msgUnity } = useContext(UnityContext);
+  const prevIsTabletRef = useRef(false);
 
-//   useEffect(() => {
-//     if (typeof window !== "undefined") {
-//       const handleResize = () => {
-//         const width = window.innerWidth;
-//         const isTabletSize =
-//           width > mobileSwitchSize && width <= ipadSwitchSize;
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const handleResize = () => {
+        const width = window.innerWidth;
+        const isTabletSize =
+          width > mobileSwitchSize && width <= ipadSwitchSize;
 
-//         // Only update state and send message if there's a change
-//         if (isTabletSize !== prevIsTabletRef.current) {
-//           setIsTablet(isTabletSize);
-//           prevIsTabletRef.current = isTabletSize;
+        // Only update state and send message if there's a change
+        if (isTabletSize !== prevIsTabletRef.current) {
+          setIsTablet(isTabletSize);
+          prevIsTabletRef.current = isTabletSize;
 
-//           // Send message for both entering and exiting tablet mode
-//           msgUnity("isTabletSize", `${isTabletSize}`);
-//         }
-//       };
+          // Send message for both entering and exiting tablet mode
+          msgUnity("isTabletSize", `${isTabletSize}`);
+        }
+      };
 
-//       handleResize();
-//       window.addEventListener("resize", handleResize);
-//       return () => {
-//         window.removeEventListener("resize", handleResize);
-//       };
-//     }
-//   }, [msgUnity]);
+      handleResize();
+      window.addEventListener("resize", handleResize);
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, [msgUnity]);
 
-//   return isTablet;
-// };
+  return isTablet;
+};
