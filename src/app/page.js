@@ -42,13 +42,13 @@ const App = () => {
     // preloadNonCriticalResources(); // preload resources
 
     // overide webgl logs
-    const originalLog = console.log;
-    console.log = function () {
-      customLogStatement(originalLog); // welcome log msg
-    };
-    return () => {
-      console.log = originalLog;
-    };
+    // const originalLog = console.log;
+    // console.log = function () {
+    //   customLogStatement(originalLog); // welcome log msg
+    // };
+    // return () => {
+    //   console.log = originalLog;
+    // };
   }, []);
 
   return (

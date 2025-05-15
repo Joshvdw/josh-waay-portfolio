@@ -12,6 +12,8 @@ import { Unity, useUnityContext } from "react-unity-webgl";
 import Preloader from "./Preloader";
 import SceneContext from "@/hooks/sceneContext";
 import { playTransitionSound } from "@/utils/sound";
+import { workData } from "@/data/workData";
+import { useProjectVideoControls } from "@/hooks/videoControlsHook";
 
 const WebGL = forwardRef((props, ref) => {
   const { unityProvider, sendMessage, initialisationError, isLoaded } =
@@ -29,6 +31,9 @@ const WebGL = forwardRef((props, ref) => {
 
   const [isLoading, setIsLoading] = useState(true);
   const hiddenBtn = useRef(null);
+
+  const { progress, counter } = useProjectVideoControls();
+  const currentProject = workData[counter];
 
   useEffect(() => {
     if (isLoaded) {
@@ -58,6 +63,37 @@ const WebGL = forwardRef((props, ref) => {
   }, [initialisationError]);
 
   const canvasID = "react-unity-webgl-canvas";
+
+  // unity to react
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    window.openCurrentProject = () => {
+      if (sceneState === "work") {
+        window.open(currentProject.link, "_blank");
+      }
+    };
+
+    window.dispatchReactUnityEvent = function (eventName) {
+      console.log("Event from Unity:", eventName);
+      if (eventName === "LAPTOP_CLICKED") {
+        window.openCurrentProject();
+      }
+    };
+  }, [sceneState, currentProject]);
+
+  // window.dispatchReactUnityEvent = function (eventName, data) {
+  //   console.log("Event from Unity:", eventName, data);
+  //   if (eventName === "LAPTOP_CLICKED") {
+  //     openCurrentProject();
+  //   }
+  // };
+
+  // const openCurrentProject = () => {
+  //   if (sceneState === "work") {
+  //     window.open(currentProject.link, "_blank");
+  //   }
+  // };
 
   return (
     <div>
