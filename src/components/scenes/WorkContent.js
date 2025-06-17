@@ -68,11 +68,7 @@ const WorkContent = ({
         mobilePosition.insertBefore(workHeader, mobilePosition.firstChild);
       }
     } else {
-      if (
-        workHeader &&
-        desktopPosition &&
-        !desktopPosition.contains(workHeader)
-      ) {
+      if (workHeader && desktopPosition) {
         desktopPosition.insertBefore(workHeader, desktopPosition.firstChild);
       }
     }

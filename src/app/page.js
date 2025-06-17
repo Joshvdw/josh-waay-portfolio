@@ -16,7 +16,7 @@ import SceneContext, { SceneProvider } from "@/hooks/sceneContext";
 import UnityContext, { UnityProvider } from "@/hooks/unityContext";
 import Socials from "@/components/UI/Socials";
 import { customLogStatement } from "@/utils/utilityFunctions";
-// import { useIsTabletSize } from "@/hooks/utilityHooks";
+import { useUnityMobileSizeSwitcher } from "@/hooks/utilityHooks";
 import { MuteBtn } from "@/components/UI/lotties/MuteBtn";
 
 export default function Home() {
@@ -36,11 +36,10 @@ const App = () => {
   const LoadFinished = sceneState !== "loading";
   const HeroShowing = sceneState == "loading" || sceneState == "hero";
 
-  // useIsTabletSize();
+  useUnityMobileSizeSwitcher();
 
   useEffect(() => {
     // preloadNonCriticalResources(); // preload resources
-
     // overide webgl logs
     // const originalLog = console.log;
     // console.log = function () {
