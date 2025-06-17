@@ -32,6 +32,7 @@
   width: 100%;
   position: absolute;
   @include flex_centre;
+  overflow: visible;
 }
 
 .preloader-gradient {
@@ -42,6 +43,8 @@
   position: absolute;
   filter: blur(100px);
   opacity: 0.3;
+  will-change: filter;
+  transform: translateZ(0);
 }
 
 .mobile-notice__wrapper {
