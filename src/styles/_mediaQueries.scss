@@ -209,7 +209,10 @@
   }
   .preloader-gradient {
     filter: blur(75px);
-    opacity: 0.75;
+    opacity: 0.7;
+  }
+  .work-wrapper__outer {
+    height: auto;
   }
 }
 

@@ -33,6 +33,7 @@ const WebGL = forwardRef((props, ref) => {
 
   const [isLoading, setIsLoading] = useState(true);
   const hiddenBtn = useRef(null);
+  const canvasRef = useRef(null);
 
   useEffect(() => {
     if (isLoaded) {
@@ -65,9 +66,9 @@ const WebGL = forwardRef((props, ref) => {
   const isSmallScreen = useIsSmallScreen();
   // unity to react
   useEffect(() => {
-    if (typeof window === "undefined") return; // SSR safe
+    if (typeof window === "undefined") return;
 
-    // Define a function to open the project link
+    // Open the project link
     window.openCurrentProject = () => {
       const currentProject = workData[currentCounter.current];
       if (sceneState === "work" && currentProject?.link) {
@@ -76,14 +77,21 @@ const WebGL = forwardRef((props, ref) => {
       }
     };
 
-    // Define the global dispatch function Unity calls
+    // Dispatch function Unity calls
     window.dispatchReactUnityEvent = (eventName, data) => {
       if (eventName === "UnityToFrontend") {
-        // data is your message string from Unity
+        // Open project on laptop click
         if (data === "LAPTOP_CLICKED") {
           window.openCurrentProject();
         }
-        // handle other message strings here if needed
+        // Change cursor to pointer on laptop hover
+        if (data === "LAPTOP_HOVERED") {
+          canvasRef.current.style.cursor = "pointer";
+        }
+        // Change cursor to default on laptop hover off
+        if (data === "LAPTOP_HOVERED_OFF") {
+          canvasRef.current.style.cursor = "default";
+        }
       }
     };
 
@@ -106,6 +114,7 @@ const WebGL = forwardRef((props, ref) => {
         unityProvider={unityProvider}
         className="unity_canvas"
         id={canvasID}
+        ref={canvasRef}
       />
     </div>
   );
