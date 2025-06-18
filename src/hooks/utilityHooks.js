@@ -170,9 +170,7 @@ export const useShowScrollIndicator = () => {
 };
 
 export const useUnityMobileSizeSwitcher = () => {
-  const [isMobileSize, setIsMobileSize] = useState(
-    window.innerWidth < mobileSwitchSize
-  );
+  const [isMobileSize, setIsMobileSize] = useState(false);
   const { msgUnity } = useContext(UnityContext);
   const prevIsMobileSizeRef = useRef(false);
 
