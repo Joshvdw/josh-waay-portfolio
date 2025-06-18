@@ -25,7 +25,7 @@ const Hero = () => {
     updateScene("work");
     msgUnity("StartExperience");
     if (isMuted() === true) {
-      // if wanting sound to always active on start:
+      // if wanting sound to always re-activate on start:
       // muteToggle();
       // restartSound("bgMusic");
       // restartSound("enterSound");
@@ -62,7 +62,6 @@ const Hero = () => {
         <animated.div
           style={slideIn3}
           onMouseEnter={() => playSound("hoverOutSound")}
-          // onClick={() => playSound("clickSound2")}
         >
           <div className="hero__cta--wrapper">
             <span className="right-slanted" onClick={handleStartClick}>

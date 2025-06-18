@@ -2,7 +2,7 @@ export const workData = [
   // {
   //   title: "RWC Jersey Launch",
   //   description: ``,
-  //   tools: ["React", "TypeScript", "Nextjs", "WebGL"],
+  //   tools: ["React", "TypeScript", "Nextjs", "WebGL", "Unity"],
   //   role: "Lead Developer",
   //   client: "Adidas",
   //   year: "2023",
@@ -14,6 +14,46 @@ export const workData = [
   //   },
   //   link: "https://rwc-jersey-launch-128qtq1o6-psychoactive.vercel.app/",
   //   github: "https://github.com/Joshvdw/adidas-jersey-launch",
+  //   removeLiveLinkFromMobile: false,
+  // },
+  // {
+  //   title: "Radio BurgerFuel",
+  //   description: `BurgerFuel is well known for their tasty burgers, 
+  //   but what some may not know is that they also run an online radio station. 
+  //   Alongside a refresh of their entire website, they wanted to expand on this and 
+  //   I was brought on the team to help with idea generation and development. 
+  //   I created a visualiser that responds live to the radio sounds using JavaScript and the Web Audio API, 
+  //   as well as integrating their various radio APIs and developing the frontend with Webflow.
+  //   `,
+  //   tools: ["APIs", "JavaScript", "Web Audio", "Webflow"],
+  //   role: "Developer",
+  //   client: "BurgerFuel NZ",
+  //   year: "2025",
+  //   credits: {
+  //     agency: "Psychoactive Studios",
+  //     director: "Andrew Hillstead",
+  //     producer: "Daniel Luca",
+  //     designer: "Alex Nelson",
+  //     devs: "Muhammad Ukasha",
+  //   },
+  //   link: "https://burgerfuel-staging.webflow.io/nz/radio-burgerfuel",
+  //   github: "https://github.com/Joshvdw/burgerfuel-radio",
+  //   removeLiveLinkFromMobile: false,
+  // },
+  // {
+  //   title: "Psychoactive Site",
+  //   description: ``,
+  //   tools: ["GSAP", "Lottie", "JavaScript", "Webflow"],
+  //   role: "Developer / Sound Designer",
+  //   client: "Psychoactive Studios",
+  //   year: "2025",
+  //   credits: {
+  //     director: "Andrew Hillstead",
+  //     designer: "Alex Nelson",
+  //   },
+  //   link: "https://www.psychoactive.co.nz/about",
+  //   github: "https://github.com/psychoactive-studios/ps-studio-code",
+  //   removeLiveLinkFromMobile: false,
   // },
   {
     title: "Mosaic Pathways",
@@ -24,7 +64,7 @@ export const workData = [
     implemented a custom commenting CMS using Sanity.io and developed an 
     email API system with SendGrid.`,
     tools: ["React", "Nextjs", "Sanity", "Spring", "Lottie"],
-    role: "Lead Developer / Sound",
+    role: "Lead Developer / Sound Designer",
     client: "Ara Taiohi",
     year: "2024",
     credits: {
@@ -59,9 +99,8 @@ export const workData = [
   },
   {
     title: "Mobi Headquarters",
-    description: `I contributed to the creation of a comprehensive B2B hospitality website alongside 
-    the team at Psychoactive Studios. Whilst I did develop a few of the pages in Webflow, 
-    my main role centred around writing the custom code for the website, such as the GSAP animations and JavaScript. 
+    description: `I contributed to the creation of this comprehensive B2B hospitality website. Whilst I was in charge of developing a few key pages in Webflow, 
+    my main role centred around the writing of custom code, such as the GSAP animations and JavaScript. 
     Overcoming Webflow's limitations and ensuring optimal performance across all browsers and devices posed 
     a unique challenge that I had to address successfully.`,
     tools: ["Webflow", "GSAP", "Javascript", "Lottie"],
@@ -80,10 +119,10 @@ export const workData = [
     removeLiveLinkFromMobile: false,
   },
   {
-    title: "Gravity",
-    description: `I helped design this experiential website for Gravity, a creative agency based in Auckland 
-    that specialises in innovative product and application development. I used storyboarding to craft the structure 
-    and narrative of the experience, and designed key assets using Figma and the Adobe Suite.`,
+    title: "This is Gravity",
+    description: `I helped design this experiential website for Gravity, a creative agency based in Auckland. 
+    Gravity specialises in innovative product and application development and requested an unique out-of-the box website to help them stand out from the crowd.
+    I used storyboarding to craft the structure and narrative of the experience, then designed key assets using Figma and the Adobe Suite.`,
     tools: ["Figma", "Illustrator", "Photoshop"],
     role: "Designer",
     client: "Gravity",
@@ -99,10 +138,10 @@ export const workData = [
   },
   {
     title: "Top Agencies NZ",
-    description: `An immersive website crafted to highlight the diverse design talent across New Zealand.
+    description: `This immersive website was crafted to highlight the diverse design talent across New Zealand.
     It features an annually updated directory of leading agencies in branding, web development, digital marketing, 
     and motion graphics. I developed this website with Webflow, then integrated GSAP and custom JavaScript 
-     to bring the spinning carousel to life.`,
+     in order to bring the spinning carousel to life.`,
     tools: ["Webflow", "GSAP", "Javascript"],
     role: "Designer / Developer",
     client: "Psychoactive Studios",
@@ -135,25 +174,24 @@ export const workData = [
     title: "wwweb3 Info",
     description: `During my internship at Psychoactive Studios, I crafted an educational web experience aimed at providing an immersive introduction to the world of web 3.
     This informational website delves into the fundamentals of topics such as blockchain, crypto, and NFTs.
-    I was eager to push the boundaries of Webflow's capabilities, and so I ventured into new territories, exploring creative coding with JavaScript libraries such as p5.js.`,
+    I was eager to push the boundaries of Webflow and so explored new creative coding ventures through the JavaScript library p5.js.`,
     tools: ["Webflow", "p5js", "Javascript"],
     role: "Designer, Developer & Sound",
     client: "Psychoactive Studios",
     year: "2022",
     credits: {
       agency: "Psychoactive Studios",
-      director: "Andrew Hillstead",
     },
     link: "https://wwweb3.webflow.io/",
     removeLiveLinkFromMobile: true,
   },
   {
     title: "Torotoro",
-    description: `An interactive storybook/point-and-click adventure game designed to assist children in identifying emotions, navigating conflict, and understanding diversity.
-    The name 'ToroToro' originates from the Maori language, it means 'explore' and 'grounds for us,' - which is the theme we aim to capture in this experience.
-    I played a key role in developing the frontend React components and integrated the UI sounds and musical elements as well.`,
+    description: `This interactive point-and-click adventure game was designed to assist children in identifying emotions, navigating conflict, and understanding diversity.
+    The name 'ToroToro' originates from the Maori language, it means 'explore' and 'grounds for us,' - which is the theme we aimed to capture in this experience.
+    I played a key role in developing the React components and integrated the sounds.`,
     tools: ["React", "Redux", "Jest", "Sass", "SQLite"],
-    role: "Developer / Sound",
+    role: "Developer / Sound Design",
     client: "Enspiral Dev Academy",
     year: "2021",
     credits: {
@@ -170,9 +208,9 @@ export const workData = [
   },
   {
     title: "The Tale of Abe",
-    description: `This portfolio piece served to hone and showcase my newly acquired WebGL skills, which I had spent the preceding months developing.
-    I created and exported glTF assets from Blender, then rendered and manipulated them using Three.js and React.
-    The 3D scene was inspired by the then popular Hape.io website and the poem was written in collaboration with ChatGPT`,
+    description: `This portfolio piece served to hone and showcase my newly acquired WebGL skills.
+    I exported glTF assets created in Blender and then manipulated them using Three.js within React.
+    The 3D scene was inspired by the popular Hape.io NFT website.`,
     tools: ["React", "TypeScript", "Nextjs", "Three.js", "Blender"],
     role: "Developer / Designer",
     client: "N/A",

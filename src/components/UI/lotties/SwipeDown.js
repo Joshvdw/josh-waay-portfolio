@@ -13,7 +13,6 @@ const SwipeDown = ({}) => {
       autoplay: true,
       path: "/lotties/swipe-down_lottie.json",
     });
-    // animation.current.goToAndStop(0, true);
 
     return () => {
       animation.current.destroy();

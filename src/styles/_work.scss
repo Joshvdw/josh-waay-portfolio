@@ -117,7 +117,6 @@
   height: 250px;
   bottom: 25px;
   opacity: 0%; // IF NOT USING, REMOVE THIS FROM DOM
-  // background-image: url("/images/controls_bg-black.png");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -125,7 +124,6 @@
 .controls-wrapper {
   padding: 0 10rem 0 0;
   position: relative;
-  // margin-bottom: 2rem;
 }
 
 .controls-inner {
@@ -227,7 +225,6 @@
 }
 
 .work-info__wrapper {
-  // margin-left: 2rem;
   font-family: $baj;
 }
 
@@ -235,10 +232,6 @@
   margin-bottom: 2rem;
   display: flex;
   gap: 4rem;
-}
-
-.work-overview__item {
-  // max-width: 7.5rem;
 }
 
 .work-overview__wrapper > :first-child {
@@ -276,7 +269,6 @@
 // PROGRESS BAR
 .progress-bar {
   height: 2px;
-  // background-color: rgba(236, 236, 232, 0.6);
   background-color: transparent;
   position: fixed;
   bottom: 0;
@@ -300,7 +292,6 @@
 }
 
 .work-controls {
-  // width: 89px; // for non placeholder
   width: 108px;
   position: absolute;
   right: 5rem;
@@ -320,18 +311,13 @@
 .timeline-outer {
   position: relative;
   width: 100%;
-  // width: 50px;
-  // height: 10px;
 }
 
 .timeline-wrapper {
-  // height: 100vh;
   position: absolute;
   width: 100%;
-  // right: 22px;
   display: flex;
   flex-direction: row;
-  // gap: 6px;
   @include flex_centre;
   justify-content: space-between;
 }
@@ -364,7 +350,6 @@
 }
 .swipe-down__lottie {
   width: 10rem;
-  // margin-bottom: -1rem;
 }
 .mobile-laptop-mask__wrapper {
   position: absolute;

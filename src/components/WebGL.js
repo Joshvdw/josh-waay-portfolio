@@ -39,9 +39,7 @@ const WebGL = forwardRef((props, ref) => {
     if (isLoaded) {
       setIsLoading(false);
       setTimeout(() => {
-        // document.body.style.cursor = "none"; // turn off cursor
-        // sendMessage("UnityFromReact", "HasLoaded"); // broken in new unity update for some reason
-        hiddenBtn.current.click(); // simulate hidden button click instead (seems to work)
+        hiddenBtn.current.click();
       }, [1500]);
     }
   }, [isLoaded]);

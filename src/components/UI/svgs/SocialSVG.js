@@ -14,7 +14,6 @@ const SocialSVG = ({ icon, link }) => {
   };
 
   const handleHoverOut = () => {
-    // playSound("hoverOutSound");
     setIsHovered(false);
   };
 

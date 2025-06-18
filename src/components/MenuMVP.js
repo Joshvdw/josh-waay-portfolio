@@ -5,7 +5,6 @@ import SceneContext from "@/hooks/sceneContext";
 import UnityContext from "@/hooks/unityContext";
 import { animated } from "@react-spring/web";
 import { playSound } from "@/utils/sound";
-import { usePauseState } from "@/hooks/videoControlsHook";
 
 const Menu = () => {
   const [isHovered, setIsHovered] = useState(false);

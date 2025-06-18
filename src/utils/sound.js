@@ -1,4 +1,4 @@
-import { isTouchDevice } from "./utilityFunctions";
+// import { isTouchDevice } from "./utilityFunctions";
 
 const sounds = {};
 let volumes = {};

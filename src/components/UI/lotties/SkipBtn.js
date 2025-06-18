@@ -49,7 +49,6 @@ const SkipBtn = ({ handleNavigation, isNext, handleClick, interval }) => {
     handleNavigation(isNext ? "Next" : "Previous");
     animationRef.current.setSpeed(2);
     animationRef.current.playSegments([enterFrame, endFrame], true);
-    // playSound("swishSound");
   };
 
   // SKIP ON ARROW KEY PRESS
@@ -80,7 +79,6 @@ const SkipBtn = ({ handleNavigation, isNext, handleClick, interval }) => {
   };
 
   const handleHoverOut = () => {
-    // playSound("hoverOutSound");
     setIsHovered(false);
     setHasHoveredOut(true);
   };

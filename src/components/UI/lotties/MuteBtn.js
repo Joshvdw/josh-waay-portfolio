@@ -64,7 +64,6 @@ export const MuteBtn = () => {
   };
 
   const handleHoverOut = () => {
-    // playSound("hoverOutSound");
     setIsHovered(false);
   };
   return (

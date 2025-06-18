@@ -73,7 +73,6 @@
     align-items: flex-end;
     padding: 0 1rem;
     justify-content: center;
-    // margin-left: 5rem;
   }
   .hero__cta {
     font-size: 13px;
@@ -175,7 +174,6 @@
   }
   .work-header__inner {
     margin-bottom: 1rem;
-    // justify-content: flex-start;
   }
   .laptop-spacer {
     display: block;
@@ -217,12 +215,6 @@
 }
 
 @media (min-width: 767px) and (max-width: 1024px) {
-  //   .work-underline {
-  //     width: 75%;
-  //   }
-  //   .work-body__wrapper {
-  //     min-height: auto;
-  //   }
   .work-link__wrapper {
     gap: 0;
     flex-direction: column;
@@ -238,24 +230,6 @@
   .work-info__wrapper {
     margin-right: 1rem;
   }
-  //   .work-wrapper__outer {
-  //     overflow-y: scroll;
-  //   }
-  //   .work-header__wrapper {
-  //     margin-bottom: 1rem;
-  //   }
-  //   .work-description {
-  //     margin-bottom: 2rem;
-  //   }
-  //   .controls-wrapper {
-  //     padding: 0;
-  //   }
-  //   .work-body__left {
-  //     padding-bottom: 4rem;
-  //   }
-  //   .controls-wrapper {
-  //     padding: 0;
-  //   }
 }
 
 @media (max-width: 767px) {
@@ -264,29 +238,6 @@
     justify-content: center;
   }
 }
-
-// display scroll indicator of device height is less than min-heights required
-// $min-device-height doesn't work sadly, but should be the correct value
-// @media (max-height: 860px) and (max-width: 767px) {
-//   .scroll-indicator {
-//     pointer-events: none;
-//     position: fixed;
-//     height: 100vh;
-//     width: 100%;
-//     display: flex;
-//     align-items: flex-end;
-//     justify-content: center;
-//     padding-bottom: 2rem;
-//     background: linear-gradient(
-//       0deg,
-//       rgba(28, 28, 27, 0.7511598389355743) 0%,
-//       rgba(28, 28, 27, 0) 20%
-//     );
-//   }
-//   .swipe-down__lottie {
-//     width: 10rem;
-//   }
-// }
 
 @media (max-width: 600px) {
   h1 {
@@ -419,7 +370,6 @@
   }
   .work-tools__item p {
     font-size: 0.875rem;
-    // text-transform: uppercase;
   }
   .work-overview__wrapper {
     margin-bottom: 0;
@@ -432,9 +382,6 @@
   .credit-role {
     width: 100px;
   }
-  // .work-overview__wrapper > :last-child {
-  //   margin-left: 2rem;
-  // }
   h1 {
     font-size: 14vw;
   }
@@ -469,8 +416,6 @@
   .mobile-link__inner p {
     font-size: 0.75rem;
     text-transform: uppercase;
-    // text-decoration: underline;
-    // text-underline-offset: 8px; /* Adds a 5px space above the underline */
   }
   .work-link__icon {
     margin-top: 0.1rem !important;

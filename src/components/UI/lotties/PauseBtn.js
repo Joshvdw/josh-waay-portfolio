@@ -107,7 +107,6 @@ const PauseBtn = ({ resumeProjects, pauseProjects, handleClick }) => {
   };
 
   const handleHoverOut = () => {
-    // playSound("hoverOutSound");
     setIsHovered(false);
   };
 
