@@ -189,10 +189,6 @@ export const useGrowIn = (state) => {
   const [animationLoaded, setAnimationLoaded] = useState(false);
 
   useEffect(() => {
-    console.log("Current isSmallScreen (live):", isSmallScreen);
-  }, [isSmallScreen]);
-
-  useEffect(() => {
     if (state) {
       setTimeout(() => {
         setAnimationLoaded(true);
