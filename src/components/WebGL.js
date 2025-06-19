@@ -57,7 +57,10 @@ const WebGL = forwardRef((props, ref) => {
   }));
 
   useEffect(() => {
-    if (initialisationError) console.log(initialisationError);
+    if (initialisationError) {
+      alert(initialisationError);
+      console.log(initialisationError);
+    }
   }, [initialisationError]);
 
   const canvasID = "react-unity-webgl-canvas";
