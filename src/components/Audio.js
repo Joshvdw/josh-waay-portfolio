@@ -32,8 +32,7 @@ function Audio() {
       transitionSound2,
       swishSound,
     ]);
-    // reduceVolume("bgMusic", 0.15); // for original
-    reduceVolume("bgMusic", 0.5);
+    reduceVolume("bgMusic", 0.15);
     reduceVolume("enterSound", 0.4);
     reduceVolume("hoverSound", 0.2);
     reduceVolume("hoverSound2", 0.05);
@@ -65,8 +64,8 @@ function Audio() {
   return (
     <>
       <audio
-        // src="/audio/background-music-v2.mp3"
-        src="/audio/wwweb3.mp3"
+        src="/audio/background-music-v2.mp3"
+        // src="/audio/wwweb3.mp3"
         ref={bgMusic}
         id="bgMusic"
         loop
