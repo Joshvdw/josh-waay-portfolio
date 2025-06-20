@@ -59,7 +59,7 @@ const WebGL = forwardRef((props, ref) => {
   useEffect(() => {
     if (initialisationError) {
       alert(initialisationError);
-      console.log(initialisationError);
+      console.log(initialisationError, "Please upgrade your OS and try again");
     }
   }, [initialisationError]);
 

@@ -1,7 +1,11 @@
 export const workData = [
   // {
   //   title: "RWC Jersey Launch",
-  //   description: ``,
+  //   description: `For the 2023 Rugby World Cup, Adidas launched a private press-kit web experience to unveil the new All Blacks jersey.
+  //   I was responsible for building the frontend in React and integrating an immersive WebGL scene.
+  //   A key part of the project involved setting up seamless JavaScript communication between the Unity build and the React app.
+  //   I also tackled several platform-specific challenges, notably working around the iOS permission issues.
+  //   The password to enter is LegacyContinues.`,
   //   tools: ["React", "TypeScript", "Nextjs", "WebGL", "Unity"],
   //   role: "Lead Developer",
   //   client: "Adidas",
@@ -18,12 +22,12 @@ export const workData = [
   // },
   // {
   //   title: "Radio BurgerFuel",
-  //   description: `BurgerFuel is well known for their tasty burgers, 
-  //   but what some may not know is that they also run an online radio station. 
-  //   Alongside a refresh of their entire website, they wanted to expand on this and 
-  //   I was brought on the team to help with idea generation and development. 
-  //   I created a visualiser that responds live to the radio sounds using JavaScript and the Web Audio API, 
-  //   as well as integrating their various radio APIs and developing the frontend with Webflow.
+  //   description: `BurgerFuel is renowned for their tasty burgers,
+  //   but fewer people know they also operate an online radio station.
+  //   As part of a full website refresh, my role involved expanding this unique feature and
+  //   lead both the concept development and technical execution. I built an audio visualiser using JavaScript and
+  //   the Web Audio API that reacts in real-time to the radio stream.
+  //   The rest of the frontend elements were developed with a mixture of custom code and Webflow.
   //   `,
   //   tools: ["APIs", "JavaScript", "Web Audio", "Webflow"],
   //   role: "Developer",
@@ -38,21 +42,6 @@ export const workData = [
   //   },
   //   link: "https://burgerfuel-staging.webflow.io/nz/radio-burgerfuel",
   //   github: "https://github.com/Joshvdw/burgerfuel-radio",
-  //   removeLiveLinkFromMobile: false,
-  // },
-  // {
-  //   title: "Psychoactive Site",
-  //   description: ``,
-  //   tools: ["GSAP", "Lottie", "JavaScript", "Webflow"],
-  //   role: "Developer / Sound Designer",
-  //   client: "Psychoactive Studios",
-  //   year: "2025",
-  //   credits: {
-  //     director: "Andrew Hillstead",
-  //     designer: "Alex Nelson",
-  //   },
-  //   link: "https://www.psychoactive.co.nz/about",
-  //   github: "https://github.com/psychoactive-studios/ps-studio-code",
   //   removeLiveLinkFromMobile: false,
   // },
   {
@@ -75,6 +64,25 @@ export const workData = [
     },
     link: "https://mosaicaotearoa.nz/",
     github: "https://github.com/psychoactive-studios/mosaic",
+    removeLiveLinkFromMobile: false,
+  },
+  {
+    title: "About Psychoactive",
+    description: `The internal About page at Psychoactive was due for a refresh, and I was tasked with bringing a bold, 
+    cutting-edge design concept to life. Using a combination of GSAP, Lottie animations, and Webflow interactions, 
+    I developed a visually rich experience that reflects the studio’s creative energy. Over the years, 
+    I’ve contributed to a wide range of site-wide updates and enhancements - refining nearly every element of the experience. 
+    This also includes producing the original music and UI sound design that you hear as you navigate.`,
+    tools: ["GSAP", "Lottie", "JavaScript", "Webflow"],
+    role: "Developer / Sound Designer",
+    client: "Psychoactive Studios",
+    year: "2025",
+    credits: {
+      director: "Andrew Hillstead",
+      designer: "Alex Nelson",
+    },
+    link: "https://www.psychoactive.co.nz/about",
+    github: "https://github.com/psychoactive-studios/ps-studio-code",
     removeLiveLinkFromMobile: false,
   },
   {
