@@ -67,7 +67,7 @@
     padding-bottom: 0;
   }
   h1 {
-    font-size: 7rem;
+    font-size: 6.75rem;
   }
   .hero {
     align-items: flex-end;
@@ -197,7 +197,7 @@
     margin-bottom: 0;
   }
   .timeline-item {
-    width: 1.75rem;
+    width: 1.5rem;
   }
   .work-body__left p {
     font-size: 0.75rem;
@@ -241,7 +241,7 @@
 
 @media (max-width: 600px) {
   h1 {
-    font-size: 4.5rem;
+    font-size: 4.25rem;
   }
   .hero__paragraph {
     font-size: 1.125rem;
@@ -383,7 +383,7 @@
     width: 100px;
   }
   h1 {
-    font-size: 14vw;
+    font-size: 13.5vw;
   }
   .flip {
     height: 1.75vw !important;
@@ -408,7 +408,8 @@
     gap: 3rem;
   }
   .timeline-item {
-    width: 1.25rem;
+    width: 1.15rem;
+    height: 1px;
   }
   .work-body__left p {
     font-size: 0.5rem;
