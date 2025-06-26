@@ -1,26 +1,5 @@
 export const workData = [
   // {
-  //   title: "RWC Jersey Launch",
-  //   description: `For the 2023 Rugby World Cup, Adidas launched a private press-kit web experience to unveil the new All Blacks jersey.
-  //   I was responsible for building the frontend in React and integrating an immersive WebGL scene.
-  //   A key part of the project involved setting up seamless JavaScript communication between the Unity build and the React app.
-  //   I also tackled several platform-specific challenges, notably working around the iOS permission issues.
-  //   The password to enter is LegacyContinues.`,
-  //   tools: ["React", "TypeScript", "Nextjs", "WebGL", "Unity"],
-  //   role: "Lead Developer",
-  //   client: "Adidas",
-  //   year: "2023",
-  //   credits: {
-  //     agency: "Psychoactive Studios",
-  //     director: "Andrew Hillstead",
-  //     designer: "Laura Garcia",
-  //     visualArtists: "Mitch Duncan & Tales Trindade",
-  //   },
-  //   link: "https://rwc-jersey-launch-128qtq1o6-psychoactive.vercel.app/",
-  //   github: "https://github.com/Joshvdw/adidas-jersey-launch",
-  //   removeLiveLinkFromMobile: false,
-  // },
-  // {
   //   title: "Radio BurgerFuel",
   //   description: `BurgerFuel is renowned for their tasty burgers,
   //   but fewer people know they also operate an online radio station.
@@ -83,6 +62,27 @@ export const workData = [
     },
     link: "https://www.psychoactive.co.nz/about",
     github: "https://github.com/psychoactive-studios/ps-studio-code",
+    removeLiveLinkFromMobile: false,
+  },
+  {
+    title: "RWC Jersey Launch",
+    description: `For the 2023 Rugby World Cup, Adidas launched a private press-kit web experience to unveil the new All Blacks jersey.
+    I was responsible for building the frontend in React and integrating an immersive WebGL scene.
+    A key part of the project involved setting up seamless JavaScript communication between the Unity build and the React app.
+    I also tackled several platform-specific challenges, notably working around the iOS permission issues.
+    The password to enter is LegacyContinues.`,
+    tools: ["React", "TypeScript", "Nextjs", "WebGL", "Unity"],
+    role: "Lead Developer",
+    client: "Adidas",
+    year: "2023",
+    credits: {
+      agency: "Psychoactive Studios",
+      director: "Andrew Hillstead",
+      designer: "Laura Garcia",
+      visualArtists: "Mitch Duncan & Tales Trindade",
+    },
+    link: "https://rwc-jersey-launch-128qtq1o6-psychoactive.vercel.app/",
+    github: "https://github.com/Joshvdw/adidas-jersey-launch",
     removeLiveLinkFromMobile: false,
   },
   {
