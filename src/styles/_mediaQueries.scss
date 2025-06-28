@@ -67,7 +67,7 @@
     padding-bottom: 0;
   }
   h1 {
-    font-size: 6.75rem;
+    font-size: 7rem;
   }
   .hero {
     align-items: flex-end;
@@ -237,11 +237,21 @@
     margin-left: 0;
     justify-content: center;
   }
+  .work-header__inner h1 {
+    font-size: 6vw;
+  }
+  .work-link__icon {
+    width: 24px;
+    margin-top: 8px;
+  }
+  .github-link__icon {
+    width: 24px;
+  }
 }
 
 @media (max-width: 600px) {
   h1 {
-    font-size: 4.25rem;
+    font-size: 4.75rem;
   }
   .hero__paragraph {
     font-size: 1.125rem;
@@ -308,7 +318,7 @@
     display: none;
   }
   .work-header__inner h1 {
-    font-size: 8.2vw;
+    font-size: 11vw;
   }
   .mobile-link__wrapper {
     margin: 2rem 0;
@@ -356,9 +366,12 @@
 }
 
 @media (max-width: 480px) {
+  h1 {
+    font-size: 14.5vw;
+  }
   .work-header__inner h1 {
     line-height: 120%;
-    font-size: 7.5vw;
+    font-size: 11vw;
   }
   .hero__cta {
     font-size: 10px;
@@ -381,9 +394,6 @@
   .client-item,
   .credit-role {
     width: 100px;
-  }
-  h1 {
-    font-size: 13vw;
   }
   .flip {
     height: 1.75vw !important;
