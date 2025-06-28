@@ -72,14 +72,21 @@ async function enableGyro() {
 
 function customLogStatement(originalLog) {
   if (!hasVisited) {
+    // originalLog(
+    //   `
+    //   ▗▖ ▗▖▗▄▄▄▖    ▗▄▄▄▖▗▖ ▗▖▗▄▄▄▖▗▄▄▖ ▗▄▄▄▖
+    //   ▐▌ ▐▌  █        █  ▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌
+    //   ▐▛▀▜▌  █        █  ▐▛▀▜▌▐▛▀▀▘▐▛▀▚▖▐▛▀▀▘
+    //   ▐▌ ▐▌▗▄█▄▖      █  ▐▌ ▐▌▐▙▄▄▖▐▌ ▐▌▐▙▄▄▖
+    //
+    //   Welcome to my website!
+    //
+    //   If you would like to check out the code, please see: https://github.com/Joshvdw/josh-waay-portfolio
+    // `
+    // );
     originalLog(
-      `
-      ▗▖ ▗▖▗▄▄▄▖    ▗▄▄▄▖▗▖ ▗▖▗▄▄▄▖▗▄▄▖ ▗▄▄▄▖
-      ▐▌ ▐▌  █        █  ▐▌ ▐▌▐▌   ▐▌ ▐▌▐▌   
-      ▐▛▀▜▌  █        █  ▐▛▀▜▌▐▛▀▀▘▐▛▀▚▖▐▛▀▀▘
-      ▐▌ ▐▌▗▄█▄▖      █  ▐▌ ▐▌▐▙▄▄▖▐▌ ▐▌▐▙▄▄▖
-                                                                                    
-      Welcome to my website! 
+        `  
+      Welcome stranger! 
 
       If you would like to check out the code, please see: https://github.com/Joshvdw/josh-waay-portfolio
     `
