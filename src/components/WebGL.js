@@ -48,9 +48,9 @@ const WebGL = forwardRef((props, ref) => {
     sendMessage(functionName, argument) {
       playTransitionSound(argument);
       if (isLoaded) {
-        console.log(
-          `msg sent to unity: '${functionName}' argument: ${argument}`
-        );
+        // console.log(
+        //   `msg sent to unity: '${functionName}' argument: ${argument}`
+        // );
         sendMessage("UnityFromReact", functionName, argument);
       }
     },
