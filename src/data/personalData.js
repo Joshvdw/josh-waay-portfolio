@@ -1,10 +1,12 @@
 export const meta = {
   title: "Josh Waay | Portfolio",
-  description: `I'm a creative fullstack developer who specialises in frontend web development 
-    and creating immersive digital experiences. I can bring any design idea to life, 
-    as well as enhance your online presence through bespoke, innovative web-solutions. 
-    I strive to make each project visually captivating, memorable, and engaging for 
-    users worldwide. Let's build something cool together!`,
+  description: [
+    "I'm a creative fullstack developer who specialises in frontend web development",
+    "and creating immersive digital experiences. I can bring any design idea to life,",
+    "as well as enhance your online presence through bespoke, innovative web-solutions.",
+    "I strive to make each project visually captivating, memorable, and engaging for users worldwide.",
+    "Let's build something cool together!",
+  ].join(" "),
   domain: "https://joshwaay.dev",
 };
 
