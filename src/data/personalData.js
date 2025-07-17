@@ -5,6 +5,7 @@ export const meta = {
     as well as enhance your online presence through bespoke, innovative web-solutions. 
     I strive to make each project visually captivating, memorable, and engaging for 
     users worldwide. Let's build something cool together!`,
+  domain: "https://joshwaay.dev",
 };
 
 export const socialLinks = {

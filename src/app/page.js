@@ -18,6 +18,7 @@ import Socials from "@/components/UI/Socials";
 import { customLogStatement } from "@/utils/utilityFunctions";
 import { useUnityMobileSizeSwitcher } from "@/hooks/utilityHooks";
 import { MuteBtn } from "@/components/UI/lotties/MuteBtn";
+import { JsonLd } from "@/components/JsonLd";
 
 export default function Home() {
   return (
@@ -52,6 +53,7 @@ const App = () => {
 
   return (
     <ErrorBoundary fallback={<ErrorMessage />}>
+      <JsonLd />
       <main>
         <WebGL ref={unityBuild} />
         <PreloadCriticalResources />
