@@ -215,15 +215,15 @@ export const useGrowIn = (state) => {
           config: { duration: 700, immediate: true },
         },
         {
-          transform: isSmallScreen ? "scale(1.5)" : "scale(0.7)",
+          transform: isSmallScreen ? "scale(1)" : "scale(0.7)",
           config: { duration: 700, immediate: true },
         },
         {
-          transform: isSmallScreen ? "scale(0.2)" : "scale(0.5)",
+          transform: isSmallScreen ? "scale(0.25)" : "scale(0.5)",
           config: { duration: 700, immediate: true },
         },
         {
-          transform: isSmallScreen ? "scale(1.2)" : "scale(0.6)",
+          transform: isSmallScreen ? "scale(0.75)" : "scale(0.6)",
           config: { duration: 700, immediate: true },
         },
       ],

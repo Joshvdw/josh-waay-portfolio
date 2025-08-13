@@ -5,7 +5,7 @@
   position: fixed;
   z-index: 1;
   background-color: $full-black;
-  background-image: url("/images/preloader_bg.jpg"); //bg img screenshot
+  // background-image: url("/images/preloader_bg.jpg"); //bg img screenshot
   background-size: cover;
   background-repeat: no-repeat;
   height: 100svh;
@@ -41,7 +41,7 @@
   border-radius: 50%;
   position: absolute;
   filter: blur(100px);
-  opacity: 0.3;
+  opacity: 0.2;
   will-change: filter;
   transform: translateZ(0);
 }
