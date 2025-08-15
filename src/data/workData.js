@@ -1,28 +1,49 @@
 export const workData = [
-  // {
-  //   title: "Radio BurgerFuel",
-  //   description: `BurgerFuel is renowned for their tasty burgers,
-  //   but fewer people know they also operate an online radio station.
-  //   As part of a full website refresh, my role involved expanding this unique feature and
-  //   lead both the concept development and technical execution. I built an audio visualiser using JavaScript and
-  //   the Web Audio API that reacts in real-time to the radio stream.
-  //   The rest of the frontend elements were developed with a mixture of custom code and Webflow.
-  //   `,
-  //   tools: ["APIs", "JavaScript", "Web Audio", "Webflow"],
-  //   role: "Developer",
-  //   client: "BurgerFuel NZ",
-  //   year: "2025",
-  //   credits: {
-  //     agency: "Psychoactive Studios",
-  //     director: "Andrew Hillstead",
-  //     producer: "Daniel Luca",
-  //     designer: "Alex Nelson",
-  //     devs: "Muhammad Ukasha",
-  //   },
-  //   link: "https://burgerfuel-staging.webflow.io/nz/radio-burgerfuel",
-  //   github: "https://github.com/Joshvdw/burgerfuel-radio",
-  //   removeLiveLinkFromMobile: false,
-  // },
+  {
+    title: "RWC Jersey Launch",
+    description: `For the 2023 Rugby World Cup, Adidas launched a private press-kit web experience to unveil the new All Blacks jersey.
+    I was responsible for building the frontend in React and integrating an immersive WebGL scene.
+    A key part of the project involved setting up seamless JavaScript communication between the Unity build and the React app.
+    I also tackled several platform-specific challenges, notably working around the iOS permission issues.
+    The password to enter is LegacyContinues.`,
+    tools: ["React", "TypeScript", "Nextjs", "WebGL", "Unity"],
+    role: "Lead Developer",
+    client: "Adidas",
+    year: "2023",
+    credits: {
+      agency: "Psychoactive Studios",
+      director: "Andrew Hillstead",
+      designer: "Laura Garcia",
+      visualArtists: "Mitch Duncan & Tales Trindade",
+    },
+    link: "https://rwc-jersey-launch-128qtq1o6-psychoactive.vercel.app/",
+    github: "https://github.com/Joshvdw/adidas-jersey-launch",
+    removeLiveLinkFromMobile: false,
+  },
+  {
+    title: "Radio BurgerFuel",
+    description: `BurgerFuel is renowned for their tasty burgers,
+    but fewer people know they also operate an online radio station.
+    As part of a full website refresh, my role involved expanding this unique feature and
+    lead both the concept development and technical execution. I built an audio visualiser using JavaScript and
+    the Web Audio API that reacts in real-time to the radio stream.
+    The rest of the frontend elements were developed with a mixture of custom code and Webflow.
+    `,
+    tools: ["APIs", "JavaScript", "Web Audio", "Webflow"],
+    role: "Developer",
+    client: "BurgerFuel NZ",
+    year: "2025",
+    credits: {
+      agency: "Psychoactive Studios",
+      director: "Andrew Hillstead",
+      producer: "Daniel Luca",
+      designer: "Alex Nelson",
+      devs: "Muhammad Ukasha",
+    },
+    link: "https://www.burgerfuel.com/nz/radio-burgerfuel",
+    github: "https://github.com/Joshvdw/burgerfuel-radio",
+    removeLiveLinkFromMobile: false,
+  },
   {
     title: "Mosaic Pathways",
     description: `This project involved transforming a deck of physical question
@@ -46,6 +67,26 @@ export const workData = [
     removeLiveLinkFromMobile: false,
   },
   {
+    title: "Silver Fern Farms",
+    description: `I collaborated with a small team from Method Digital to develop a prototype 
+    for Silver Fern Farms.\nThis vertical slice was created to pitch for a larger scale
+    project, which would showcase their regenerative farming ventures.\nAs the development lead, 
+    I made key decisions on the tech stack and created innovative solutions to 
+    enable a complex 3D scene to function seamlessly within a React build.`,
+    tools: ["React", "TypeScript", "Nextjs", "WebGL", "Zustand"],
+    role: "Lead Developer",
+    client: "Method Digital",
+    year: "2023",
+    credits: {
+      producer: "Josh Radford",
+      designer: "Matt Power",
+      visualArtists: "Mitch Duncan & Lahiru De Silva",
+    },
+    link: "https://sff-prototype-staging.netlify.app/",
+    github: "https://github.com/Joshvdw/silver-fern-farms-prototype",
+    removeLiveLinkFromMobile: false,
+  },
+  {
     title: "About Psychoactive",
     description: `The internal About page at Psychoactive was due for a refresh, and I was tasked with bringing a bold, 
     cutting-edge design concept to life. Using a combination of GSAP, Lottie animations, and Webflow interactions, 
@@ -62,47 +103,6 @@ export const workData = [
     },
     link: "https://www.psychoactive.co.nz/about",
     github: "https://github.com/psychoactive-studios/ps-studio-code",
-    removeLiveLinkFromMobile: false,
-  },
-  {
-    title: "RWC Jersey Launch",
-    description: `For the 2023 Rugby World Cup, Adidas launched a private press-kit web experience to unveil the new All Blacks jersey.
-    I was responsible for building the frontend in React and integrating an immersive WebGL scene.
-    A key part of the project involved setting up seamless JavaScript communication between the Unity build and the React app.
-    I also tackled several platform-specific challenges, notably working around the iOS permission issues.
-    The password to enter is LegacyContinues.`,
-    tools: ["React", "TypeScript", "Nextjs", "WebGL", "Unity"],
-    role: "Lead Developer",
-    client: "Adidas",
-    year: "2023",
-    credits: {
-      agency: "Psychoactive Studios",
-      director: "Andrew Hillstead",
-      designer: "Laura Garcia",
-      visualArtists: "Mitch Duncan & Tales Trindade",
-    },
-    link: "https://rwc-jersey-launch-128qtq1o6-psychoactive.vercel.app/",
-    github: "https://github.com/Joshvdw/adidas-jersey-launch",
-    removeLiveLinkFromMobile: false,
-  },
-  {
-    title: "Silver Fern Farms",
-    description: `I collaborated with a small team from Method Digital to develop a prototype 
-      for Silver Fern Farms.\nThis vertical slice was created to pitch for a larger scale
-       project, which would showcase their regenerative farming ventures.\nAs the development lead, 
-       I made key decisions on the tech stack and created innovative solutions to 
-       enable a complex 3D scene to function seamlessly within a React build.`,
-    tools: ["React", "TypeScript", "Nextjs", "WebGL", "Zustand"],
-    role: "Lead Developer",
-    client: "Method Digital",
-    year: "2023",
-    credits: {
-      producer: "Josh Radford",
-      designer: "Matt Power",
-      visualArtists: "Mitch Duncan & Lahiru De Silva",
-    },
-    link: "https://sff-prototype-staging.netlify.app/",
-    github: "https://github.com/Joshvdw/silver-fern-farms-prototype",
     removeLiveLinkFromMobile: false,
   },
   {
