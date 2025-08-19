@@ -30,7 +30,7 @@ export const MuteBtn = () => {
 
     const soundIsMuted = getIsMuted();
 
-    if (soundIsMuted) {
+    if (!soundIsMuted) {
       animationRef.current.goToAndStop(holdFrame, true);
     }
 
@@ -48,14 +48,14 @@ export const MuteBtn = () => {
   const handleClick = () => {
     muteToggle();
     const newMuteState = getIsMuted();
-    if (newMuteState !== isMuted) {
-      if (newMuteState) {
-        playLottie(enterFrame, holdFrame, animationRef.current);
-      } else {
-        playLottie(holdFrame, endFrame, animationRef.current);
-      }
-      setIsMuted(newMuteState);
+    // if (newMuteState !== isMuted) {
+    if (!newMuteState) {
+      playLottie(enterFrame, holdFrame, animationRef.current);
+    } else {
+      playLottie(holdFrame, endFrame, animationRef.current);
     }
+    setIsMuted(newMuteState);
+    // }
   };
 
   const handleHover = () => {

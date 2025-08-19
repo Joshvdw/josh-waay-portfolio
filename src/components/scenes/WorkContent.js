@@ -135,7 +135,7 @@ const WorkContent = ({
           setLinkHovered(false);
           playSound("hoverOutSound");
         }, 1500);
-      }, 10000);
+      }, 12000);
     }
   };
 
@@ -356,7 +356,13 @@ const WorkContent = ({
                               ) : (
                                 <div className="credit-role">
                                   <p>
-                                    {key.charAt(0).toUpperCase() + key.slice(1)}
+                                    {key
+                                      .replace(/([a-z])([A-Z])/g, "$1 $2") // camelCase to space
+                                      .replace(/_/g, " ") // snake_case to space
+                                      .replace(/\b\w/g, (c) =>
+                                        c.toUpperCase()
+                                      )}{" "}
+                                    {/* capitalize each word */}
                                   </p>
                                 </div>
                               )}

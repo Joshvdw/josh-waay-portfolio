@@ -1,4 +1,38 @@
 export const workData = [
+  // {
+  //   title: "Psychoactive Studios",
+  //   description: `For the 2023 Rugby World Cup, Adidas launched a private press-kit web experience to unveil the new All Blacks jersey.
+  //   I was responsible for building the frontend in React and integrating an immersive WebGL scene.
+  //   A key part of the project involved setting up seamless JavaScript communication between the Unity build and the React app.
+  //   I also tackled several platform-specific challenges, notably working around the iOS permission issues.
+  //   The password to enter is LegacyContinues.`,
+  //   tools: ["React", "Webflow", "JavaScript", "WebGL", "GSAP"],
+  //   role: [
+  //     "Lead Developer",
+  //     "Tech Advisor",
+  //     "Web Designer",
+  //     "Audio Producer",
+  //     "UX",
+  //   ],
+  //   client: [
+  //     "SuperAI",
+  //     "World of Wearable Arts",
+  //     "Lumo Digital",
+  //     "Oasis",
+  //     "Studio S ii",
+  //     "Summer Games Fest",
+  //     "Cogo",
+  //     "Q:Bio",
+  //     "Imagination TV",
+  //     "One Farm",
+  //     "Storypark"
+  //   ],
+  //   year: "2021 - 2025",
+  //   credits: "N/A",
+  //   link: "https://www.psychoactive.co.nz/",
+  //   github: "https://github.com/psychoactive-studios",
+  //   removeLiveLinkFromMobile: false,
+  // },
   {
     title: "RWC Jersey Launch",
     description: `For the 2023 Rugby World Cup, Adidas launched a private press-kit web experience to unveil the new All Blacks jersey.

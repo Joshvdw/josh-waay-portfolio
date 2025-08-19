@@ -72,6 +72,25 @@ const PauseBtn = ({ resumeProjects, pauseProjects, handleClick }) => {
     }
   }, [isHovered, isSmallScreen]);
 
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (!paused) {
+        // Toggle pause state based on visibility
+        if (document.hidden) {
+          // pause if user navigates away
+          pauseBtn.current.click();
+        } else {
+          // unpause if user returns
+          pauseBtn.current.click();
+        }
+      } // Don't toggle pause if already paused
+    };
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, []);
+
   const handlePause = () => {
     playSound("clickSound");
     // muteToggle();

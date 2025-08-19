@@ -40,14 +40,21 @@ const App = () => {
   useUnityMobileSizeSwitcher();
 
   useEffect(() => {
-    // preloadNonCriticalResources(); // preload resources
-    // overide webgl logs
+    // Override console.log
     const originalLog = console.log;
-    console.log = function () {
-      customLogStatement(originalLog); // welcome log msg
+    console.log = function (...args) {
+      customLogStatement(originalLog, ...args); // your custom handler
     };
+
+    // Suppress all alert dialogs
+    const originalAlert = window.alert;
+    window.alert = function () {
+      // do nothing
+    };
+
     return () => {
       console.log = originalLog;
+      window.alert = originalAlert;
     };
   }, []);
 
