@@ -1,38 +1,37 @@
 export const workData = [
-  // {
-  //   title: "Psychoactive Studios",
-  //   description: `For the 2023 Rugby World Cup, Adidas launched a private press-kit web experience to unveil the new All Blacks jersey.
-  //   I was responsible for building the frontend in React and integrating an immersive WebGL scene.
-  //   A key part of the project involved setting up seamless JavaScript communication between the Unity build and the React app.
-  //   I also tackled several platform-specific challenges, notably working around the iOS permission issues.
-  //   The password to enter is LegacyContinues.`,
-  //   tools: ["React", "Webflow", "JavaScript", "WebGL", "GSAP"],
-  //   role: [
-  //     "Lead Developer",
-  //     "Tech Advisor",
-  //     "Web Designer",
-  //     "Audio Producer",
-  //     "UX",
-  //   ],
-  //   client: [
-  //     "SuperAI",
-  //     "World of Wearable Arts",
-  //     "Lumo Digital",
-  //     "Oasis",
-  //     "Studio S ii",
-  //     "Summer Games Fest",
-  //     "Cogo",
-  //     "Q:Bio",
-  //     "Imagination TV",
-  //     "One Farm",
-  //     "Storypark"
-  //   ],
-  //   year: "2021 - 2025",
-  //   credits: "N/A",
-  //   link: "https://www.psychoactive.co.nz/",
-  //   github: "https://github.com/psychoactive-studios",
-  //   removeLiveLinkFromMobile: false,
-  // },
+  {
+    title: "Psychoactive Studio",
+    description: `During my time as both an employee and freelancer at one of New Zealand’s leading digital design agencies, 
+  I contributed to a wide range of projects for high-profile clients. As the sole developer with coding expertise, 
+  I extended the agency’s Webflow capabilities with custom JavaScript, built full-stack applications, and guided the team through various complex technical challenges. 
+  I also developed several key components of their in-house website. The clients listed here represent projects I worked on that are not featured in the subsequent case studies.`,
+    tools: ["React", "Webflow", "JavaScript", "WebGL", "GSAP"],
+    role: [
+      "Lead Developer",
+      "Audio Producer",
+      "UX Strategist",
+      "Web Designer",
+      "Tech Advisor",
+    ],
+    roleMobile: ["Developer", "Designer", "Advisor", "Audio", "UX"],
+    client: [
+      "Cogo",
+      "Oasis",
+      "WoW NZ",
+      "SuperAI",
+      "One Farm",
+      "Storypark",
+      "Studio S ii",
+      "Lumo Digital",
+      "ImaginationTV",
+      "SummerGamesFest",
+    ],
+    year: "2022 - 2025",
+    credits: "N/A",
+    link: "https://www.psychoactive.co.nz/",
+    github: "https://github.com/psychoactive-studios",
+    removeLiveLinkFromMobile: false,
+  },
   {
     title: "RWC Jersey Launch",
     description: `For the 2023 Rugby World Cup, Adidas launched a private press-kit web experience to unveil the new All Blacks jersey.
@@ -65,7 +64,7 @@ export const workData = [
     `,
     tools: ["APIs", "JavaScript", "Web Audio", "Webflow"],
     role: "Developer",
-    client: "BurgerFuel NZ",
+    client: "BurgerFuel",
     year: "2025",
     credits: {
       agency: "Psychoactive Studios",
@@ -248,18 +247,18 @@ export const workData = [
     github: "https://github.com/Joshvdw/torotoro",
     removeLiveLinkFromMobile: true,
   },
-  {
-    title: "The Tale of Abe",
-    description: `This portfolio piece served to hone and showcase my newly acquired WebGL skills.
-    I exported glTF assets created in Blender and then manipulated them using Three.js within React.
-    The 3D scene was inspired by the popular Hape.io NFT website.`,
-    tools: ["React", "TypeScript", "Nextjs", "Three.js", "Blender"],
-    role: "Developer / Designer",
-    client: "N/A",
-    year: "2022",
-    credits: "N/A",
-    link: "https://the-tale-of-abe.vercel.app/",
-    github: "https://github.com/Joshvdw/the-tale-of-abe",
-    removeLiveLinkFromMobile: true,
-  },
+  // {
+  //   title: "The Tale of Abe",
+  //   description: `This portfolio piece served to hone and showcase my newly acquired WebGL skills.
+  //   I exported glTF assets created in Blender and then manipulated them using Three.js within React.
+  //   The 3D scene was inspired by the popular Hape.io NFT website.`,
+  //   tools: ["React", "TypeScript", "Nextjs", "Three.js", "Blender"],
+  //   role: "Developer / Designer",
+  //   client: "N/A",
+  //   year: "2022",
+  //   credits: "N/A",
+  //   link: "https://the-tale-of-abe.vercel.app/",
+  //   github: "https://github.com/Joshvdw/the-tale-of-abe",
+  //   removeLiveLinkFromMobile: true,
+  // },
 ];

@@ -2,7 +2,7 @@ import HeroFlipText from "../UI/HeroFlipText";
 import SceneContext from "@/hooks/sceneContext";
 import UnityContext from "@/hooks/unityContext";
 import { animated } from "@react-spring/web";
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useFadeIn, useSlideIn } from "@/hooks/useSpring";
 import { heroText } from "@/data/personalData";
 import { isMuted, muteToggle, playSound, restartSound } from "@/utils/sound";
@@ -13,13 +13,14 @@ import {
 import { enableGyro, isTouchDevice } from "@/utils/utilityFunctions";
 
 const Hero = () => {
+  const [isMounted, setIsMounted] = useState(false);
   const runGyroCheck = useIsSmallScreen() && isTouchDevice();
   const { sceneState, updateScene } = useContext(SceneContext);
   const { msgUnity, preventSpam, isDisabled } = useContext(UnityContext);
 
   const handleStartClick = async () => {
     //spam prevention
-    if (isDisabled) return;
+    if (isDisabled || !isMounted) return;
     preventSpam();
     if (runGyroCheck) await enableGyro(); // enable gyro on ios
     updateScene("work");
@@ -36,6 +37,14 @@ const Hero = () => {
       }, 200);
     }
   };
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (!isMounted) {
+        setIsMounted(true);
+      }
+    }, 1000);
+  }, [isMounted]);
 
   const debouncedHandleScroll =
     useDebouncedScrollClickSimulate(handleStartClick);

@@ -317,15 +317,51 @@ const WorkContent = ({
               <div className="work-info__wrapper">
                 <div className="work-overview__wrapper">
                   <div className="work-overview__item">
-                    <p className="work-overview__title">Role</p>
-                    <p className="creme-text">{currentProject.role}</p>
+                    {typeof currentProject.role === "object" ? (
+                      <>
+                        <p className="work-overview__title">Roles</p>
+                        {isSmallScreen
+                          ? currentProject.roleMobile.map((role, index) => (
+                              <p key={index} className="creme-text">
+                                {role}
+                              </p>
+                            ))
+                          : currentProject.role.map((role, index) => (
+                              <p key={index} className="creme-text">
+                                {role}
+                              </p>
+                            ))}
+                      </>
+                    ) : (
+                      <>
+                        <p className="work-overview__title">Role</p>
+                        <p className="creme-text">{currentProject.role}</p>
+                      </>
+                    )}
                   </div>
                   <div className="work-overview__item client-item">
-                    <p className="work-overview__title">Client</p>
-                    <p className="creme-text">{currentProject.client}</p>
+                    {typeof currentProject.client === "object" ? (
+                      <>
+                        <p className="work-overview__title">Clients</p>
+                        {currentProject.client.map((client, index) => (
+                          <p key={index} className="creme-text">
+                            {client}
+                          </p>
+                        ))}
+                      </>
+                    ) : (
+                      <>
+                        <p className="work-overview__title">Client</p>
+                        <p className="creme-text">{currentProject.client}</p>
+                      </>
+                    )}
                   </div>
                   <div className="work-overview__item">
-                    <p className="work-overview__title">Year</p>
+                    <p className="work-overview__title">
+                      {currentProject.year.trim().includes(" ")
+                        ? "Years"
+                        : "Year"}
+                    </p>
                     <p className="creme-text">{currentProject.year}</p>
                   </div>
                 </div>
