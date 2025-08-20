@@ -1,21 +1,14 @@
 export const workData = [
   {
     title: "Psychoactive Studio",
-    description: `During my time as both an employee and freelancer at one of New Zealand’s leading digital design agencies, 
+    description: `During my time at one of New Zealand’s leading digital agencies, 
   I contributed to a wide range of projects for high-profile clients. As the sole developer with coding expertise, 
-  I extended the agency’s Webflow capabilities with custom JavaScript, built full-stack applications, and guided the team through various complex technical challenges. 
-  I also developed several key components of their in-house website. The clients listed here represent projects I worked on that are not featured in the subsequent case studies.`,
+  I extended the agency’s Webflow capabilities with custom JavaScript, built full-stack applications, and guided the team through complex technical challenges. 
+  I also developed several key components of their in-house website. The clients listed here represent projects I worked on that are not featured in the subsequent ones.`,
     tools: ["React", "Webflow", "JavaScript", "WebGL", "GSAP"],
-    role: [
-      "Lead Developer",
-      "Audio Producer",
-      "UX Strategist",
-      "Web Designer",
-      "Tech Advisor",
-    ],
+    role: ["Tech Lead", "Developer", "Designer", "Audio", "UX"],
     roleMobile: ["Developer", "Designer", "Advisor", "Audio", "UX"],
     client: [
-      "Cogo",
       "Oasis",
       "WoW NZ",
       "SuperAI",
