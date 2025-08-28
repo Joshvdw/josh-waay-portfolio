@@ -27,7 +27,7 @@ export const workData = [
   },
   {
     title: "Radio BurgerFuel",
-    description: `BurgerFuel is renowned for their tasty burgers,
+    description: `BurgerFuel is renowned for their burgers,
     but fewer people know they also operate an online radio station.
     As part of a full website refresh, my role involved expanding this unique feature and
     lead both the concept development and technical execution. I built an audio visualiser using JavaScript and
