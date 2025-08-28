@@ -26,27 +26,6 @@ export const workData = [
     removeLiveLinkFromMobile: false,
   },
   {
-    title: "RWC Jersey Launch",
-    description: `For the 2023 Rugby World Cup, Adidas launched a private press-kit web experience to unveil the new All Blacks jersey.
-    I was responsible for building the frontend in React and integrating an immersive WebGL scene.
-    A key part of the project involved setting up seamless JavaScript communication between the Unity build and the React app.
-    I also tackled several platform-specific challenges, notably working around the iOS permission issues.
-    The password to enter is LegacyContinues.`,
-    tools: ["React", "TypeScript", "Nextjs", "WebGL", "Unity"],
-    role: "Lead Developer",
-    client: "Adidas",
-    year: "2023",
-    credits: {
-      agency: "Psychoactive Studios",
-      director: "Andrew Hillstead",
-      designer: "Laura Garcia",
-      visualArtists: "Mitch Duncan & Tales Trindade",
-    },
-    link: "https://rwc-jersey-launch-128qtq1o6-psychoactive.vercel.app/",
-    github: "https://github.com/Joshvdw/adidas-jersey-launch",
-    removeLiveLinkFromMobile: false,
-  },
-  {
     title: "Radio BurgerFuel",
     description: `BurgerFuel is renowned for their tasty burgers,
     but fewer people know they also operate an online radio station.
@@ -93,23 +72,42 @@ export const workData = [
     removeLiveLinkFromMobile: false,
   },
   {
-    title: "Silver Fern Farms",
-    description: `I collaborated with a small team from Method Digital to develop a prototype 
-    for Silver Fern Farms.\nThis vertical slice was created to pitch for a larger scale
-    project, which would showcase their regenerative farming ventures.\nAs the development lead, 
-    I made key decisions on the tech stack and created innovative solutions to 
-    enable a complex 3D scene to function seamlessly within a React build.`,
-    tools: ["React", "TypeScript", "Nextjs", "WebGL", "Zustand"],
-    role: "Lead Developer",
-    client: "Method Digital",
+    title: "This is Gravity",
+    description: `I designed this experiential website for Gravity, a creative agency based in Auckland. 
+    Gravity specialises in innovative product and application development and requested an unique out-of-the box website to help them stand out from the crowd.
+    I used storyboarding to craft the structure and narrative of the experience, then designed key assets using Figma and the Adobe Suite.`,
+    tools: ["Figma", "Illustrator", "Photoshop"],
+    role: "Designer",
+    client: "Gravity",
     year: "2023",
     credits: {
-      producer: "Josh Radford",
-      designer: "Matt Power",
-      visualArtists: "Mitch Duncan & Lahiru De Silva",
+      agency: "Psychoactive Studios",
+      director: "Andrew Hillstead",
+      developer: "Kunyang Ji",
+      motionArtist: "Linus Nelson",
     },
-    link: "https://sff-prototype-staging.netlify.app/",
-    github: "https://github.com/Joshvdw/silver-fern-farms-prototype",
+    link: "https://www.thisisgravity.co/",
+    removeLiveLinkFromMobile: false,
+  },
+  {
+    title: "RWC Jersey Launch",
+    description: `For the 2023 Rugby World Cup, Adidas launched a private press-kit web experience to unveil the new All Blacks jersey.
+    I was responsible for building the frontend in React and integrating an immersive WebGL scene.
+    A key part of the project involved setting up seamless JavaScript communication between the Unity build and the React app.
+    I also tackled several platform-specific challenges, notably working around the iOS permission issues.
+    The password to enter is LegacyContinues.`,
+    tools: ["React", "TypeScript", "Nextjs", "WebGL", "Unity"],
+    role: "Lead Developer",
+    client: "Adidas",
+    year: "2023",
+    credits: {
+      agency: "Psychoactive Studios",
+      director: "Andrew Hillstead",
+      designer: "Laura Garcia",
+      visualArtists: "Mitch Duncan & Tales Trindade",
+    },
+    link: "https://rwc-jersey-launch-128qtq1o6-psychoactive.vercel.app/",
+    github: "https://github.com/Joshvdw/adidas-jersey-launch",
     removeLiveLinkFromMobile: false,
   },
   {
@@ -153,21 +151,23 @@ export const workData = [
     removeLiveLinkFromMobile: false,
   },
   {
-    title: "This is Gravity",
-    description: `I helped design this experiential website for Gravity, a creative agency based in Auckland. 
-    Gravity specialises in innovative product and application development and requested an unique out-of-the box website to help them stand out from the crowd.
-    I used storyboarding to craft the structure and narrative of the experience, then designed key assets using Figma and the Adobe Suite.`,
-    tools: ["Figma", "Illustrator", "Photoshop"],
-    role: "Designer",
-    client: "Gravity",
+    title: "Silver Fern Farms",
+    description: `I collaborated with a small team from Method Digital to develop a prototype 
+    for Silver Fern Farms.\nThis vertical slice was created to pitch for a larger scale
+    project, which would showcase their regenerative farming ventures.\nAs the development lead, 
+    I made key decisions on the tech stack and created innovative solutions to 
+    enable a complex 3D scene to function seamlessly within a React build.`,
+    tools: ["React", "TypeScript", "Nextjs", "WebGL", "Zustand"],
+    role: "Lead Developer",
+    client: "Method Digital",
     year: "2023",
     credits: {
-      agency: "Psychoactive Studios",
-      director: "Andrew Hillstead",
-      developer: "Kunyang Ji",
-      motionArtist: "Linus Nelson",
+      producer: "Josh Radford",
+      designer: "Matt Power",
+      visualArtists: "Mitch Duncan & Lahiru De Silva",
     },
-    link: "https://www.thisisgravity.co/",
+    link: "https://sff-prototype-staging.netlify.app/",
+    github: "https://github.com/Joshvdw/silver-fern-farms-prototype",
     removeLiveLinkFromMobile: false,
   },
   {
