@@ -5,6 +5,7 @@ import SceneContext from "@/hooks/sceneContext";
 import UnityContext from "@/hooks/unityContext";
 import { animated } from "@react-spring/web";
 import { playSound } from "@/utils/sound";
+import LinkSVG from "./UI/svgs/LinkSVG";
 
 const Menu = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -35,17 +36,28 @@ const Menu = () => {
   };
 
   return (
-    <animated.div className="side-menu__wrapper" style={slideIn}>
-      <animated.div
-        onClick={handleClick}
-        className="pointer"
-        onMouseEnter={handleHover}
-        onMouseLeave={() => setIsHovered(false)}
-        style={opacityShifter}
-      >
-        <Logo isPreloader={false} />
+    <>
+      <animated.div className="side-menu__wrapper" style={slideIn}>
+        <animated.div
+          onClick={handleClick}
+          className="pointer"
+          onMouseEnter={handleHover}
+          onMouseLeave={() => setIsHovered(false)}
+          style={opacityShifter}
+        >
+          <Logo isPreloader={false} />
+        </animated.div>
       </animated.div>
-    </animated.div>
+      <animated.a
+        className="about-btn_outer"
+        href="https://about.joshwaay.dev"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={slideIn}
+      >
+        <p>About Me</p>
+      </animated.a>
+    </>
   );
 };
 

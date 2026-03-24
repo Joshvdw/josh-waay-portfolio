@@ -57,6 +57,9 @@
 
 // MOBILE DESIGN SWITCH
 @media (max-width: 1024px) {
+  .socials-wrapper {
+    display: none;
+  }
   .work-wrapper__inner {
     max-height: none;
   }
@@ -362,6 +365,10 @@
   .work-info__wrapper {
     flex-direction: column;
     gap: 0rem;
+  }
+  .about-btn_outer {
+    top: 1rem;
+    right: 1rem;
   }
 }
 

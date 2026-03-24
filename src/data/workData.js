@@ -1,6 +1,6 @@
 export const workData = [
   {
-    title: "Psychoactive Studio",
+    title: "Psychoactive Studios",
     description: `During my time at one of New Zealand’s leading digital agencies, 
   I contributed to a wide range of projects for high-profile clients. As the sole developer with coding expertise, 
   I extended the agency’s Webflow capabilities with custom JavaScript, built full-stack applications, and guided the team through complex technical challenges. 
@@ -26,13 +26,14 @@ export const workData = [
     removeLiveLinkFromMobile: false,
   },
   {
-    title: "Radio BurgerFuel",
-    description: `BurgerFuel is renowned for their burgers,
-    but fewer people know they also operate an online radio station.
-    As part of a full website refresh, my role involved expanding this unique feature and
-    lead both the concept development and technical execution. I built an audio visualiser using JavaScript and
-    the Web Audio API that reacts in real-time to the radio stream.
-    The rest of the frontend elements were developed with a mixture of custom code and Webflow.
+    title: "BurgerFuel NZ",
+    description: `For BurgerFuel's website refresh, 
+    I provided dev support during the initial build before 
+    taking over the ongoing retainer. I helped build, maintain, 
+    and enhance the site's dynamic features using a mix of Webflow 
+    and custom code. I also handled the concept and technical execution 
+    of a custom audio visualizer, utilizing JavaScript and the Web Audio API 
+    to create an interface that reacts in real-time to their live radio stream.
     `,
     tools: ["APIs", "JavaScript", "Web Audio", "Webflow"],
     role: "Developer",
