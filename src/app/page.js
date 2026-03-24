@@ -7,9 +7,9 @@ import {
   preloadNonCriticalResources,
 } from "./resources";
 import Audio from "@/components/Audio";
-import Scenes from "@/components/Scenes";
+// import Scenes from "@/components/Scenes";
 import MenuMVP from "@/components/MenuMVP";
-import WebGL from "@/components/WebGL";
+// import WebGL from "@/components/WebGL";
 import ErrorBoundary from "@/components/errors/ErrorBoundary";
 import ErrorMessage from "../components/errors/ErrorModal";
 import SceneContext, { SceneProvider } from "@/hooks/sceneContext";
@@ -17,8 +17,23 @@ import UnityContext, { UnityProvider } from "@/hooks/unityContext";
 import Socials from "@/components/UI/Socials";
 import { customLogStatement } from "@/utils/utilityFunctions";
 import { useUnityMobileSizeSwitcher } from "@/hooks/utilityHooks";
-import { MuteBtn } from "@/components/UI/lotties/MuteBtn";
+// import { MuteBtn } from "@/components/UI/lotties/MuteBtn";
 import { JsonLd } from "@/components/JsonLd";
+import dynamic from "next/dynamic";
+
+const WebGL = dynamic(
+  () => import("@/components/WebGL").then((mod) => mod.default),
+  { ssr: false },
+);
+
+const Scenes = dynamic(
+  () => import("@/components/Scenes").then((mod) => mod.default),
+  { ssr: false },
+);
+const MuteBtn = dynamic(
+  () => import("@/components/UI/lotties/MuteBtn").then((mod) => mod.MuteBtn),
+  { ssr: false },
+);
 
 export default function Home() {
   return (
@@ -62,7 +77,7 @@ const App = () => {
     <ErrorBoundary fallback={<ErrorMessage />}>
       <JsonLd />
       <main>
-        <WebGL ref={unityBuild} />
+        <WebGL unityRef={unityBuild} />
         <PreloadCriticalResources />
         <Audio />
         {LoadFinished && <Scenes />}

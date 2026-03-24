@@ -16,7 +16,7 @@ import { workData } from "@/data/workData";
 import UnityContext from "@/hooks/unityContext";
 import { useIsSmallScreen } from "@/hooks/utilityHooks";
 
-const WebGL = forwardRef((props, ref) => {
+const WebGL = ({ unityRef }) => {
   const { unityProvider, sendMessage, initialisationError, isLoaded } =
     useUnityContext({
       loaderUrl: "/Assets/Laptop/Build/Laptop.loader.js",
@@ -44,13 +44,10 @@ const WebGL = forwardRef((props, ref) => {
     }
   }, [isLoaded]);
 
-  useImperativeHandle(ref, () => ({
+  useImperativeHandle(unityRef, () => ({
     sendMessage(functionName, argument) {
       playTransitionSound(argument);
       if (isLoaded) {
-        // console.log(
-        //   `msg sent to unity: '${functionName}' argument: ${argument}`
-        // );
         sendMessage("UnityFromReact", functionName, argument);
       }
     },
@@ -119,7 +116,7 @@ const WebGL = forwardRef((props, ref) => {
       />
     </div>
   );
-});
+};
 
 WebGL.displayName = "UnityBuild";
 
